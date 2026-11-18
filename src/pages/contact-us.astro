@@ -6,7 +6,7 @@ import { photos } from '../assets/photos';
 import { categories, site, waLink } from '../data/site';
 
 const channels = [
-  { k: 'WhatsApp', note: 'Fastest reply', v: site.phone, href: waLink(), icon: 'whatsapp', external: true },
+  { k: 'WhatsApp', note: 'Fastest reply', v: site.whatsappDisplay, href: waLink(), icon: 'whatsapp', external: true },
   { k: 'Phone', note: site.hours, v: site.phone, href: site.phoneHref, icon: 'phone', external: false },
   { k: 'Email', note: site.replyTime, v: site.email, href: `mailto:${site.email}`, icon: 'mail', external: false },
   { k: 'Visit', note: 'Open in Google Maps', v: `${site.address.line1}, ${site.address.city}`, href: site.mapUrl, icon: 'pin', external: true },

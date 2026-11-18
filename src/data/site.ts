@@ -19,7 +19,10 @@ export const site = {
   mapUrl: 'https://maps.google.com/?q=8/76+Angeripalayam+Road,+Tiruppur,+Tamil+Nadu',
   phone: '+91 98765 43210',
   phoneHref: 'tel:+919876543210',
-  whatsapp: '919876543210', // digits only, with country code
+  // Every WhatsApp button, form and quote list opens a chat with this number (via waLink below).
+  // ⚠️ Interim number; the Tel number above is still a sample value.
+  whatsapp: '919597541703', // digits only, with country code
+  whatsappDisplay: '+91 95975 41703',
   email: 'contact@abinayagarments.com',
   hours: 'Mon – Sat · 9 AM – 7 PM IST',
   replyTime: 'We reply within 24 hours',
