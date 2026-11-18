@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "hero:frames": "node scripts/build-hero-sequence.mjs"
+    "hero:frames": "node scripts/build-hero-sequence.mjs",
+    "favicons": "node scripts/build-favicons.mjs"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.3.0",

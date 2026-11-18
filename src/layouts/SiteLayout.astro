@@ -8,11 +8,17 @@ import { site } from '../data/site';
 interface Props {
   title: string;
   description?: string;
+  /** Home page: brand name first, so it survives a narrow browser tab. */
+  home?: boolean;
 }
 const {
   title,
+  home = false,
   description = 'Premium cotton apparel made and supplied in bulk from Tiruppur: for retailers, distributors and brands across India.',
 } = Astro.props;
+
+// Inner pages: "Products · Abinaya Garment Shop". Home: "Abinaya Garment Shop · Cotton apparel wholesale, Tiruppur".
+const fullTitle = home ? `${site.name} · ${title}` : `${title} · ${site.name}`;
 ---
 
 <!doctype html>
@@ -22,9 +28,14 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#F5F1EA" />
-    <link rel="icon" href={url('/favicon.ico')} />
-    <title>{title} · {site.name}</title>
-    <meta property="og:title" content={`${title} · ${site.name}`} />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('/favicon.ico')} sizes="48x48" />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
+    <meta name="apple-mobile-web-app-title" content={site.short} />
+    <title>{fullTitle}</title>
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <script is:inline>
       // Enable entrance animations only when motion is allowed; failsafe reveals content if JS stalls.
