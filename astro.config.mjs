@@ -9,4 +9,12 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: process.env.SITE_URL || undefined,
   base: process.env.BASE_PATH || '/',
+  vite: {
+    // Pre-bundle the motion libraries at dev-server start. Otherwise Vite discovers them
+    // page by page, re-optimises mid-session, and open pages get "504 Outdated Optimize Dep"
+    // (GSAP fails to load and the hero falls back to its static layout).
+    optimizeDeps: {
+      include: ['gsap', 'gsap/ScrollTrigger', 'gsap/SplitText', 'gsap/Flip', 'lenis'],
+    },
+  },
 });
