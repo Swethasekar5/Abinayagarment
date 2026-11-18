@@ -1,0 +1,14 @@
+// Cloudflare Workers (static assets) config.
+// `npx wrangler deploy` first runs the build, then uploads ./dist as the site.
+{
+  "name": "abinayagarment",
+  "compatibility_date": "2026-11-18",
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./dist",
+    // unknown URLs show the site's own 404 page (dist/404.html) with a real 404 status
+    "not_found_handling": "404-page"
+  }
+}
