@@ -2,10 +2,12 @@
 # One-time setup (repo admin): Settings → Pages → Source: "GitHub Actions".
 name: Deploy to GitHub Pages
 
+# Manual only (Actions tab → Run workflow). The site is currently hosted on Cloudflare
+# (see wrangler.jsonc); re-enable the push trigger below if you switch back to GitHub Pages.
 on:
-  push:
-    branches: [develop, master]
   workflow_dispatch:
+  # push:
+  #   branches: [develop, master]
 
 permissions:
   contents: read
