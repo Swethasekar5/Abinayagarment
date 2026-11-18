@@ -1,0 +1,155 @@
+---
+import { url } from '../../lib/url';
+import { nav, site, waLink } from '../../data/site';
+const letters = 'ABINAYA'.split('');
+---
+
+<footer class="footer" data-footer>
+  <div class="container footer__grid">
+    <div>
+      <p class="mono footer__h">Mill location</p>
+      <p class="footer__big">{site.name}</p>
+      <p>
+        {site.address.line1},<br />{site.address.city}, {site.address.state},<br />{site.address.country}
+      </p>
+      <a href={site.mapUrl} target="_blank" rel="noopener" class="stitch-link footer__link">Open in maps →</a>
+    </div>
+    <div>
+      <p class="mono footer__h">Quick links</p>
+      <ul>
+        <li><a href={url('/')}>Home</a></li>
+        {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+        <li><a href={url('/privacy')}>Privacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="mono footer__h">Direct contact</p>
+      <ul>
+        <li><span class="mono footer__k">Tel</span> <a href={site.phoneHref}>{site.phone}</a></li>
+        <li><span class="mono footer__k">WA</span> <a href={waLink()} target="_blank" rel="noopener">{site.phone}</a></li>
+        <li><span class="mono footer__k">Mail</span> <a href={`mailto:${site.email}`}>{site.email}</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="mono footer__h">Working hours</p>
+      <p>{site.hours}</p>
+      <p class="footer__muted">Sunday: dispatch &amp; warehouse closed</p>
+    </div>
+  </div>
+
+  <div class="footer__mark" aria-hidden="true">
+    <div class="footer__word" data-footer-word>
+      {letters.map((l) => <span>{l}</span>)}
+    </div>
+  </div>
+
+  <div class="container footer__bottom mono">
+    <span>© {new Date().getFullYear()} {site.name} · Tiruppur · Made with care</span>
+    <span>Premium cotton apparel wholesale</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink);
+    color: rgba(245, 241, 234, 0.82);
+    padding-top: clamp(4rem, 8vw, 7rem);
+    overflow: hidden;
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.3fr 1fr;
+    gap: 2.5rem;
+    font-size: 0.95rem;
+  }
+  .footer__h {
+    color: var(--madder);
+    margin-bottom: 1.25rem;
+  }
+  .footer__big {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+  .footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .footer a:hover {
+    color: var(--cream);
+  }
+  .footer__k {
+    display: inline-block;
+    width: 3rem;
+    color: rgba(245, 241, 234, 0.45);
+  }
+  .footer__link {
+    margin-top: 1.25rem;
+    color: var(--cream);
+  }
+  .footer__muted {
+    margin-top: 0.5rem;
+    color: rgba(245, 241, 234, 0.45);
+  }
+
+  .footer__mark {
+    margin-top: clamp(3rem, 7vw, 6rem);
+    padding-inline: var(--gutter);
+    overflow: hidden;
+  }
+  .footer__word {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(5rem, 21.5vw, 22rem);
+    line-height: 0.78;
+    letter-spacing: -0.04em;
+    color: rgba(245, 241, 234, 0.92);
+    font-variation-settings: 'opsz' 144, 'SOFT' 0;
+  }
+  .footer__word span {
+    display: inline-block;
+  }
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-block: 1.75rem 2rem;
+    margin-top: 1.5rem;
+    border-top: 1px dashed rgba(181, 69, 43, 0.6);
+    font-size: 0.68rem;
+    color: rgba(245, 241, 234, 0.5);
+  }
+
+  @media (max-width: 900px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, MQ } from '../../scripts/motion/core';
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    gsap.from('[data-footer-word] span', {
+      yPercent: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'expo.out',
+      stagger: 0.06,
+      scrollTrigger: { trigger: '[data-footer-word]', start: 'top 95%', once: true },
+    });
+  });
+</script>

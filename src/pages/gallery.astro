@@ -1,0 +1,584 @@
+---
+import { url } from '../lib/url';
+import { Image, getImage } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntro from '../components/page/PageIntro.astro';
+import PageCta from '../components/page/PageCta.astro';
+import Icon from '../components/site/Icon.astro';
+import { photos } from '../assets/photos';
+import type { ImageMetadata } from 'astro';
+import { tiles } from '../scripts/gallery-layout';
+
+const chapters = [
+  { id: 'knit', label: 'Knitting & fabric' },
+  { id: 'stitch', label: 'Cutting & stitching' },
+  { id: 'coll', label: 'Collections' },
+  { id: 'dispatch', label: 'Packing & dispatch' },
+] as const;
+type Chapter = (typeof chapters)[number]['id'];
+
+/** Curated order: chapters interleave so the "All" view reads like a walk through the mill. */
+const plates: Array<{ src: ImageMetadata; title: string; caption: string; ch: Chapter }> = [
+  { src: photos.yarnConesLoom, title: 'Yarn creel', caption: 'Cotton yarn cones feeding a circular knitting machine.', ch: 'knit' },
+  { src: photos.mensCrewnecksFlatlay, title: 'Crewneck stack', caption: 'Folded crewneck tees in white, grey and blue.', ch: 'coll' },
+  { src: photos.factoryFabricInspection, title: 'Inspection runs', caption: 'Knitted fabric checked along the inspection tables.', ch: 'stitch' },
+  { src: photos.dyeingVats, title: 'Dye house', caption: 'Fabric dyeing vats at work.', ch: 'knit' },
+  { src: photos.boutiqueOwnerShelves, title: 'On the shelf', caption: 'A boutique owner arranging folded cotton tees.', ch: 'dispatch' },
+  { src: photos.doubleNeedleStitching, title: 'Seam work', caption: 'Seams stitched on an industrial machine.', ch: 'stitch' },
+  { src: photos.teeCharcoalHeavyweight, title: 'Printed blank', caption: 'A charcoal tee with a custom chest print.', ch: 'coll' },
+  { src: photos.circularKnittingMachine, title: 'Circular knitting', caption: 'A fabric tube coming off the circular knitting machine.', ch: 'knit' },
+  { src: photos.cartonsDispatch, title: 'Packed cartons', caption: 'Cartons stacked and labelled for dispatch.', ch: 'dispatch' },
+  { src: photos.poloTeesHanger, title: 'Polo stack', caption: 'Folded polos in navy, green, white and maroon.', ch: 'coll' },
+  { src: photos.qcMeasuringTape, title: 'Measured by hand', caption: 'Checking garment measurements with a tape.', ch: 'stitch' },
+  { src: photos.shadeCardSwatches, title: 'Shade cards', caption: 'Colour swatches for choosing shades.', ch: 'knit' },
+  { src: photos.kidsCottonFlatlay, title: 'Kids range', caption: 'Soft cotton kidswear in pastel shades.', ch: 'coll' },
+  { src: photos.inspectionFloorArtisans, title: 'Cutting floor', caption: 'Fabric laid out on the cutting table.', ch: 'stitch' },
+  { src: photos.brandPackagingLabels, title: 'Private label', caption: 'Custom packaging with labels and tissue wrap.', ch: 'dispatch' },
+  { src: photos.teesFoldedNaturalTones, title: 'Natural tones', caption: 'Cotton tees in cream, navy, sage and black.', ch: 'coll' },
+  { src: photos.fabricRollsRacks, title: 'Fabric store', caption: 'Rolls of knitted cotton fabric on the racks.', ch: 'knit' },
+  { src: photos.handsFoldingTee, title: 'Final fold', caption: 'A finished tee folded by hand.', ch: 'stitch' },
+  { src: photos.hoodieSweatshirtStack, title: 'Fleece', caption: 'Hoodies and sweatshirts in navy and black.', ch: 'coll' },
+  { src: photos.cottonShirtsStack, title: 'Oxford stack', caption: 'Folded button-down shirts in light blue and white.', ch: 'coll' },
+  { src: photos.distributionHub, title: 'Order desk', caption: 'Checking dispatch paperwork in the warehouse.', ch: 'dispatch' },
+  { src: photos.millFabricShelves, title: 'Tagged rolls', caption: 'Fabric rolls tagged by lot.', ch: 'knit' },
+  { src: photos.corporatePolosEmbroidered, title: 'Corporate polos', caption: 'Navy polos with an embroidered crest.', ch: 'coll' },
+  { src: photos.inspectorsJerseyTable, title: 'Quality check', caption: 'Inspectors checking jersey fabric.', ch: 'stitch' },
+  { src: photos.trackPantsFolded, title: 'Joggers', caption: 'Cotton track pants in navy, charcoal and black.', ch: 'coll' },
+  { src: photos.teeOversized240gsm, title: 'Oversized fit', caption: 'A charcoal oversized tee laid flat.', ch: 'coll' },
+  { src: photos.teesFourpackWorkbench, title: 'Bundled', caption: 'Folded tees tied with string, ready to pack.', ch: 'coll' },
+];
+
+const label = Object.fromEntries(chapters.map((c) => [c.id, c.label])) as Record<Chapter, string>;
+const count = (ch: Chapter) => plates.filter((p) => p.ch === ch).length;
+const pad = (n: number) => String(n).padStart(2, '0');
+const sizes = tiles(plates.length);
+const full = await Promise.all(plates.map((p) => getImage({ src: p.src, width: 1800, format: 'webp' })));
+---
+
+<SiteLayout
+  title="Gallery"
+  description="Inside Abinaya: knitting, dyeing, stitching, quality checks, packing and the cotton apparel collections we supply from Tiruppur."
+>
+  <PageIntro
+    label="(01) — Gallery"
+    crumb="Archive · Mill floor to dispatch"
+    title="Inside <em>Abinaya</em>."
+    lead="A look at our cotton apparel collections and the work behind them: knitting, dyeing, stitching, checking, packing and dispatch."
+    meta={[
+      { k: 'Plates', v: `${plates.length} photographs` },
+      { k: 'Chapters', v: `${chapters.length} stages` },
+      { k: 'Location', v: 'Tiruppur, Tamil Nadu' },
+      { k: 'View', v: 'Tap a plate to enlarge' },
+    ]}
+  />
+
+  <section class="gal" data-gallery>
+    <div class="container">
+      <div class="gal__bar">
+        <div class="gal__chips" role="group" aria-label="Filter by chapter">
+          <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All <sup>{pad(plates.length)}</sup></button>
+          {chapters.map((c) => (
+            <button type="button" class="chip" data-filter={c.id} aria-pressed="false">{c.label} <sup>{pad(count(c.id))}</sup></button>
+          ))}
+        </div>
+        <p class="mono gal__note">Plates in walking order · yarn → shelf</p>
+      </div>
+
+      <ul class="plates" data-plates>
+        {plates.map((p, i) => (
+          <li class="plate" data-plate data-ch={p.ch} data-tile={sizes[i]}>
+            <button
+              type="button"
+              class="plate__btn"
+              data-open
+              data-no={pad(i + 1)}
+              data-full={full[i].src}
+              data-title={p.title}
+              data-caption={p.caption}
+              data-chapter={label[p.ch]}
+              aria-label={`Enlarge plate ${pad(i + 1)}: ${p.title}`}
+            >
+              <span class="plate__frame">
+                <Image
+                  src={p.src}
+                  alt={p.caption}
+                  widths={[480, 800, 1200]}
+                  sizes="(min-width: 1024px) 60vw, (min-width: 700px) 66vw, 92vw"
+                  loading={i < 4 ? 'eager' : 'lazy'}
+                  data-plate-img
+                />
+              </span>
+              <span class="plate__no mono">Plate {pad(i + 1)}</span>
+              <span class="plate__cap">
+                <span class="plate__title">{p.title}</span>
+                <span class="mono plate__ch">{label[p.ch]}</span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <dialog class="lb" data-lightbox aria-labelledby="lb-title" data-lenis-prevent>
+    <div class="lb__inner">
+      <header class="lb__top">
+        <p class="mono"><span data-lb-no>Plate 01</span> <span class="lb__of" data-lb-of></span></p>
+        <p class="mono lb__ch" data-lb-ch></p>
+        <button type="button" class="lb__btn" data-lb-close>
+          <span class="visually-hidden">Close</span>
+          <Icon name="close" size={22} />
+        </button>
+      </header>
+      <figure class="lb__stage" data-lb-stage>
+        <img data-lb-img alt="" />
+      </figure>
+      <footer class="lb__bottom">
+        <button type="button" class="lb__btn lb__prev" data-lb-prev>
+          <span class="visually-hidden">Previous plate</span>
+          <Icon name="chevron" size={22} />
+        </button>
+        <div class="lb__text">
+          <h2 id="lb-title" class="lb__title" data-lb-title></h2>
+          <p class="lb__caption" data-lb-caption></p>
+        </div>
+        <button type="button" class="lb__btn" data-lb-next>
+          <span class="visually-hidden">Next plate</span>
+          <Icon name="chevron" size={22} />
+        </button>
+      </footer>
+    </div>
+  </dialog>
+
+  <PageCta
+    label="See it in person"
+    title="Want to feel the <em>fabric</em> first?"
+    text="Ask us for samples or plan a visit to Tiruppur. Share what you sell and we'll suggest the right collections and quantities."
+    primary={{ href: url('/contact-us'), label: 'Ask for samples' }}
+  />
+</SiteLayout>
+
+<style>
+  .gal {
+    padding-block: clamp(2rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+  }
+  .gal__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .gal__chips {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .gal__chips::-webkit-scrollbar {
+    display: none;
+  }
+  .chip {
+    flex: none;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+    transition:
+      background-color 0.3s var(--ease-out),
+      color 0.3s var(--ease-out),
+      border-color 0.3s var(--ease-out);
+  }
+  .chip sup {
+    color: var(--ink-soft);
+    font-size: 0.6rem;
+  }
+  .chip:hover {
+    border-color: var(--ink);
+  }
+  .chip.is-active {
+    background: var(--indigo);
+    border-color: var(--indigo);
+    color: var(--cream);
+  }
+  .chip.is-active sup {
+    color: rgba(245, 241, 234, 0.65);
+  }
+  .gal__note {
+    font-size: 0.64rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .plates {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: clamp(150px, 18.5vw, 272px);
+    grid-auto-flow: dense;
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .plate[data-tile='w'] {
+    grid-column: span 2;
+  }
+  .plate[data-tile='xl'] {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .plate[data-tile='f'] {
+    grid-column: 1 / -1;
+    grid-row: span 2;
+  }
+  .plate.is-hidden {
+    display: none;
+  }
+  .plate__btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: var(--paper);
+    color: inherit;
+    text-align: left;
+    cursor: zoom-in;
+    overflow: hidden;
+  }
+  .plate__frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .plate__frame img {
+    position: absolute;
+    left: 0;
+    top: -8%;
+    width: 100%;
+    height: 116%;
+    max-width: none;
+    object-fit: cover;
+    transition: filter 0.8s var(--ease-out);
+  }
+  .plate__no {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.58rem;
+  }
+  .plate__cap {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    display: grid;
+    gap: 0.15rem;
+    max-width: calc(100% - 1.5rem);
+    padding: 0.55rem 0.8rem 0.6rem;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    transform: translateY(0.4rem);
+    opacity: 0;
+    transition:
+      transform 0.5s var(--ease-out),
+      opacity 0.5s var(--ease-out);
+  }
+  .plate__title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.1;
+  }
+  .plate__ch {
+    font-size: 0.56rem;
+    color: var(--ink-soft);
+  }
+  .plate__btn:hover .plate__cap,
+  .plate__btn:focus-visible .plate__cap {
+    transform: none;
+    opacity: 1;
+  }
+  .plate__btn:hover img {
+    filter: saturate(1.08) contrast(1.03);
+  }
+  .plate__btn:focus-visible {
+    outline-offset: 4px;
+  }
+  @media (hover: none) {
+    .plate__cap {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  /* ---------- lightbox ---------- */
+  .lb {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #11100e;
+    color: var(--cream);
+  }
+  .lb::backdrop {
+    background: #11100e;
+  }
+  .lb__inner {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: 100%;
+  }
+  .lb__top,
+  .lb__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem clamp(1rem, 3vw, 2rem);
+  }
+  .lb__top .mono {
+    font-size: 0.66rem;
+  }
+  .lb__of,
+  .lb__ch {
+    color: rgba(245, 241, 234, 0.55);
+  }
+  .lb__stage {
+    position: relative;
+    margin: 0;
+    min-height: 0;
+    touch-action: pan-y;
+  }
+  .lb__stage img {
+    position: absolute;
+    inset: 0 clamp(0.5rem, 3vw, 2rem);
+    width: calc(100% - 2 * clamp(0.5rem, 3vw, 2rem));
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .lb__text {
+    flex: 1;
+    text-align: center;
+  }
+  .lb__title {
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    font-weight: 300;
+  }
+  .lb__caption {
+    margin-top: 0.3rem;
+    color: rgba(245, 241, 234, 0.65);
+    font-size: 0.95rem;
+  }
+  .lb__btn {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(245, 241, 234, 0.25);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .lb__btn:hover {
+    background: rgba(245, 241, 234, 0.1);
+  }
+  .lb__prev svg {
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 1023px) {
+    .plates {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: clamp(140px, 30vw, 260px);
+    }
+    .plate[data-tile='f'] {
+      grid-row: span 1;
+    }
+  }
+  @media (max-width: 680px) {
+    .gal__bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .gal__note {
+      display: none;
+    }
+    .plates {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+    .plate,
+    .plate[data-tile] {
+      grid-column: auto;
+      grid-row: auto;
+      aspect-ratio: 16 / 10;
+    }
+    .plate[data-tile='xl'] {
+      aspect-ratio: 4 / 3.4;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, lenis, MQ, reduceMotion } from '../scripts/motion/core';
+  import { Flip } from 'gsap/Flip';
+  import { tiles } from '../scripts/gallery-layout';
+
+  gsap.registerPlugin(Flip);
+
+  const root = document.querySelector<HTMLElement>('[data-gallery]')!;
+  const plates = Array.from(root.querySelectorAll<HTMLElement>('[data-plate]'));
+  const chips = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const visible = () => plates.filter((p) => !p.classList.contains('is-hidden'));
+
+  /* ---------------- entrance + parallax ---------------- */
+  let entrance: ScrollTrigger[] = [];
+  gsap.matchMedia().add(MQ.motion, () => {
+    gsap.set(plates, { autoAlpha: 0, y: 70 });
+    entrance = ScrollTrigger.batch(plates, {
+      start: 'top 92%',
+      once: true,
+      onEnter: (batch) => gsap.to(batch, { autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.07, overwrite: true }),
+    });
+    // the photo drifts inside its frame (frame stays put)
+    plates.forEach((p) => {
+      gsap.fromTo(
+        p.querySelector('[data-plate-img]'),
+        { yPercent: -6 },
+        { yPercent: 6, ease: 'none', scrollTrigger: { trigger: p, start: 'top bottom', end: 'bottom top', scrub: true } },
+      );
+    });
+    return () => gsap.set(plates, { clearProps: 'opacity,visibility,transform' });
+  });
+  const endEntrance = () => {
+    if (!entrance.length) return;
+    entrance.forEach((t) => t.kill());
+    entrance = [];
+    gsap.set(plates, { autoAlpha: 1, y: 0 });
+  };
+
+  /* ---------------- filter ---------------- */
+  function filter(ch: string) {
+    endEntrance();
+    const state = Flip.getState(plates);
+    plates.forEach((p) => p.classList.toggle('is-hidden', ch !== 'all' && p.dataset.ch !== ch));
+    const shown = visible();
+    tiles(shown.length).forEach((t, i) => (shown[i].dataset.tile = t));
+    if (reduceMotion) return ScrollTrigger.refresh();
+    Flip.from(state, {
+      duration: 0.8,
+      ease: 'power3.inOut',
+      stagger: 0.02,
+      onEnter: (els) => gsap.fromTo(els, { autoAlpha: 0, scale: 0.92 }, { autoAlpha: 1, scale: 1, duration: 0.6, delay: 0.25 }),
+      onLeave: (els) => gsap.to(els, { autoAlpha: 0, scale: 0.92, duration: 0.35 }),
+      onComplete: () => ScrollTrigger.refresh(),
+    });
+  }
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => {
+        c.classList.toggle('is-active', c === chip);
+        c.setAttribute('aria-pressed', String(c === chip));
+      });
+      filter(chip.dataset.filter!);
+    }),
+  );
+
+  /* ---------------- lightbox ---------------- */
+  const lb = document.querySelector<HTMLDialogElement>('[data-lightbox]')!;
+  const img = lb.querySelector<HTMLImageElement>('[data-lb-img]')!;
+  const stage = lb.querySelector<HTMLElement>('[data-lb-stage]')!;
+  const q = (s: string) => lb.querySelector<HTMLElement>(s)!;
+  let list: HTMLButtonElement[] = [];
+  let index = 0;
+  let opener: HTMLElement | null = null;
+
+  function show(i: number, dir = 0) {
+    index = (i + list.length) % list.length;
+    const b = list[index];
+    const swap = () => {
+      img.src = b.dataset.full!;
+      img.alt = b.dataset.caption!;
+      q('[data-lb-no]').textContent = `Plate ${b.dataset.no}`;
+      q('[data-lb-of]').textContent = `· ${index + 1} / ${list.length}`;
+      q('[data-lb-ch]').textContent = b.dataset.chapter!;
+      q('[data-lb-title]').textContent = b.dataset.title!;
+      q('[data-lb-caption]').textContent = b.dataset.caption!;
+    };
+    if (reduceMotion || !dir) {
+      swap();
+      if (!reduceMotion) gsap.fromTo(img, { autoAlpha: 0, scale: 0.96 }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: 'expo.out' });
+      return;
+    }
+    gsap.to(img, {
+      autoAlpha: 0,
+      x: -40 * dir,
+      duration: 0.22,
+      ease: 'power2.in',
+      onComplete: () => {
+        swap();
+        const reveal = () => gsap.fromTo(img, { autoAlpha: 0, x: 40 * dir }, { autoAlpha: 1, x: 0, duration: 0.5, ease: 'expo.out' });
+        if (img.complete) reveal();
+        else img.addEventListener('load', reveal, { once: true });
+      },
+    });
+    // warm the next one
+    const next = list[(index + dir + list.length) % list.length];
+    if (next) new Image().src = next.dataset.full!;
+  }
+
+  function open(btn: HTMLButtonElement) {
+    list = visible().map((p) => p.querySelector<HTMLButtonElement>('[data-open]')!);
+    opener = btn;
+    lb.showModal();
+    lenis?.stop();
+    show(list.indexOf(btn));
+  }
+  function close() {
+    lb.close();
+    lenis?.start();
+    opener?.focus();
+  }
+
+  root.querySelectorAll<HTMLButtonElement>('[data-open]').forEach((b) => b.addEventListener('click', () => open(b)));
+  q('[data-lb-close]').addEventListener('click', close);
+  q('[data-lb-prev]').addEventListener('click', () => show(index - 1, -1));
+  q('[data-lb-next]').addEventListener('click', () => show(index + 1, 1));
+  lb.addEventListener('cancel', (e) => {
+    e.preventDefault();
+    close();
+  });
+  lb.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') show(index + 1, 1);
+    if (e.key === 'ArrowLeft') show(index - 1, -1);
+  });
+  // swipe
+  let sx = 0;
+  let sy = 0;
+  stage.addEventListener('pointerdown', (e) => {
+    sx = e.clientX;
+    sy = e.clientY;
+  });
+  stage.addEventListener('pointerup', (e) => {
+    const dx = e.clientX - sx;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(e.clientY - sy)) show(index + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+  });
+</script>

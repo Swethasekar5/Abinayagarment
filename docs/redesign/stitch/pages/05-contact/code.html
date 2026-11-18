@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abinaya Garment Shop — Brand Style Tile &amp; Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "error-container": "#ffdad6",
+          "surface-container-lowest": "#ffffff",
+          "surface-tint": "#505c8b",
+          "surface-variant": "#e8e1dc",
+          "surface-container": "#f3ede7",
+          "on-error": "#ffffff",
+          "tertiary-container": "#6c1200",
+          "outline-variant": "#c6c6d0",
+          "on-tertiary-fixed": "#3d0600",
+          "on-secondary": "#ffffff",
+          "surface-container-highest": "#e8e1dc",
+          "secondary-fixed": "#d6eab6",
+          "primary-container": "#26335f",
+          "surface-dim": "#dfd9d4",
+          "tertiary-fixed": "#ffdad2",
+          "surface-container-high": "#ede7e2",
+          "on-tertiary-container": "#fa7859",
+          "error": "#ba1a1a",
+          "on-tertiary-fixed-variant": "#85230c",
+          "surface-bright": "#fff8f3",
+          "tertiary-fixed-dim": "#ffb4a3",
+          "inverse-surface": "#33302c",
+          "on-surface-variant": "#45464f",
+          "on-background": "#1d1b18",
+          "primary-fixed": "#dce1ff",
+          "secondary-container": "#d6eab6",
+          "on-secondary-fixed-variant": "#3c4c26",
+          "on-surface": "#1d1b18",
+          "on-primary-fixed": "#091844",
+          "surface": "#fff8f3",
+          "on-primary-fixed-variant": "#384572",
+          "inverse-on-surface": "#f6f0ea",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed": "#121f01",
+          "surface-container-low": "#f9f2ed",
+          "on-primary-container": "#909ccf",
+          "secondary-fixed-dim": "#bacd9c",
+          "inverse-primary": "#b8c4fa",
+          "tertiary": "#460800",
+          "primary": "#0f1d48",
+          "on-primary": "#ffffff",
+          "outline": "#767680",
+          "on-secondary-container": "#596a41",
+          "on-tertiary": "#ffffff",
+          "background": "#fff8f3",
+          "secondary": "#53643b",
+          "primary-fixed-dim": "#b8c4fa"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-2xl": "4rem",
+          "space-md": "1rem",
+          "gutter-desktop": "2.5rem",
+          "gutter": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin": "1.25rem",
+          "space-xs": "0.25rem",
+          "margin-desktop": "4rem",
+          "space-xl": "2.5rem",
+          "margin-tablet": "2.5rem",
+          "space-3xl": "6.5rem"
+        },
+        "fontFamily": {
+          "headline-sm": ["Newsreader"],
+          "label-tag": ["JetBrains Mono"],
+          "label-spec": ["JetBrains Mono"],
+          "headline-md": ["Newsreader"],
+          "headline-xl": ["Newsreader"],
+          "headline-lg-mobile": ["Newsreader"],
+          "code-num": ["JetBrains Mono"],
+          "display-hero-mobile": ["Newsreader"],
+          "body-md": ["Manrope"],
+          "body-lg": ["Manrope"],
+          "headline-lg": ["Newsreader"],
+          "display-hero": ["Newsreader"],
+          "headline-xl-mobile": ["Newsreader"],
+          "body-sm": ["Manrope"]
+        },
+        "fontSize": {
+          "headline-sm": ["22px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "500"}],
+          "label-tag": ["11px", {"lineHeight": "14px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "label-spec": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "500"}],
+          "headline-md": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+          "headline-xl": ["64px", {"lineHeight": "68px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+          "headline-lg-mobile": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+          "code-num": ["14px", {"lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "400"}],
+          "display-hero-mobile": ["56px", {"lineHeight": "58px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+          "body-md": ["16px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400"}],
+          "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400"}],
+          "headline-lg": ["44px", {"lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400"}],
+          "display-hero": ["112px", {"lineHeight": "104px", "letterSpacing": "-0.03em", "fontWeight": "400"}],
+          "headline-xl-mobile": ["40px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+          "body-sm": ["14px", {"lineHeight": "22px", "letterSpacing": "0.005em", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @layer base {
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      overscroll-behavior-y: none;
+    }
+  }
+  .woven-texture {
+    background-color: #F5F1EA;
+    background-image: radial-gradient(rgba(23, 21, 18, 0.035) 1px, transparent 0);
+    background-size: 8px 8px;
+  }
+  .garment-spec-tag {
+    position: relative;
+    background: #FBF9F5;
+    border: 1px solid #171512;
+    padding: 6px 14px 6px 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 1px 1px 0px rgba(23, 21, 18, 0.15);
+  }
+  .garment-spec-tag::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #F5F1EA;
+    border: 1px solid #5A554D;
+  }
+  .stitched-line-horizontal {
+    background-image: repeating-linear-gradient(to right, #B5452B, #B5452B 8px, transparent 8px, transparent 14px);
+    height: 2px;
+  }
+</style>
+<meta content="web_standard" name="shell-type"/>
+</head>
+<body class="woven-texture min-h-screen text-on-surface antialiased">
+<!-- TOP BAR: Brand Identity, Technical Spec & Primary Navigation -->
+<header class="bg-surface/95 fixed top-0 left-0 right-0 z-50 backdrop-blur-sm shadow-[0_1px_0_0_#DDD6CA]">
+<div class="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between gap-6">
+<div class="flex items-center gap-6 shrink-0">
+<a class="flex items-center gap-3" data-path="abinaya-garments-wholesale-products-catalogue" href="#">
+<img alt="Abinaya Garments Tiruppur Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAONxPzOFPigFg9MYpgZ3UEZZ5agpoKtEy1YP1_kbCYqkZ27ZBwPClMMZjyUwDax6VbanhDGxbQpVIijnvI2Wm0zC_uJHdFdDSqDOZ2Jd94NLpo3sk07NPK9yPDMHDegfYlum6LrSa9TUphzJs95VEhIbn6ww0-hoCKrVxwGMAk_QnFsIEKqnEorDJziJJrhnj4gH3YlswF7F7C4Bg9iMjhFdVKSgD8uKyHysKYJFWO"/>
+</a>
+<div class="hidden lg:block h-6 w-[1px] bg-outline-variant/50"></div>
+<div class="hidden lg:flex flex-col">
+<span class="font-label-tag text-label-tag uppercase tracking-wider text-on-surface-variant">Style Tile &amp; Design Spec</span>
+<span class="font-code-num text-[10px] text-secondary font-medium tracking-tight">TIRUPPUR B2B TEXTILE HUB · VER 2.1</span>
+</div>
+</div>
+<!-- Main Navigation Bar -->
+<nav class="flex items-center gap-1 sm:gap-2" data-active-classes="text-primary border-b-2 border-tertiary-container font-semibold pb-1">
+<a class="px-3 py-1 font-label-spec text-label-spec tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="abinaya-garments-wholesale-products-catalogue" href="#">Products</a>
+<a class="px-3 py-1 font-label-spec text-label-spec tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="abinaya-garments-workshop-textile-gallery" href="#">Gallery</a>
+<a class="px-3 py-1 font-label-spec text-label-spec tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="abinaya-garments-about-heritage-mill" href="#">About</a>
+<a class="px-3 py-1 font-label-spec text-label-spec tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="abinaya-garments-contact-inquiry" href="#">Contact</a>
+</nav>
+<!-- Technical Production Badge -->
+<div class="hidden md:flex items-center gap-3 shrink-0">
+<span class="garment-spec-tag">
+        SPEC: 100% COMBED COTTON · 180-260 GSM
+      </span>
+<div class="flex items-center gap-2 border border-outline-variant px-2.5 py-1 bg-surface-container-low text-[11px] font-label-tag text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block animate-pulse"></span>
+        MILL ACTIVE
+      </div>
+</div>
+</div>
+</header>
+<!-- MAIN CONTENT CONTAINER (pt-20 strictly matches h-20 header) -->
+<main class="pt-20 min-h-screen relative">
+<div class="flex flex-col w-full">
+<!-- TOP LEDGER BREADCRUMB / REGISTRY MARKER -->
+<section class="max-w-[1280px] mx-auto px-6 pt-8 pb-4 w-full">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4">
+<div class="flex items-center gap-2.5">
+<span class="font-label-tag text-label-tag text-tertiary-container font-semibold tracking-wider uppercase">
+          (05) / TRADE DESK &amp; DIRECT MILL INQUIRIES · TIRUPPUR HEADQUARTERS
+        </span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-1 rounded">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-code-num text-[11px] text-on-surface-variant font-medium tracking-tight">
+          LIVE DISPATCH STATUS: ACCEPTING Q3/Q4 BULK ALLOCATIONS
+        </span>
+</div>
+</div>
+<div class="w-full stitched-line-horizontal"></div>
+</section>
+<!-- HERO SPLIT SCREEN: DIRECT COMMS vs RFQ DOSSIER -->
+<section class="max-w-[1280px] mx-auto px-6 py-8 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: DEEP INK INDUSTRIAL COMMS (5 cols) -->
+<div class="lg:col-span-5 bg-inverse-surface text-inverse-on-surface rounded p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between">
+<!-- Subtle Top Accents -->
+<div class="relative z-10">
+<div class="flex items-center justify-between pb-6 mb-6">
+<span class="font-label-tag text-label-tag text-surface-variant/80 tracking-widest uppercase">
+              (01) — DIRECT MILL COMMS · IMMEDIATE RESPONSE
+            </span>
+<span class="font-code-num text-[10px] text-secondary-fixed bg-surface-variant/10 px-2 py-0.5 rounded">
+              SLA &lt; 15 MIN
+            </span>
+</div>
+<!-- Editorial Headline -->
+<div class="mb-6">
+<h1 class="font-headline-xl text-headline-xl text-surface-bright tracking-tight leading-none mb-4">
+              Talk to <span class="italic font-normal text-tertiary-fixed-dim">us.</span>
+</h1>
+<p class="font-body-md text-body-md text-surface-variant/80 max-w-md">
+              Direct access to our Angeripalayam spinning and knitting floors. No brokers, no commission agents—connect directly with our production leads.
+            </p>
+</div>
+<!-- Production Facility Snapshot Card -->
+<div class="mb-8 rounded overflow-hidden bg-surface-variant/5">
+<img class="w-full h-44 object-cover saturate-[0.85] contrast-[1.05]" data-alt="Two female textile quality inspectors in clean aprons review bolts of high-grade knitted single jersey cotton on a glass-topped industrial inspection table inside Abinaya Garments Tiruppur factory. Natural morning sunlight streams through high clerestory warehouse windows illuminating multi-tiered metal racking with rolled fabrics in warm indigo, madder red, and natural unbleached cotton cream." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3hTkroksOnHh3wHCzXeqKgEFjHM1oLP2oDuUgsnAC1E9-0iG0KjU0pMCOYOrBtq9ESTBrqqZN5B22rtVdxRBgORZPSmsu_s6TEYfOaPkctEm4do91RQaiBuKT6vzlBGso91V3aU0AeKZf1cGpnYyWy3f5iDCxdurkEycO-ykyt4qlASkitblaqrAvrsh6FpeMSlVr3pycPZ0TzLd9Nflfih1PzGvY4Q0hieYJ8Qck"/>
+<div class="p-3 bg-surface-variant/10 flex items-center justify-between font-code-num text-[11px] text-surface-variant/70">
+<span>FLOOR REF: ANGERIPALAYAM UNIT-02</span>
+<span class="text-secondary-fixed">FABRIC CHECK PASS 99.4%</span>
+</div>
+</div>
+<!-- Big Type Contact List -->
+<div class="space-y-4">
+<!-- Row 1: WhatsApp Direct -->
+<a class="group block p-4 rounded bg-surface-variant/5 hover:bg-surface-variant/15 transition-all" href="https://wa.me/919442218920" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center justify-between text-secondary-fixed font-code-num text-[11px] mb-1">
+<span>[01] INSTANT MESSAGING · 10 MIN SLA</span>
+<span class="flex items-center gap-1.5 text-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+                  ONLINE
+                </span>
+</div>
+<div class="flex items-center justify-between text-surface-bright">
+<span class="font-body-lg text-body-lg font-medium tracking-tight">WhatsApp: +91 94422 18920</span>
+<span class="material-symbols-outlined group-hover:translate-x-1.5 transition-transform text-secondary-fixed">arrow_forward</span>
+</div>
+</a>
+<!-- Row 2: Mill Switchboard -->
+<a class="group block p-4 rounded bg-surface-variant/5 hover:bg-surface-variant/15 transition-all" href="tel:+914212208914">
+<div class="text-surface-variant/70 font-code-num text-[11px] mb-1">
+                [02] DIRECT MILL SWITCHBOARD
+              </div>
+<div class="flex items-center justify-between text-surface-bright">
+<span class="font-body-lg text-body-lg font-medium tracking-tight">Phone: +91 (421) 220 8914</span>
+<span class="material-symbols-outlined group-hover:translate-x-1.5 transition-transform text-surface-variant">arrow_forward</span>
+</div>
+</a>
+<!-- Row 3: Trade Desk Email -->
+<a class="group block p-4 rounded bg-surface-variant/5 hover:bg-surface-variant/15 transition-all" href="mailto:wholesale@abinayagarments.in">
+<div class="text-surface-variant/70 font-code-num text-[11px] mb-1">
+                [03] EXPORT &amp; DOMESTIC TRADE DESK
+              </div>
+<div class="flex items-center justify-between text-surface-bright">
+<span class="font-body-lg text-body-lg font-medium tracking-tight">Email: wholesale@abinayagarments.in</span>
+<span class="material-symbols-outlined group-hover:translate-x-1.5 transition-transform text-surface-variant">arrow_forward</span>
+</div>
+</a>
+<!-- Row 4: Registered Industrial Premises -->
+<div class="p-4 rounded bg-surface-variant/5">
+<div class="text-surface-variant/70 font-code-num text-[11px] mb-1">
+                [04] REGISTERED INDUSTRIAL PREMISES
+              </div>
+<div class="flex items-start justify-between text-surface-bright gap-4">
+<span class="font-body-sm text-body-sm leading-relaxed text-surface-variant/90">
+                  8/76, Angeripalayam Road, Opp. Kongu Nagar Ext., Tiruppur, Tamil Nadu 641602, India
+                </span>
+<span class="material-symbols-outlined text-secondary-fixed shrink-0">pin_drop</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Desk Operating Ledger Bar -->
+<div class="mt-8 pt-6 relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-surface-variant/70 font-code-num text-[11px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">schedule</span>
+<span>VISITOR SWATCH DESK: MON–SAT · 09:00 TO 19:30 IST</span>
+</div>
+<span class="text-secondary-fixed">UTC+05:30</span>
+</div>
+</div>
+<!-- RIGHT COLUMN: ARTISANAL PAPER RFQ DOSSIER (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded p-8 sm:p-12 shadow-sm relative">
+<!-- Form Header -->
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-tag text-label-tag text-tertiary-container uppercase tracking-wider">
+              (02) — TRADE INQUIRY &amp; RFQ DOSSIER
+            </span>
+<span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
+<span class="font-code-num text-[11px] text-on-surface-variant">DOC REF: RFQ-2025-TPR</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3 tracking-tight">
+            Commission a Production Batch or Order Mill Swatches.
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Fill in your apparel specifications. Our technical merchandising team returns verified cost slabs and fabric lab-dip schedules within 24 hours.
+          </p>
+</div>
+<!-- Inquiry Form -->
+<form class="space-y-6" id="tradeInquiryForm" onsubmit="event.preventDefault(); handleTradeSubmit();">
+<!-- Row 1: Name & Company -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="fullName">
+                Full Name / Proprietor *
+              </label>
+<input class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:bg-surface-container-lowest transition-colors" id="fullName" name="fullName" placeholder="e.g. S. Ramachandran" required="" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="companyName">
+                Company / Apparel Brand Name *
+              </label>
+<input class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:bg-surface-container-lowest transition-colors" id="companyName" name="companyName" placeholder="e.g. Kaveri Apparel Studio Ltd." required="" type="text"/>
+</div>
+</div>
+<!-- Row 2: Phone & Email -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="phoneNum">
+                Contact Number with Country Code *
+              </label>
+<input class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:bg-surface-container-lowest transition-colors" id="phoneNum" name="phoneNum" placeholder="+91 98765 43210" required="" type="tel"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="emailAddr">
+                Business Email Address *
+              </label>
+<input class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:bg-surface-container-lowest transition-colors" id="emailAddr" name="emailAddr" placeholder="sourcing@kaveristudio.com" required="" type="email"/>
+</div>
+</div>
+<!-- Row 3: Location & Product Category -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="deliveryPort">
+                City &amp; Country / Port of Delivery *
+              </label>
+<input class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:bg-surface-container-lowest transition-colors" id="deliveryPort" name="deliveryPort" placeholder="e.g. Mumbai, India / Rotterdam Port" required="" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="fabricCategory">
+                Product Category / Fabric Spec *
+              </label>
+<select class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-colors" id="fabricCategory" name="fabricCategory" required="">
+<option value="single-jersey">100% Combed Single Jersey (180–240 GSM)</option>
+<option value="pique-polo">Honeycomb Piqué Polos (220 GSM)</option>
+<option value="french-terry">Loopback French Terry Hoodies (360–400 GSM)</option>
+<option value="gots-organic">GOTS Organic Infant Wear (180 GSM)</option>
+<option value="custom-lab-dip">Custom Fabric Knit &amp; Lab-Dip Run</option>
+<option value="sample-swatchbook">Complete Mill Fabric Swatch Box (Courier)</option>
+</select>
+</div>
+</div>
+<!-- Row 4: Quantity & Turnaround Timeline -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="targetQty">
+                Target Quantity (MOQ 50 pcs / Lot) *
+              </label>
+<select class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-colors" id="targetQty" name="targetQty" required="">
+<option value="sample">Swatch Hanger / Sample Testing (1–10 pcs)</option>
+<option value="tier-1">Micro Batch (50 – 200 pcs)</option>
+<option selected="" value="tier-2">B2B Standard Lot (200 – 500 pcs)</option>
+<option value="tier-3">Commercial Volume (500 – 2,000 pcs)</option>
+<option value="tier-4">Full Container / Export Order (5,000+ pcs)</option>
+</select>
+</div>
+<div class="flex flex-col">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant mb-1" for="turnaround">
+                Turnaround Requirement *
+              </label>
+<select class="w-full bg-surface-container-low px-3 py-2.5 rounded font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-colors" id="turnaround" name="turnaround" required="">
+<option value="ready-blanks">Ready Blanks in Stock (48-hr Dispatch)</option>
+<option value="standard">Custom Dye &amp; Stitch (10–14 Days)</option>
+<option value="flexible">Planned Seasonal Indent (30–45 Days)</option>
+</select>
+</div>
+</div>
+<!-- Row 5: Detailed Specifications Textarea -->
+<div class="flex flex-col">
+<div class="flex items-center justify-between mb-1">
+<label class="font-label-spec text-label-spec uppercase text-on-surface-variant" for="techNotes">
+                Apparel Specifications, GSM, Trim details, or Pantone References
+              </label>
+<span class="font-code-num text-[11px] text-outline">OPTIONAL TECH NOTE</span>
+</div>
+<textarea class="w-full bg-surface-container-low p-3 rounded font-body-md text-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:bg-surface-container-lowest transition-colors resize-y" id="techNotes" name="techNotes" placeholder="Specify size breakdown (e.g. S:100, M:200, L:200), rib collar gauge, organic wash type, or attach link to your tech-pack..." rows="3"></textarea>
+</div>
+<!-- Row 6: Consent Checkbox -->
+<div class="flex items-start gap-3 pt-2">
+<input checked="" class="mt-1 h-4 w-4 rounded accent-primary text-primary focus:ring-0 cursor-pointer" id="tradeConsent" name="tradeConsent" required="" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer leading-normal select-none" for="tradeConsent">
+              I request direct mill pricing and consent to receive fabric swatch dispatch alerts, yarn test certificates, and bulk production updates via WhatsApp/Email.
+            </label>
+</div>
+<!-- Action Row -->
+<div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<button class="bg-primary text-on-primary font-body-md font-semibold text-body-md uppercase tracking-wider px-8 py-3.5 rounded hover:bg-primary-container shadow-sm transition-all flex items-center justify-center gap-2" id="submitBtn" type="submit">
+<span>SEND INQUIRY</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-tag text-[10px] text-tertiary-container font-semibold uppercase tracking-wider">
+                VERIFIED B2B GST COMPLIANT
+              </span>
+<span class="font-code-num text-[11px] text-outline">
+                NO OBLIGATION ESTIMATE · STRICT CONFIDENTIALITY
+              </span>
+</div>
+</div>
+<div class="hidden p-4 bg-secondary-container text-on-secondary-container rounded font-body-md text-body-md flex items-center gap-3" id="formSuccessToast">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>RFQ Dossier transmitted successfully. Our Tiruppur desk merchandiser will contact you with lot breakdowns within 2 hours.</span>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- CARTOGRAPHIC MILL MAP SECTION -->
+<section class="max-w-[1280px] mx-auto px-6 py-12 w-full">
+<!-- Section Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-tag text-label-tag text-tertiary-container uppercase tracking-wider">
+            (03) — PROVENANCE &amp; GEOGRAPHICAL REGISTER · TIRUPPUR CLUSTER
+          </span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          The epicenter of Indian knitwear.
+        </h3>
+</div>
+<div class="text-right">
+<span class="font-code-num text-code-num text-on-surface-variant block">COORDINATES: 11.1085° N, 77.3411° E</span>
+<span class="font-label-tag text-label-tag text-secondary uppercase tracking-widest">RAYAPURAM &amp; ANGERIPALAYAM BELT</span>
+</div>
+</div>
+<!-- Map & Overlay Container -->
+<div class="relative w-full rounded overflow-hidden bg-surface-container shadow-md">
+<!-- Styled Artisanal Cartographic SVG Representation -->
+<div class="w-full h-[460px] md:h-[520px] relative overflow-hidden bg-[#F2EDE4] select-none">
+<!-- Cartographic Canvas Background -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="xMidYMid slice" viewbox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Map grid pattern -->
+<pattern height="40" id="cartoGrid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#E2DACF" stroke-width="0.75"></path>
+</pattern>
+<!-- Land parcel subtle shading -->
+<pattern height="10" id="hatchFabric" patternunits="userSpaceOnUse" width="10">
+<path d="M 0 10 L 10 0 M 0 0 L 10 10" fill="none" opacity="0.4" stroke="#DDD4C7" stroke-width="0.4"></path>
+</pattern>
+</defs>
+<!-- Ground tone -->
+<rect fill="#F5EFE6" height="100%" width="100%"></rect>
+<rect fill="url(#cartoGrid)" height="100%" width="100%"></rect>
+<!-- Industrial Ward Zones / Parcels -->
+<polygon fill="#ECE5DA" points="120,40 380,20 450,180 220,240 100,160"></polygon>
+<polygon fill="url(#hatchFabric)" points="460,90 780,60 840,240 520,280"></polygon>
+<polygon fill="#EAE3D6" points="260,260 580,280 620,490 280,480"></polygon>
+<polygon fill="#EDE7DC" points="640,300 980,260 1080,460 740,520"></polygon>
+<!-- Noyyal River Artery (Curved Natural Waterline in muted indigo tint) -->
+<path d="M -20,380 C 180,390 320,340 520,360 C 720,380 910,320 1220,350" fill="none" opacity="0.25" stroke="#485B88" stroke-linecap="round" stroke-width="7"></path>
+<path d="M -20,380 C 180,390 320,340 520,360 C 720,380 910,320 1220,350" fill="none" opacity="0.4" stroke="#26335F" stroke-dasharray="8 6" stroke-width="2"></path>
+<!-- Railway Lines (Salem-Coimbatore Goods Corridor) -->
+<path d="M 0,220 L 1200,160" fill="none" opacity="0.6" stroke="#8E857B" stroke-dasharray="6 4" stroke-width="2"></path>
+<!-- Secondary Industrial Roads -->
+<path d="M 180,0 L 260,600" fill="none" stroke="#DBD2C4" stroke-width="4"></path>
+<path d="M 820,0 L 760,600" fill="none" stroke="#DBD2C4" stroke-width="4"></path>
+<path d="M 0,460 L 1200,420" fill="none" stroke="#DBD2C4" stroke-width="4"></path>
+<!-- Primary Arterial: Angeripalayam Main Road & Avinashi Road -->
+<path d="M 120,540 L 480,320 L 680,180 L 1050,40" fill="none" stroke="#FFFDF9" stroke-width="9"></path>
+<path d="M 120,540 L 480,320 L 680,180 L 1050,40" fill="none" stroke="#C4B9A9" stroke-width="3"></path>
+<path d="M 380,40 L 480,320 L 590,580" fill="none" stroke="#FFFDF9" stroke-width="8"></path>
+<path d="M 380,40 L 480,320 L 590,580" fill="none" stroke="#C4B9A9" stroke-width="2.5"></path>
+<!-- Road Typography on Map -->
+<text fill="#7A7367" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="2" transform="rotate(-23 730 160)" x="730" y="160">ANGERIPALAYAM MAIN RD</text>
+<text fill="#7A7367" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="2" transform="rotate(70 320 470)" x="320" y="470">KONGU NAGAR EXT.</text>
+<text fill="#485B88" font-family="'Newsreader', serif" font-size="13" font-style="italic" opacity="0.7" x="180" y="365">Noyyal River Basin</text>
+<text fill="#8E857B" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" x="880" y="145">SOUTHERN RAIL FREIGHT CORRIDOR ➔</text>
+<!-- Textile Mill Outlines -->
+<rect fill="#DFD6C8" height="50" stroke="#BBB0A0" stroke-width="1" width="75" x="520" y="210"></rect>
+<rect fill="#DFD6C8" height="35" stroke="#BBB0A0" stroke-width="1" width="45" x="615" y="235"></rect>
+<text fill="#908678" font-family="'JetBrains Mono', monospace" font-size="8" x="522" y="240">DYE HOUSE 04</text>
+</svg>
+<!-- Dynamic Pin Marker: Abinaya Garments Tiruppur -->
+<div class="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-auto">
+<!-- Animated Pulse Wave in Madder Red -->
+<div class="relative flex items-center justify-center">
+<span class="absolute w-12 h-12 rounded-full bg-tertiary-container/20 animate-ping"></span>
+<span class="absolute w-7 h-7 rounded-full bg-tertiary-container/30"></span>
+<!-- Target Crosshair Marker -->
+<div class="relative w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-[18px]">factory</span>
+</div>
+</div>
+<!-- Mill Tag Pin Dropdown -->
+<div class="mt-2 bg-inverse-surface text-inverse-on-surface px-3 py-1.5 rounded shadow-lg flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+<span class="font-label-tag text-label-tag text-surface-bright tracking-wider whitespace-nowrap">
+              ABINAYA GARMENTS · MILL HQ &amp; UNIT 01
+            </span>
+</div>
+</div>
+<!-- Secondary Mill Location Pin: Unit 02 Spinning -->
+<div class="absolute left-[34%] top-[28%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center shadow">
+<span class="material-symbols-outlined text-[13px]">tune</span>
+</div>
+<span class="mt-1 font-code-num text-[9px] bg-surface-container-highest px-1.5 py-0.5 rounded text-on-surface">
+            UNIT-02 CIRCULAR KNITTING
+          </span>
+</div>
+<!-- Editorial Glass Overlay: Card 1 (Top Left) -->
+<div class="absolute top-4 left-4 sm:top-6 sm:left-6 max-w-xs bg-surface-container-lowest/95 backdrop-blur p-4 rounded shadow-md hidden sm:block">
+<div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-surface-container-high">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">local_shipping</span>
+<span class="font-label-tag text-label-tag text-on-surface uppercase tracking-wider font-semibold">
+              Logistics &amp; Freight Corridors
+            </span>
+</div>
+<ul class="space-y-1.5 font-code-num text-[11px] text-on-surface-variant">
+<li class="flex justify-between">
+<span>Coimbatore Int'l (CJB):</span>
+<span class="font-semibold text-on-surface">42 km (55 mins)</span>
+</li>
+<li class="flex justify-between">
+<span>Tiruppur Rly Freight:</span>
+<span class="font-semibold text-on-surface">4.8 km (12 mins)</span>
+</li>
+<li class="flex justify-between">
+<span>Cochin / Tuticorin Port:</span>
+<span class="font-semibold text-on-surface">Sea Freight Feeders</span>
+</li>
+<li class="flex justify-between">
+<span>Chennai Container Terminal:</span>
+<span class="font-semibold text-on-surface">440 km (Overnight)</span>
+</li>
+</ul>
+</div>
+<!-- Editorial Glass Overlay: Card 2 (Bottom Right) -->
+<div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 max-w-sm bg-surface-container-lowest/95 backdrop-blur p-4 sm:p-5 rounded shadow-md">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="font-label-tag text-label-tag text-secondary uppercase tracking-widest font-semibold">
+              Visiting Protocol
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3 leading-snug">
+            Buyers and apparel brand founders are welcome for physical fabric inspection, GSM verification, and yarn count testing by prior booking.
+          </p>
+<div class="flex items-center gap-2">
+<a class="inline-flex items-center gap-1.5 bg-inverse-surface text-inverse-on-surface px-3 py-1.5 rounded font-label-spec text-label-spec uppercase tracking-wider hover:bg-primary transition-colors" href="https://maps.google.com/?q=Tiruppur+Tamil+Nadu" rel="noopener noreferrer" target="_blank">
+<span>Open in Google Maps</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<span class="font-code-num text-[11px] text-outline px-2">PARKING ON PREMISES</span>
+</div>
+</div>
+</div>
+<!-- Quick Dispatch Highlights Strip Below Map -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 bg-surface-container-high divide-y sm:divide-y-0 sm:divide-x divide-outline-variant/30 text-on-surface">
+<div class="p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+<div>
+<div class="font-label-tag text-[10px] text-on-surface-variant uppercase">Quality Standard</div>
+<div class="font-code-num text-[13px] font-semibold">100% Combed Compact</div>
+</div>
+</div>
+<div class="p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">inventory_2</span>
+<div>
+<div class="font-label-tag text-[10px] text-on-surface-variant uppercase">Sample Dispatch</div>
+<div class="font-code-num text-[13px] font-semibold">DHL &amp; BlueDart Air</div>
+</div>
+</div>
+<div class="p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">precision_manufacturing</span>
+<div>
+<div class="font-label-tag text-[10px] text-on-surface-variant uppercase">Daily Mill Output</div>
+<div class="font-code-num text-[13px] font-semibold">18,500 Garments / Day</div>
+</div>
+</div>
+<div class="p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">format_image_left</span>
+<div>
+<div class="font-label-tag text-[10px] text-on-surface-variant uppercase">Export Clearance</div>
+<div class="font-code-num text-[13px] font-semibold">IEC &amp; GOTS Certified</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ / MERCHANDISER RESPONSE LEDGER -->
+<section class="max-w-[1280px] mx-auto px-6 py-12 w-full">
+<div class="mb-8">
+<span class="font-label-tag text-label-tag text-on-surface-variant uppercase tracking-wider block mb-1">
+        (04) — SOURCING FAQ &amp; TERMS OF BUSINESS
+      </span>
+<h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">
+        Commercial procurement protocols.
+      </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded shadow-sm">
+<span class="font-code-num text-[12px] text-tertiary-container font-semibold block mb-2">01 / MOQ SLABS</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">What is the absolute minimum order?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          For stocked premium blanks (180/240 GSM single jersey, hoodies, piqué polos), our MOQ is <strong>50 pieces</strong> per color/size run. For custom dyeing to exact Pantone standards, our vat dyeing MOQ is <strong>200 pieces</strong>.
+        </p>
+</div>
+<div class="bg-surface-container-low p-6 rounded shadow-sm">
+<span class="font-code-num text-[12px] text-tertiary-container font-semibold block mb-2">02 / LAB DIPS &amp; SWATCHES</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">How fast do fabric lab-dips ship?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Custom shade matching (A/B/C options on your specified GSM) takes <strong>3 to 5 business days</strong> from receipt of your physical sample or Pantone TCX code. Physical swatch hangers ship worldwide via DHL Express.
+        </p>
+</div>
+<div class="bg-surface-container-low p-6 rounded shadow-sm">
+<span class="font-code-num text-[12px] text-tertiary-container font-semibold block mb-2">03 / PAYMENT &amp; FREIGHT</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">Payment terms &amp; Export FOB terms?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Domestic deliveries require 50% advance upon cutting authorization and balance against dispatch LR. Export deliveries operate on verified Letter of Credit (LC at Sight) or Wire Transfer with FOB Tuticorin or CIF options.
+        </p>
+</div>
+</div>
+</section>
+<!-- SCRIPT FOR FORM INTERACTION -->
+<script>
+    function handleTradeSubmit() {
+      const btn = document.getElementById('submitBtn');
+      const toast = document.getElementById('formSuccessToast');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span><span>TRANSMITTING RFQ...</span>';
+      
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>INQUIRY LOGGED</span>';
+        btn.classList.remove('bg-primary');
+        btn.classList.add('bg-secondary');
+        toast.classList.remove('hidden');
+        toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 900);
+    }
+  </script>
+</div>
+</main>
+<!-- INK FOOTER: Industrial Ledger & Heritage Details -->
+<footer class="bg-inverse-surface text-inverse-on-surface mt-space-3xl border-t-2 border-tertiary-container">
+<div class="max-w-[1280px] mx-auto px-6 py-12 md:py-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+<div class="md:col-span-2">
+<div class="flex items-center gap-3 mb-4">
+<span class="font-label-tag text-label-tag uppercase tracking-widest text-secondary-fixed">ABINAYA GARMENTS · EST. 1994</span>
+</div>
+<p class="font-body-md text-body-md text-surface-variant/80 max-w-md">
+          Export-grade knitwear, premium combed cotton blanks, and circular knitting mill operations situated in the heart of Tiruppur textile cluster.
+        </p>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="font-code-num text-[11px] px-2 py-0.5 bg-inverse-surface border border-surface-variant/20 text-surface-variant">ISO 9001:2015</span>
+<span class="font-code-num text-[11px] px-2 py-0.5 bg-inverse-surface border border-surface-variant/20 text-surface-variant">OEKO-TEX 100</span>
+<span class="font-code-num text-[11px] px-2 py-0.5 bg-inverse-surface border border-surface-variant/20 text-surface-variant">GOTS CERTIFIED YARN</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-tag text-label-tag uppercase text-surface-variant tracking-wider mb-4">Navigation Spec</h4>
+<ul class="space-y-2 font-body-sm text-body-sm text-surface-variant/70">
+<li><a class="hover:text-surface-bright transition-colors" data-path="abinaya-garments-wholesale-products-catalogue" href="#">Wholesale Catalogue</a></li>
+<li><a class="hover:text-surface-bright transition-colors" data-path="abinaya-garments-workshop-textile-gallery" href="#">Mill Workshop &amp; Gallery</a></li>
+<li><a class="hover:text-surface-bright transition-colors" data-path="abinaya-garments-about-heritage-mill" href="#">Heritage &amp; Mill Capacity</a></li>
+<li><a class="hover:text-surface-bright transition-colors" data-path="abinaya-garments-contact-inquiry" href="#">Trade Inquiry &amp; Dispatch</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-tag text-label-tag uppercase text-surface-variant tracking-wider mb-4">Mill Registry</h4>
+<p class="font-code-num text-[12px] text-surface-variant/70 leading-relaxed mb-3">
+          Rayapuram Main Road, Tiruppur, Tamil Nadu 641601, India
+        </p>
+<p class="font-code-num text-[12px] text-surface-variant/70 leading-relaxed">
+          Trade Direct: +91 (421) 220 4819<br/>
+          Dispatch: export@abinayagarments.com
+        </p>
+</div>
+</div>
+<div class="mt-12 pt-6 border-t border-surface-variant/10 flex flex-col sm:flex-row items-center justify-between gap-4 font-code-num text-[11px] text-surface-variant/60">
+<div>© 2025 Abinaya Garments Tiruppur. All trade specs reserved.</div>
+<div class="flex items-center gap-4">
+<span>B2B EXPORT REGISTER</span>
+<span>STITCH SPEC: 32s / 40s COMBED</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

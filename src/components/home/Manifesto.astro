@@ -1,0 +1,74 @@
+---
+import { url } from '../../lib/url';
+import { Image } from 'astro:assets';
+import { photos } from '../../assets/photos';
+---
+
+<section class="section manifesto" id="manifesto" data-manifesto>
+  <div class="container">
+    <p class="label">(01) — Who we are</p>
+    <p class="manifesto__text" data-manifesto-text>
+      We are a Tiruppur garment house making everyday cotton essentials
+      <span class="pill" data-pill><Image src={photos.handsFoldingTee} alt="" widths={[240]} sizes="140px" /></span>
+      for shops and brands across India: from yarn selection to the final
+      <span class="pill" data-pill><Image src={photos.cartonsDispatch} alt="" widths={[240]} sizes="140px" /></span>
+      carton, under one roof.
+    </p>
+    <div class="manifesto__foot">
+      <a href={url('/about-us')} class="stitch-link">Our story →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .manifesto__text {
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 4.6vw, 4.4rem);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    max-width: 1150px;
+  }
+  .pill {
+    display: inline-block;
+    width: clamp(70px, 9vw, 140px);
+    height: 0.82em;
+    margin-inline: 0.12em;
+    vertical-align: -0.06em;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .pill img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .manifesto__foot {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
+  }
+</style>
+
+<script>
+  import { gsap, SplitText, MQ } from '../../scripts/motion/core';
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    const root = document.querySelector<HTMLElement>('[data-manifesto]')!;
+    const text = root.querySelector<HTMLElement>('[data-manifesto-text]')!;
+    const split = SplitText.create(text, { type: 'words' });
+    const pills = root.querySelectorAll<HTMLElement>('[data-pill]');
+
+    // reading effect: words ink in as you scroll; pills open up in sequence
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: text, start: 'top 78%', end: 'bottom 40%', scrub: 0.6 },
+    });
+    tl.fromTo(split.words, { opacity: 0.14 }, { opacity: 1, stagger: 0.1, ease: 'none' }, 0);
+    pills.forEach((pill, i) => {
+      tl.from(pill, { width: 0, marginInline: 0, ease: 'power2.out', duration: 0.6 }, 0.4 + i * 1.2);
+    });
+
+    return () => split.revert();
+  });
+</script>

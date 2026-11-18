@@ -1,0 +1,232 @@
+---
+import Icon from '../site/Icon.astro';
+
+const reasons = [
+  {
+    title: 'Quality cotton apparel',
+    text: 'Comfortable, durable, export-grade fabric chosen lot by lot for every category.',
+    icon: 'needle',
+  },
+  {
+    title: 'Bulk order capacity',
+    text: 'Scalable production and dispatch support for large B2B requirements, without losing finish.',
+    icon: 'boxes',
+  },
+  {
+    title: 'Honest wholesale pricing',
+    text: 'Competitive rates with clear communication and transparent order terms. GST invoices.',
+    icon: 'tag',
+  },
+  {
+    title: 'On-time delivery',
+    text: 'Structured order tracking and reliable shipment timelines for every order.',
+    icon: 'truck',
+  },
+];
+---
+
+<section class="section why" data-why>
+  <div class="container why__grid">
+    <div class="why__intro">
+      <div class="why__sticky">
+        <p class="label">(02) — Why us</p>
+        <h2 class="why__title">Why buyers <em>stay</em> with us.</h2>
+        <p class="lead">
+          Tiruppur production strength, combined with reliable service and consistent quality for wholesale sourcing.
+        </p>
+        <a href="#quote" class="btn btn--outline">Talk to our team <Icon name="arrow" size={16} /></a>
+      </div>
+    </div>
+
+    <div class="why__list">
+      <span class="why__thread thread-v" data-why-thread aria-hidden="true"></span>
+      <ol class="why__rows">
+      {reasons.map((r, i) => (
+        <li class="why__row" data-why-row>
+          <span class="why__line" data-why-line aria-hidden="true"></span>
+          <span class="why__x" aria-hidden="true">✕</span>
+          <span class="why__num">0{i + 1}</span>
+          <div class="why__body">
+            <h3>{r.title}</h3>
+            <p>{r.text}</p>
+          </div>
+          <svg class="why__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            {r.icon === 'needle' && (
+              <>
+                <path pathLength="1" d="M8 40 L38 10" />
+                <path pathLength="1" d="M34 9 a3 3 0 1 1 5 5" />
+                <path pathLength="1" d="M36 12 C 30 4, 14 10, 20 22 C 25 32, 12 38, 6 30" stroke-dasharray="0.03 0.025" />
+              </>
+            )}
+            {r.icon === 'boxes' && (
+              <>
+                <path pathLength="1" d="M6 26 h16 v16 h-16 z" />
+                <path pathLength="1" d="M26 26 h16 v16 h-16 z" />
+                <path pathLength="1" d="M16 8 h16 v16 h-16 z" />
+                <path pathLength="1" d="M12 26 v5 M34 26 v5 M24 8 v5" />
+              </>
+            )}
+            {r.icon === 'tag' && (
+              <>
+                <path pathLength="1" d="M26 6 H42 V22 L22 42 L6 26 Z" />
+                <circle pathLength="1" cx="35" cy="13" r="2.5" />
+                <path pathLength="1" d="M18 26 L26 18" />
+              </>
+            )}
+            {r.icon === 'truck' && (
+              <>
+                <path pathLength="1" d="M4 12 H30 V34 H4 Z" />
+                <path pathLength="1" d="M30 20 H38 L44 27 V34 H30" />
+                <circle pathLength="1" cx="12" cy="36" r="4" />
+                <circle pathLength="1" cx="36" cy="36" r="4" />
+              </>
+            )}
+          </svg>
+        </li>
+      ))}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+  .why__intro {
+    grid-column: 1 / span 4;
+  }
+  .why__sticky {
+    position: sticky;
+    top: 8rem;
+    display: grid;
+    gap: 1.75rem;
+    justify-items: start;
+  }
+  .why__title {
+    font-size: var(--fs-h2);
+  }
+  .why__list {
+    grid-column: 6 / span 7;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .why__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .why__thread {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform-origin: top;
+  }
+  .why__row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5rem 1fr 4rem;
+    gap: 1.5rem;
+    align-items: start;
+    padding-block: clamp(2.5rem, 4vw, 3.75rem);
+  }
+  .why__line {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: var(--hairline);
+    transform-origin: left;
+  }
+  .why__row:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+  .why__x {
+    position: absolute;
+    left: calc(-2.5rem - 0.42rem);
+    top: clamp(2.5rem, 4vw, 3.75rem);
+    width: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1;
+    text-align: center;
+    color: var(--madder);
+    background: var(--cream);
+  }
+  .why__num {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--sage);
+  }
+  .why__body h3 {
+    font-size: var(--fs-h3);
+    margin-bottom: 0.75rem;
+  }
+  .why__body p {
+    color: var(--ink-soft);
+    max-width: 34rem;
+  }
+  .why__icon {
+    width: 3rem;
+    height: 3rem;
+    color: var(--indigo);
+    justify-self: end;
+  }
+
+  @media (max-width: 1023px) {
+    .why__intro,
+    .why__list {
+      grid-column: 1 / -1;
+    }
+    .why__sticky {
+      position: static;
+      margin-bottom: 2rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .why__row {
+      grid-template-columns: 3.5rem 1fr;
+    }
+    .why__icon {
+      display: none;
+    }
+    .why__list {
+      padding-left: 1.75rem;
+    }
+    .why__x {
+      left: calc(-1.75rem - 0.42rem);
+    }
+  }
+</style>
+
+<script>
+  import { gsap, MQ } from '../../scripts/motion/core';
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    const root = document.querySelector<HTMLElement>('[data-why]')!;
+    const list = root.querySelector<HTMLElement>('.why__list')!;
+
+    // thread sews down the list as you scroll
+    gsap.fromTo(
+      root.querySelector('[data-why-thread]'),
+      { scaleY: 0 },
+      { scaleY: 1, ease: 'none', scrollTrigger: { trigger: list, start: 'top 70%', end: 'bottom 60%', scrub: 0.5 } },
+    );
+
+    root.querySelectorAll<HTMLElement>('[data-why-row]').forEach((row) => {
+      const tl = gsap.timeline({ scrollTrigger: { trigger: row, start: 'top 68%', once: true } });
+      tl.from(row.querySelector('[data-why-line]'), { scaleX: 0, duration: 1.1, ease: 'expo.out' })
+        .from(row.querySelector('.why__x'), { scale: 0, rotation: -90, duration: 0.7, ease: 'back.out(3)' }, 0)
+        .from(row.querySelectorAll('.why__num, .why__body > *'), { y: 36, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out' }, 0.15)
+        .fromTo(
+          row.querySelectorAll('.why__icon [pathLength]'),
+          { strokeDasharray: '1 1', strokeDashoffset: 1 },
+          { strokeDashoffset: 0, duration: 1.4, stagger: 0.15, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' },
+          0.2,
+        );
+    });
+  });
+</script>

@@ -1,0 +1,159 @@
+---
+import { site } from '../../data/site';
+---
+
+<section class="numbers" data-numbers>
+  <div class="numbers__panel" data-numbers-panel>
+    <div class="container">
+      <div class="numbers__head">
+        <p class="label label--light">(05) — In numbers</p>
+        <p class="mono numbers__note">Tiruppur manufacturing scale</p>
+      </div>
+      <dl class="numbers__grid">
+        {site.stats.map((s) => (
+          <div class="stat" data-stat>
+            <dt>
+              <span class="mono">{s.label}</span>
+              <span class="stat__note">{s.note}</span>
+            </dt>
+            <dd class="stat__value">
+              <span class="stat__num">
+                <!-- invisible final value reserves the width, so counting never shifts the layout -->
+                <span class="stat__ghost" aria-hidden="true">{s.value.toFixed(s.decimals)}</span>
+                <span class="stat__live" data-count={s.value} data-decimals={s.decimals}>{s.value.toFixed(s.decimals)}</span>
+              </span>{s.suffix && <span class="stat__suffix">{s.suffix}</span>}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .numbers {
+    padding-block: clamp(2rem, 4vw, 3rem);
+  }
+  .numbers__panel {
+    position: relative;
+    background: var(--indigo);
+    color: var(--cream);
+    padding-block: clamp(5rem, 10vw, 8rem);
+    overflow: hidden;
+  }
+  .numbers__panel::before {
+    /* cream stitch along the top edge */
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(245, 241, 234, 0.5) 0 8px, transparent 8px 14px);
+  }
+  .numbers__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .numbers__note {
+    color: rgba(245, 241, 234, 0.6);
+  }
+  .numbers__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    padding: 0 clamp(1rem, 2vw, 2rem);
+    border-left: 1px solid rgba(245, 241, 234, 0.2);
+  }
+  .stat:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .stat__value {
+    order: 1;
+    margin: 0;
+    font-family: var(--font-display);
+    /* sized so the widest value ("420+") always fits one column */
+    font-size: clamp(3rem, 6.4vw, 6.75rem);
+    font-weight: 250;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .stat__num {
+    display: inline-grid;
+  }
+  .stat__ghost,
+  .stat__live {
+    grid-area: 1 / 1;
+  }
+  .stat__ghost {
+    visibility: hidden;
+  }
+  .stat__suffix {
+    font-style: italic;
+    color: var(--sage-tint);
+  }
+  .stat dt {
+    order: 2;
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(245, 241, 234, 0.25);
+  }
+  .stat dt .mono {
+    color: var(--cream);
+  }
+  .stat__note {
+    font-size: 0.9rem;
+    color: rgba(245, 241, 234, 0.6);
+  }
+
+  @media (max-width: 900px) {
+    .numbers__grid {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 3rem;
+    }
+    .stat__value {
+      font-size: clamp(2.8rem, 13vw, 5rem);
+    }
+    .stat:nth-child(3) {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, MQ } from '../../scripts/motion/core';
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    const root = document.querySelector<HTMLElement>('[data-numbers]')!;
+    // panel opens from an inset card to full-bleed as it enters
+    gsap.fromTo(
+      root.querySelector('[data-numbers-panel]'),
+      { clipPath: 'inset(8% 6% 8% 6%)' },
+      {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        ease: 'none',
+        scrollTrigger: { trigger: root, start: 'top bottom', end: 'top 25%', scrub: 0.5 },
+      },
+    );
+    gsap.from(root.querySelectorAll('[data-stat]'), {
+      y: 60,
+      autoAlpha: 0,
+      duration: 1.2,
+      ease: 'expo.out',
+      stagger: 0.1,
+      scrollTrigger: { trigger: root, start: 'top 60%', once: true },
+    });
+  });
+</script>

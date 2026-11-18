@@ -1,0 +1,351 @@
+---
+import { url } from '../../lib/url';
+import Monogram from './Monogram.astro';
+import Icon from './Icon.astro';
+import { nav, site, waLink } from '../../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => !href.includes('#') && (href.replace(/\/$/, '') || '/') === path;
+---
+
+<header class="nav" data-nav>
+  <div class="nav__inner container">
+    <a href={url('/')} class="brand" aria-label={`${site.name}: home`}>
+      <Monogram size={38} thread="currentColor" needle="currentColor" class="brand__mark" />
+      <span class="brand__text">
+        <span class="brand__name">Abi<span class="brand__i">n</span>aya</span>
+        <span class="brand__sub">{site.tagline}</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Main">
+      {nav.map((n) => (
+        <a href={n.href} class:list={['nav__link', { 'is-active': isActive(n.href) }]} aria-current={isActive(n.href) ? 'page' : undefined}>
+          {n.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="nav__actions">
+      <a href={waLink()} target="_blank" rel="noopener" class="nav__wa" aria-label="Chat on WhatsApp">
+        <Icon name="whatsapp" size={18} />
+      </a>
+      <a href={url('/#quote')} class="btn btn--primary nav__cta" data-magnetic>
+        Get wholesale price <Icon name="arrow" size={16} />
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>
+        <span class="visually-hidden">Open menu</span>
+        <Icon name="menu" size={24} />
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="mobile-menu" data-menu hidden>
+  <div class="menu__top container">
+    <span class="mono">Menu</span>
+    <button class="menu__close" type="button" data-menu-close>
+      <span class="visually-hidden">Close menu</span>
+      <Icon name="close" size={26} />
+    </button>
+  </div>
+  <nav class="menu__links container" aria-label="Mobile">
+    {nav.map((n, i) => (
+      <a href={n.href} class="menu__link" data-menu-link>
+        <span class="mono">0{i + 1}</span>
+        {n.label}
+      </a>
+    ))}
+  </nav>
+  <div class="menu__foot container">
+    <a href={url('/#quote')} class="btn btn--cream" data-menu-link>Get wholesale price <Icon name="arrow" size={16} /></a>
+    <a href={site.phoneHref} class="mono">{site.phone}</a>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    transition:
+      background-color 0.4s,
+      border-color 0.4s,
+      color 0.4s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.is-scrolled {
+    background: rgba(245, 241, 234, 0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--hairline);
+  }
+  /* over the full-bleed hero video: transparent with light text (wins over is-scrolled) */
+  .nav.is-over-hero {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: rgba(245, 241, 234, 0.14);
+  }
+  .nav.is-over-hero .brand,
+  .nav.is-over-hero .nav__link:hover,
+  .nav.is-over-hero .nav__link.is-active {
+    color: var(--cream);
+  }
+  .nav.is-over-hero .nav__link,
+  .nav.is-over-hero .brand__sub {
+    color: rgba(245, 241, 234, 0.78);
+  }
+  .nav.is-over-hero .nav__wa {
+    background: rgba(245, 241, 234, 0.12);
+    border: 1px solid rgba(245, 241, 234, 0.3);
+  }
+  .nav.is-over-hero .nav__toggle {
+    color: var(--cream);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 88px;
+    transition: height 0.4s var(--ease-out);
+  }
+  .nav.is-scrolled .nav__inner {
+    height: 72px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--ink);
+    transition: color 0.4s;
+  }
+  .brand__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand__name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 72;
+  }
+  /* madder dot over the i, like the Stitch wordmark */
+  .brand__i {
+    position: relative;
+  }
+  .brand__i::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0.08em;
+    width: 0.16em;
+    height: 0.16em;
+    margin-left: -0.37em;
+    border-radius: 50%;
+    background: var(--madder);
+  }
+  .brand__sub {
+    margin-top: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .nav__links {
+    display: flex;
+    gap: clamp(1.25rem, 2.4vw, 2.5rem);
+  }
+  .nav__link {
+    position: relative;
+    padding-block: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    transition: color 0.4s;
+  }
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--madder) 0 5px, transparent 5px 9px);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--ease-out);
+  }
+  .nav__link:hover,
+  .nav__link.is-active {
+    color: var(--ink);
+  }
+  .nav__link:hover::after,
+  .nav__link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .nav__wa {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--whatsapp);
+    transition: transform 0.3s var(--ease-out);
+  }
+  .nav__wa:hover {
+    transform: scale(1.08);
+  }
+  .nav__cta {
+    min-height: 2.9rem;
+  }
+  .nav__toggle,
+  .menu__close {
+    display: none;
+    background: none;
+    border: 0;
+    padding: 0.5rem;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  /* mobile menu */
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    background: var(--ink);
+    color: var(--cream);
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.7s var(--ease-out);
+  }
+  .menu.is-open {
+    clip-path: inset(0 0 0% 0);
+  }
+  .menu[hidden] {
+    display: none;
+  }
+  .menu__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    color: rgba(245, 241, 234, 0.6);
+  }
+  .menu__close {
+    display: block;
+    color: var(--cream);
+  }
+  .menu__links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  .menu__link {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px solid rgba(245, 241, 234, 0.12);
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 10vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s var(--ease-out),
+      transform 0.6s var(--ease-out);
+  }
+  .menu__link .mono {
+    color: var(--madder);
+  }
+  .menu.is-open .menu__link {
+    opacity: 1;
+    transform: none;
+  }
+  .menu.is-open .menu__link:nth-child(2) { transition-delay: 0.06s; }
+  .menu.is-open .menu__link:nth-child(3) { transition-delay: 0.12s; }
+  .menu.is-open .menu__link:nth-child(4) { transition-delay: 0.18s; }
+  .menu.is-open .menu__link:nth-child(5) { transition-delay: 0.24s; }
+  .menu__foot {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-block: 2rem 2.5rem;
+    color: rgba(245, 241, 234, 0.7);
+  }
+
+  @media (max-width: 1023px) {
+    .nav__links,
+    .nav__cta {
+      display: none;
+    }
+    .nav__toggle {
+      display: block;
+    }
+    .nav__inner {
+      height: 72px;
+    }
+  }
+</style>
+
+<script>
+  import { lenis } from '../../scripts/motion/core';
+
+  // the nav always stays visible; it only gains a solid background once you scroll
+  const nav = document.querySelector<HTMLElement>('[data-nav]')!;
+  let ticking = false;
+  const update = () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 80);
+    ticking = false;
+  };
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+  update();
+
+  // mobile menu
+  const menu = document.querySelector<HTMLElement>('[data-menu]')!;
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]')!;
+  const open = () => {
+    menu.hidden = false;
+    requestAnimationFrame(() => menu.classList.add('is-open'));
+    openBtn.setAttribute('aria-expanded', 'true');
+    lenis?.stop();
+    document.querySelector<HTMLElement>('[data-menu-close]')?.focus();
+  };
+  const close = () => {
+    menu.classList.remove('is-open');
+    openBtn.setAttribute('aria-expanded', 'false');
+    lenis?.start();
+    setTimeout(() => (menu.hidden = true), 700);
+  };
+  openBtn.addEventListener('click', open);
+  menu.querySelector('[data-menu-close]')!.addEventListener('click', close);
+  menu.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && !menu.hidden && close());
+</script>

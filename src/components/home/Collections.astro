@@ -1,0 +1,327 @@
+---
+import { url } from '../../lib/url';
+import { Image } from 'astro:assets';
+import Icon from '../site/Icon.astro';
+import { photos } from '../../assets/photos';
+import products from '../../data/products.json';
+import { waLink } from '../../data/site';
+import { swatch } from '../../data/swatches';
+
+const byCategory = (c: string) => products.find((p) => p.category === c)!;
+const sizeRange = (s: string[]) => (s.length > 1 ? `${s[0]}–${s[s.length - 1]}` : s[0]);
+
+const cards = [
+  { category: "Men's Cotton T-Shirts", name: "Men's Cotton Tees", image: photos.mensCrewnecksFlatlay },
+  { category: "Women's Cotton T-Shirts", name: "Women's Cotton Tees", image: photos.teesFoldedNaturalTones },
+  { category: 'Polo T-Shirts', name: 'Classic Polo T-Shirts', image: photos.poloTeesHanger },
+  { category: 'Kids Cotton Wear', name: 'Kids Cotton Wear', image: photos.kidsCottonFlatlay },
+  { category: 'Oversized T-Shirts', name: 'Oversized Tees', image: photos.teeOversized240gsm },
+  { category: 'Custom Printed Apparel', name: 'Corporate & Custom', image: photos.corporatePolosEmbroidered },
+].map((c) => {
+  const p = byCategory(c.category);
+  return {
+    ...c,
+    spec: `${p.fabric} · ${sizeRange(p.availableSizes)} · ${p.availableColors.length > 1 ? p.availableColors.length + ' colours' : p.availableColors[0]}`,
+    colors: p.availableColors.filter((col) => swatch[col]).slice(0, 6),
+  };
+});
+const total = String(products.length).padStart(2, '0');
+---
+
+<section class="coll" id="collections" data-coll>
+  <div class="coll__pin" data-coll-pin>
+    <div class="container coll__head">
+      <div>
+        <p class="label">(03) — Collections</p>
+        <h2 class="coll__title">Ready-to-sell <em>collections</em></h2>
+      </div>
+      <p class="mono coll__meta">{total} products · Men, women &amp; kids<br />Custom logo &amp; bulk branding</p>
+    </div>
+
+    <div class="coll__viewport" data-coll-viewport>
+      <ul class="coll__track" data-coll-track>
+        {cards.map((c, i) => (
+          <li class="card" data-coll-card>
+            <a href={waLink(`Hello Abinaya Garment Shop, I am interested in ${c.name}. Please share wholesale pricing and minimum order details.`)} target="_blank" rel="noopener" class="card__link">
+              <figure class="card__media">
+                <Image src={c.image} alt={c.name} widths={[400, 640, 840]} sizes="(min-width: 1024px) 28vw, 78vw" data-coll-img />
+                <span class="card__idx mono">{String(i + 1).padStart(2, '0')}/{String(cards.length).padStart(2, '0')}</span>
+              </figure>
+              <h3 class="card__name">{c.name}</h3>
+              <p class="mono card__spec">{c.spec}</p>
+              <div class="card__foot">
+                <span class="card__swatches" aria-label={`Colours: ${c.colors.join(', ')}`}>
+                  {c.colors.map((col) => <span style={`background:${swatch[col]}`} title={col}></span>)}
+                </span>
+                <span class="mono card__cta">Enquire <Icon name="arrow" size={14} /></span>
+              </div>
+            </a>
+          </li>
+        ))}
+        <li class="card card--custom" data-coll-card>
+          <div class="card__custom">
+            <p class="mono">Private label</p>
+            <p class="card__custom-title">Need a custom print or your own label?</p>
+            <a href="#quote" class="btn btn--cream">Start custom order <Icon name="arrow" size={16} /></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container coll__progress-wrap">
+      <span class="mono">Scroll to browse</span>
+      <span class="coll__progress" aria-hidden="true"><span class="coll__bar" data-coll-bar></span></span>
+      <a href={url('/products')} class="stitch-link">Full catalogue →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .coll {
+    position: relative;
+    background: var(--paper);
+    border-block: 1px solid var(--hairline);
+  }
+  .coll__pin {
+    padding-block: clamp(5rem, 9vw, 7rem) clamp(3rem, 5vw, 4rem);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .coll__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .coll__title {
+    margin-top: 1.25rem;
+    font-size: var(--fs-h2);
+  }
+  .coll__meta {
+    text-align: right;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+
+  .coll__viewport {
+    overflow: hidden;
+  }
+  .coll__track {
+    display: flex;
+    gap: clamp(1rem, 2vw, 2rem);
+    width: max-content;
+    margin: 0;
+    padding: 0 var(--gutter);
+    padding-left: max(var(--gutter), calc((100vw - var(--max)) / 2));
+    list-style: none;
+  }
+  .card {
+    width: clamp(260px, 26vw, 400px);
+    flex: none;
+  }
+  .card__link {
+    display: block;
+  }
+  .card__media {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .card__media img {
+    width: 115%;
+    max-width: none;
+    height: 100%;
+    margin-left: -7.5%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease-out);
+  }
+  .card__link:hover .card__media img {
+    transform: scale(1.05);
+  }
+  .card__idx {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    padding: 0.25rem 0.55rem;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    font-size: 0.62rem;
+  }
+  .card__name {
+    margin-top: 1.25rem;
+    font-size: clamp(1.5rem, 2.1vw, 2rem);
+  }
+  .card__spec {
+    margin-top: 0.5rem;
+    font-size: 0.66rem;
+    color: var(--ink-soft);
+  }
+  .card__foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed var(--hairline);
+  }
+  .card__swatches {
+    display: flex;
+    gap: 0.35rem;
+  }
+  .card__swatches span {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 1px solid rgba(23, 21, 18, 0.2);
+    transition: transform 0.3s var(--ease-out);
+  }
+  .card__link:hover .card__swatches span {
+    transform: scale(1.3);
+  }
+  .card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+    color: var(--indigo);
+  }
+
+  .card--custom {
+    align-self: stretch;
+  }
+  .card__custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    padding: 2rem;
+    background: var(--indigo);
+    color: var(--cream);
+  }
+  .card__custom .mono {
+    color: rgba(245, 241, 234, 0.6);
+  }
+  .card__custom-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 2.8vw, 2.75rem);
+    font-weight: 300;
+    line-height: 1.05;
+  }
+  .card__custom .btn {
+    align-self: flex-start;
+  }
+
+  .coll__progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .coll__progress-wrap > .mono {
+    color: var(--ink-soft);
+    font-size: 0.66rem;
+  }
+  .coll__progress {
+    flex: 1;
+    height: 2px;
+    background: var(--hairline);
+    overflow: hidden;
+  }
+  .coll__bar {
+    display: block;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, var(--madder) 0 8px, transparent 8px 12px);
+    transform-origin: left;
+    transform: scaleX(0.08);
+  }
+
+  /* touch / small screens: native swipe */
+  @media (max-width: 1023px) {
+    .coll__pin {
+      min-height: auto;
+    }
+    .coll__head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .coll__meta {
+      text-align: left;
+    }
+    .coll__viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .coll__viewport::-webkit-scrollbar {
+      display: none;
+    }
+    .card {
+      width: 78vw;
+      max-width: 360px;
+      scroll-snap-align: start;
+      scroll-margin-left: var(--gutter);
+    }
+    .coll__progress-wrap > .mono {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, MQ } from '../../scripts/motion/core';
+
+  const root = document.querySelector<HTMLElement>('[data-coll]')!;
+  const viewport = root.querySelector<HTMLElement>('[data-coll-viewport]')!;
+  const track = root.querySelector<HTMLElement>('[data-coll-track]')!;
+  const bar = root.querySelector<HTMLElement>('[data-coll-bar]')!;
+  const mm = gsap.matchMedia();
+
+  // desktop: pin the section and translate the track horizontally with vertical scroll
+  mm.add(MQ.desktop, () => {
+    const distance = () => track.scrollWidth - viewport.clientWidth;
+    const tl = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: root,
+        start: 'top top',
+        end: () => `+=${distance()}`,
+        pin: root.querySelector('[data-coll-pin]'),
+        scrub: 0.7,
+        invalidateOnRefresh: true,
+      },
+    });
+    tl.to(track, { x: () => -distance() }, 0).fromTo(bar, { scaleX: 0.08 }, { scaleX: 1 }, 0);
+    // images drift the other way inside their frames (depth)
+    root.querySelectorAll('[data-coll-img]').forEach((img) => {
+      tl.fromTo(img, { xPercent: 4 }, { xPercent: -4 }, 0);
+    });
+
+    // cards rise in when the section arrives
+    gsap.from(root.querySelectorAll('[data-coll-card]'), {
+      y: 80,
+      autoAlpha: 0,
+      duration: 1.2,
+      ease: 'expo.out',
+      stagger: 0.08,
+      scrollTrigger: { trigger: root, start: 'top 70%', once: true },
+    });
+  });
+
+  // mobile: progress bar follows native horizontal swipe
+  mm.add('(max-width: 1023px)', () => {
+    const onScroll = () => {
+      const max = viewport.scrollWidth - viewport.clientWidth;
+      gsap.set(bar, { scaleX: Math.max(0.08, max > 0 ? viewport.scrollLeft / max : 1) });
+    };
+    viewport.addEventListener('scroll', onScroll, { passive: true });
+    return () => viewport.removeEventListener('scroll', onScroll);
+  });
+</script>

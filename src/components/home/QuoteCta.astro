@@ -1,0 +1,259 @@
+---
+import Icon from '../site/Icon.astro';
+import { categories, site, waLink } from '../../data/site';
+---
+
+<section class="section quote" id="quote" data-quote>
+  <svg class="quote__thread" viewBox="0 0 600 420" aria-hidden="true">
+    <!-- thread arrives from above and ties a knot -->
+    <path
+      data-quote-thread
+      d="M 40 -10 C 40 120, 120 170, 230 190 C 330 208, 360 150, 320 118 C 282 88, 236 132, 268 168 C 300 204, 380 200, 430 240 C 480 280, 470 360, 560 400"></path>
+  </svg>
+
+  <div class="container quote__grid">
+    <div class="quote__copy">
+      <p class="label">(08) — Inquiry &amp; dispatch</p>
+      <h2 class="quote__title" data-quote-title>Let's stitch your <em>next order</em>.</h2>
+      <p class="lead">
+        Share your product, quantity and requirements. Our team will reply with the best wholesale options and pricing.
+      </p>
+      <ul class="quote__facts mono">
+        <li><Icon name="clock" size={16} /> {site.replyTime} · {site.hours}</li>
+        <li><Icon name="pin" size={16} /> {site.address.line1}, {site.address.city}</li>
+        <li><Icon name="phone" size={16} /> <a href={site.phoneHref}>{site.phone}</a></li>
+      </ul>
+    </div>
+
+    <div class="quote__card" data-reveal>
+      <p class="mono quote__card-k">Direct factory inquiry</p>
+      <h3>Request wholesale pricing</h3>
+      <form class="qform" data-quote-form novalidate>
+        <label class="field">
+          <span class="mono">01. Name / company *</span>
+          <input name="name" required autocomplete="organization" placeholder="Your name or shop name" />
+        </label>
+        <label class="field">
+          <span class="mono">02. Phone / WhatsApp *</span>
+          <input name="phone" type="tel" required autocomplete="tel" placeholder="+91" />
+        </label>
+        <label class="field">
+          <span class="mono">03. Product *</span>
+          <select name="product" required>
+            <option value="">Select a category</option>
+            {categories.map((c) => <option value={c}>{c}</option>)}
+            <option value="Multiple products">Multiple products</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="mono">04. Quantity *</span>
+          <input name="qty" required placeholder="e.g. 500 pieces" />
+        </label>
+        <p class="qform__error" data-quote-error role="alert" hidden>Please fill in all fields.</p>
+        <button class="btn btn--primary qform__submit" type="submit" data-magnetic>
+          Get wholesale price <Icon name="arrow" size={16} />
+        </button>
+      </form>
+      <div class="quote__or">
+        <span class="mono">or chat instantly</span>
+        <a href={waLink()} target="_blank" rel="noopener" class="btn btn--ink"><Icon name="whatsapp" size={18} /> Chat on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quote {
+    position: relative;
+    overflow: hidden;
+  }
+  .quote__thread {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: min(46vw, 640px);
+    height: auto;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .quote__thread path {
+    fill: none;
+    stroke: var(--madder);
+    stroke-width: 2;
+    stroke-dasharray: 8 7;
+    stroke-linecap: round;
+  }
+  .quote__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .quote__copy {
+    grid-column: 1 / span 6;
+    padding-top: clamp(4rem, 10vw, 9rem);
+  }
+  .quote__title {
+    margin-block: 1.5rem 2rem;
+    font-size: clamp(3rem, 7vw, 6.75rem);
+    font-weight: 300;
+    line-height: 0.98;
+  }
+  .quote__facts {
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+  }
+  .quote__facts li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .quote__facts svg {
+    color: var(--madder);
+    flex: none;
+  }
+
+  .quote__card {
+    grid-column: 8 / span 5;
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    box-shadow: 0 40px 80px -40px rgba(23, 21, 18, 0.25);
+  }
+  .quote__card-k {
+    color: var(--madder);
+  }
+  .quote__card h3 {
+    margin: 0.75rem 0 2rem;
+    font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  }
+  .qform {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .field .mono {
+    font-size: 0.64rem;
+    color: var(--ink-soft);
+  }
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 0.6rem 0 0.7rem;
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    background: transparent no-repeat left bottom / 0% 2px;
+    background-image: repeating-linear-gradient(90deg, var(--madder) 0 6px, transparent 6px 10px);
+    font: inherit;
+    font-size: 1.05rem;
+    color: var(--ink);
+    transition: background-size 0.6s var(--ease-out);
+    appearance: none;
+  }
+  .field select {
+    cursor: pointer;
+  }
+  .field input:focus,
+  .field select:focus {
+    outline: none;
+    background-size: 100% 2px;
+    border-bottom-color: transparent;
+  }
+  .field input[aria-invalid='true'],
+  .field select[aria-invalid='true'] {
+    border-bottom-color: var(--madder);
+  }
+  .qform__error {
+    color: var(--madder);
+    font-size: 0.9rem;
+  }
+  .qform__submit {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .quote__or {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--hairline);
+    text-align: center;
+  }
+  .quote__or .mono {
+    font-size: 0.64rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 1023px) {
+    .quote__copy,
+    .quote__card {
+      grid-column: 1 / -1;
+    }
+    .quote__copy {
+      padding-top: 0;
+    }
+    .quote__thread {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, SplitText, drawable, MQ } from '../../scripts/motion/core';
+  import { waLink } from '../../data/site';
+
+  const root = document.querySelector<HTMLElement>('[data-quote]')!;
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    const thread = drawable(root.querySelector<SVGPathElement>('[data-quote-thread]')!);
+    gsap.to(thread, {
+      strokeDashoffset: 0,
+      ease: 'none',
+      scrollTrigger: { trigger: root, start: 'top 85%', end: 'top 20%', scrub: 0.6 },
+    });
+    const split = SplitText.create(root.querySelector('[data-quote-title]'), { type: 'lines', mask: 'lines' });
+    gsap.from(split.lines, {
+      yPercent: 110,
+      duration: 1.3,
+      ease: 'expo.out',
+      stagger: 0.1,
+      scrollTrigger: { trigger: root, start: 'top 60%', once: true },
+    });
+    return () => split.revert();
+  });
+
+  // form → pre-filled WhatsApp message
+  const form = root.querySelector<HTMLFormElement>('[data-quote-form]')!;
+  const error = root.querySelector<HTMLElement>('[data-quote-error]')!;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = true;
+    form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select').forEach((f) => {
+      const bad = !f.value.trim();
+      f.setAttribute('aria-invalid', String(bad));
+      if (bad) ok = false;
+    });
+    error.hidden = ok;
+    if (!ok) return;
+    const d = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const msg = [
+      'New wholesale inquiry - Abinaya Garment Shop',
+      `Name / company: ${d.name}`,
+      `Phone: ${d.phone}`,
+      `Product: ${d.product}`,
+      `Quantity: ${d.qty}`,
+    ].join('\n');
+    window.open(waLink(msg), '_blank', 'noopener');
+    form.reset();
+  });
+</script>

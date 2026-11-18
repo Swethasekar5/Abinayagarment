@@ -1,0 +1,134 @@
+---
+import { Image } from 'astro:assets';
+import { photos } from '../../assets/photos';
+
+const buyers = [
+  {
+    tag: 'For retail',
+    title: 'Retail shops & boutiques',
+    text: 'Ready-to-sell basics, steady restocks and manageable order sizes.',
+    image: photos.boutiqueOwnerShelves,
+  },
+  {
+    tag: 'For wholesale',
+    title: 'Distributors & wholesalers',
+    text: 'Bulk volumes at direct factory pricing, packed for onward supply.',
+    image: photos.distributionHub,
+  },
+  {
+    tag: 'For corporate',
+    title: 'Corporate & uniforms',
+    text: 'Logo-printed polos and tees for teams, events and promotions.',
+    image: photos.corporatePolosEmbroidered,
+  },
+  {
+    tag: 'For brands',
+    title: 'Online sellers & brands',
+    text: 'Your label, your packaging, our production. Custom branding options.',
+    image: photos.brandPackagingLabels,
+  },
+];
+---
+
+<section class="section who">
+  <div class="container">
+    <div class="section-head">
+      <p class="label">(06) — Who we supply</p>
+      <p class="mono">Retailers · Distributors · Bulk buyers</p>
+    </div>
+    <h2 class="who__title">Built for people who <em>sell</em> clothes.</h2>
+
+    <div class="who__grid" data-reveal="children">
+      {buyers.map((b, i) => (
+        <article class="buyer">
+          <figure class="buyer__media">
+            <Image src={b.image} alt="" widths={[360, 540, 720]} sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw" />
+            <span class="tag buyer__tag">{b.tag}</span>
+          </figure>
+          <h3>{b.title}</h3>
+          <p>{b.text}</p>
+          <span class="mono buyer__idx">0{i + 1}</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .who__title {
+    max-width: 14ch;
+    font-size: var(--fs-h2);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .who__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2vw, 1.75rem);
+  }
+  .buyer {
+    position: relative;
+  }
+  .buyer:nth-child(even) {
+    margin-top: clamp(0rem, 5vw, 4rem);
+  }
+  .buyer__media {
+    position: relative;
+    margin: 0 0 1.25rem;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+  .buyer__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease-out);
+  }
+  .buyer:hover .buyer__media img {
+    transform: scale(1.06);
+  }
+  .buyer__tag {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    transform-origin: 12px 50%;
+    transition: transform 0.6s var(--ease-out);
+  }
+  .buyer:hover .buyer__tag {
+    animation: swing 1.4s var(--ease-out);
+  }
+  @keyframes swing {
+    20% { transform: rotate(10deg); }
+    45% { transform: rotate(-6deg); }
+    70% { transform: rotate(3deg); }
+    100% { transform: rotate(0); }
+  }
+  .buyer h3 {
+    font-size: clamp(1.35rem, 1.7vw, 1.6rem);
+    margin-bottom: 0.5rem;
+  }
+  .buyer p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .buyer__idx {
+    display: block;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--hairline);
+    color: var(--madder);
+  }
+
+  @media (max-width: 1023px) {
+    .who__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .who__grid {
+      grid-template-columns: 1fr;
+    }
+    .buyer:nth-child(even) {
+      margin-top: 0;
+    }
+  }
+</style>

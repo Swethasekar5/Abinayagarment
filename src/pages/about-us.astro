@@ -1,0 +1,935 @@
+---
+import { url } from '../lib/url';
+import { Image } from 'astro:assets';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntro from '../components/page/PageIntro.astro';
+import PageCta from '../components/page/PageCta.astro';
+import Icon from '../components/site/Icon.astro';
+import { photos } from '../assets/photos';
+import { site, waLink } from '../data/site';
+
+const business = [
+  'Premium quality cotton garments for wholesale distribution',
+  'Diverse product range for men, women and children',
+  'Flexible bulk ordering and competitive pricing',
+  'Direct communication and personalised service',
+];
+
+const checks = ['Premium cotton fabric selection', 'Rigorous quality inspections', 'Consistent stitching and finishing', 'Comfortable, durable wear'];
+
+const focus = [
+  { name: "Men's wear", text: 'Premium cotton t-shirts, polo shirts, casual wear and formal apparel for men.', img: photos.mensCrewnecksFlatlay },
+  { name: "Women's wear", text: 'Elegant cotton t-shirts, casual wear and stylish apparel designed for women.', img: photos.teesFoldedNaturalTones },
+  { name: 'Kids wear', text: 'Soft and safe organic cotton apparel for children of all ages.', img: photos.kidsCottonFlatlay },
+  { name: 'Specialised collections', text: 'Polos, hoodies, sweatshirts, oversized fits and custom printed apparel.', img: photos.hoodieSweatshirtStack },
+  { name: 'Bulk support', text: 'Dedicated support for large orders with consistent quality and timely delivery.', img: photos.cartonsDispatch },
+  { name: 'Customisation', text: 'Custom design options and bulk printing for branded apparel.', img: photos.brandPackagingLabels },
+];
+
+const approach = [
+  { kicker: 'Long-term', title: 'Partnership first', text: 'We value long-term relationships with our wholesale customers and are committed to their success.', tag: 'Repeat buyers' },
+  { kicker: 'Wholesale rates', title: 'Competitive pricing', text: 'Our Tiruppur location and industry connections let us offer strong wholesale rates.', tag: 'Clear quotes' },
+  { kicker: 'Any order size', title: 'Flexible orders', text: 'We accommodate bulk orders of various sizes, with flexible payment terms.', tag: 'Bulk & repeat' },
+  { kicker: 'No waiting', title: 'Direct communication', text: 'Easy access through WhatsApp, phone and email for quick support and answers.', tag: 'WhatsApp · Phone · Email' },
+];
+---
+
+<SiteLayout
+  title="About us"
+  description="Abinaya Garment Shop is a Tiruppur-based cotton apparel wholesale business supplying retailers, resellers, distributors and bulk buyers across India."
+>
+  <PageIntro
+    label="(01) — About us"
+    crumb={`${site.address.line1} · ${site.address.city}`}
+    title="Rooted in Tiruppur, made for <em>your shelf</em>."
+    size="lg"
+    lead="Your trusted partner for premium cotton apparel wholesale: quality garment collections for retailers, resellers, distributors and bulk buyers."
+    meta={[
+      { k: 'Based in', v: `${site.address.city}, ${site.address.state}` },
+      { k: 'We supply', v: 'Cotton apparel, wholesale' },
+      { k: 'For', v: 'Retailers · Distributors · Bulk' },
+      { k: 'Talk to us', v: 'WhatsApp · Phone · Email' },
+    ]}
+  />
+
+  <!-- wide documentary plate: opens from an inset card to full width -->
+  <section class="band" data-band>
+    <figure class="band__frame" data-band-frame>
+      <Image
+        src={photos.inspectionFloorArtisans}
+        alt="Fabric laid out on the cutting table in a Tiruppur workshop"
+        widths={[800, 1280, 1800, 2400]}
+        sizes="100vw"
+        loading="eager"
+        data-band-img
+      />
+      <figcaption class="band__cap mono">
+        <span class="band__plate">Plate 00</span>
+        <span>Cutting &amp; inspection floor · {site.address.city}</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- (02) our business -->
+  <section class="section biz">
+    <div class="container biz__grid">
+      <div class="biz__head">
+        <div class="biz__sticky">
+          <p class="label">(02) — Our business</p>
+          <h2 class="biz__title" data-split>We make apparel sourcing <em>simple</em>.</h2>
+        </div>
+      </div>
+      <div class="biz__body">
+        <p class="biz__lead" data-reveal>
+          Abinaya Garment Shop is a Tiruppur-based cotton apparel wholesale business focused on quality garment
+          collections for retailers, resellers, distributors and bulk buyers.
+        </p>
+        <p class="lead" data-reveal>
+          We aim to make apparel sourcing convenient through product variety, reliable service and direct customer
+          communication. Located in Tiruppur, Tamil Nadu (India's leading textile manufacturing hub), we use our
+          location and industry experience to deliver premium cotton apparel at competitive wholesale prices.
+        </p>
+        <ul class="ticks" data-reveal="children">
+          {business.map((b, i) => (
+            <li>
+              <span class="ticks__n mono">0{i + 1}</span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+        <figure class="biz__img">
+          <div class="biz__img-frame" data-clip-reveal>
+            <Image src={photos.millFabricShelves} alt="Fabric rolls tagged by lot on mill shelves" widths={[640, 960, 1280]} sizes="(min-width: 1024px) 50vw, 92vw" data-speed="30" />
+          </div>
+          <figcaption class="mono">Fabric store · rolls tagged by lot</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- (03) quality -->
+  <section class="section qual" data-qual>
+    <div class="container qual__grid">
+      <div class="qual__copy">
+        <p class="label label--light">(03) — Commitment to quality</p>
+        <h2 class="qual__title" data-split>Quality is at the heart of <em>everything</em> we do.</h2>
+        <p data-reveal>
+          Every garment that leaves our facility goes through quality checks to make sure it meets our standards and
+          your customers' expectations.
+        </p>
+        <p data-reveal>
+          We work closely with trusted manufacturers to source premium cotton fabric, and make sure each piece is
+          crafted with attention to detail, comfort and durability.
+        </p>
+      </div>
+
+      <div class="qual__visual">
+        <div class="qual__photo" data-clip-reveal>
+          <Image src={photos.qcMeasuringTape} alt="Checking garment measurements with a tape" widths={[640, 960, 1280]} sizes="(min-width: 1024px) 45vw, 92vw" />
+        </div>
+        <div class="ticket" data-ticket>
+          <span class="ticket__hole" aria-hidden="true"></span>
+          <p class="mono ticket__k">QC ticket · Abinaya</p>
+          <p class="ticket__h">Quality assurance</p>
+          <ul class="ticket__list">
+            {checks.map((c) => (
+              <li data-check>
+                <svg class="ticket__box" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="1"></rect>
+                  <path d="M6.5 12.5l3.8 3.8 7.4-8.6" pathLength="1"></path>
+                </svg>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="ticket__stamp" data-stamp aria-hidden="true">
+            <span>Checked</span>
+            <span class="mono">Tiruppur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (04) product focus: big index rows with a cursor-following preview -->
+  <section class="section focus" data-focus>
+    <div class="container">
+      <div class="section-head">
+        <p class="label">(04) — Product focus</p>
+        <p class="mono">Quality cotton apparel across categories</p>
+      </div>
+      <h2 class="focus__title" data-split>What we <em>make</em>.</h2>
+
+      <ol class="focus__list" data-focus-list>
+        {focus.map((f, i) => (
+          <li class="frow" data-frow={i}>
+            <a href={url('/products')} class="frow__link">
+              <span class="frow__n mono">0{i + 1}</span>
+              <span class="frow__name">{f.name}</span>
+              <span class="frow__text">{f.text}</span>
+              <span class="frow__thumb" aria-hidden="true">
+                <Image src={f.img} alt="" widths={[200]} sizes="96px" />
+              </span>
+              <Icon name="arrow" size={22} class="frow__arrow" />
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class="preview" data-preview aria-hidden="true">
+      {focus.map((f, i) => (
+        <Image src={f.img} alt="" widths={[520]} sizes="320px" data-preview-img={i} />
+      ))}
+    </div>
+  </section>
+
+  <!-- (05) wholesale approach -->
+  <section class="section appr">
+    <div class="container">
+      <div class="appr__head">
+        <div>
+          <p class="label">(05) — Wholesale customer approach</p>
+          <h2 class="appr__title" data-split>Built on <em>partnerships</em>, not one-off orders.</h2>
+        </div>
+        <p class="lead">Building long-term partnerships with retailers, distributors and bulk buyers.</p>
+      </div>
+      <ol class="pillars">
+        {approach.map((a, i) => (
+          <li class="pillar" data-pillar>
+            <span class="pillar__stitch" data-pillar-stitch aria-hidden="true"></span>
+            <span class="pillar__n">0{i + 1}</span>
+            <div class="pillar__name">
+              <p class="mono">{a.kicker}</p>
+              <h3>{a.title}</h3>
+            </div>
+            <p class="pillar__text">{a.text}</p>
+            <span class="pillar__tag mono">{a.tag}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- (06) location -->
+  <section class="section loc">
+    <div class="container">
+      <div class="loc__head">
+        <p class="label">(06) — Our location</p>
+        <h2 class="loc__title" data-split>In the heart of <em>Tiruppur</em>.</h2>
+        <p class="lead">
+          We are proudly based in Tiruppur, Tamil Nadu: one of India's premier textile manufacturing and apparel
+          production hubs.
+        </p>
+      </div>
+      <div class="loc__grid">
+        <figure class="loc__photo">
+          <div class="loc__frame" data-clip-reveal>
+            <Image src={photos.distributionHub} alt="Checking dispatch paperwork in the warehouse" widths={[640, 960, 1400]} sizes="(min-width: 1024px) 58vw, 92vw" data-speed="24" />
+          </div>
+          <span class="tag loc__tag">Dispatch · {site.address.city}</span>
+        </figure>
+
+        <div class="label-card" data-reveal>
+          <div class="label-card__top">
+            <span class="mono">Dispatch label</span>
+            <span class="mono">From</span>
+          </div>
+          <p class="label-card__name">{site.name}</p>
+          <address class="label-card__addr">
+            {site.address.line1},<br />{site.address.city}, {site.address.state},<br />{site.address.country}
+          </address>
+          <dl class="label-card__rows">
+            <div><dt class="mono">Phone</dt><dd><a href={site.phoneHref}>{site.phone}</a></dd></div>
+            <div><dt class="mono">WhatsApp</dt><dd><a href={waLink()} target="_blank" rel="noopener">Message us</a></dd></div>
+            <div><dt class="mono">Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+            <div><dt class="mono">Hours</dt><dd>{site.hours}</dd></div>
+          </dl>
+          <div class="label-card__bars" aria-hidden="true"></div>
+          <div class="label-card__actions">
+            <a href={site.mapUrl} target="_blank" rel="noopener" class="btn btn--primary"><Icon name="pin" size={16} /> Open in Google Maps</a>
+            <a href={url('/contact-us')} class="btn btn--outline">Plan a visit <Icon name="arrow" size={16} /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PageCta
+    label="Let's work together"
+    title="Ready to <em>partner</em> with us?"
+    text="Contact our team to discuss your wholesale requirements and how Abinaya Garment Shop can support your business growth."
+  />
+</SiteLayout>
+
+<style>
+  /* ---------- wide plate ---------- */
+  .band {
+    padding-block: clamp(1rem, 3vw, 2rem) 0;
+  }
+  .band__frame {
+    position: relative;
+    margin: 0 auto;
+    height: min(78svh, 56vw);
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .band__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .band__cap {
+    position: absolute;
+    left: max(var(--gutter), 9%);
+    right: max(var(--gutter), 9%);
+    bottom: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.62rem;
+    color: var(--cream);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  }
+  .band__plate {
+    padding: 0.25rem 0.5rem;
+    background: var(--madder);
+    text-shadow: none;
+  }
+
+  /* ---------- business ---------- */
+  .biz__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .biz__head {
+    grid-column: 1 / span 5;
+  }
+  .biz__sticky {
+    position: sticky;
+    top: 120px;
+  }
+  .biz__title {
+    margin-top: 1.5rem;
+    font-size: var(--fs-h2);
+    font-weight: 300;
+  }
+  .biz__body {
+    grid-column: 7 / -1;
+    display: grid;
+    gap: 1.75rem;
+  }
+  .biz__lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.3vw, 2.1rem);
+    font-weight: 300;
+    line-height: 1.25;
+  }
+  .ticks {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--hairline);
+  }
+  .ticks li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px dashed var(--hairline);
+    font-weight: 500;
+  }
+  .ticks__n {
+    color: var(--madder);
+    padding-top: 0.2rem;
+  }
+  .biz__img {
+    margin: 1.5rem 0 0;
+  }
+  .biz__img-frame {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .biz__img-frame img {
+    position: absolute;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+  }
+  .biz__img figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.62rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- quality ---------- */
+  .qual {
+    background: var(--ink);
+    color: rgba(245, 241, 234, 0.78);
+  }
+  .qual__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .qual__copy {
+    grid-column: 1 / span 5;
+    display: grid;
+    gap: 1.25rem;
+    font-size: var(--fs-lead);
+  }
+  .qual__title {
+    margin-block: 0.5rem 0.75rem;
+    font-size: clamp(2.4rem, 4.6vw, 4.25rem);
+    font-weight: 300;
+    color: var(--cream);
+  }
+  .qual__title :global(em) {
+    color: #aab4d6;
+  }
+  .qual__visual {
+    grid-column: 7 / -1;
+    position: relative;
+    padding-bottom: 4rem;
+  }
+  .qual__photo {
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+  }
+  .qual__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ticket {
+    position: absolute;
+    left: -3.5rem;
+    bottom: 0;
+    width: min(21rem, 80%);
+    padding: 2.25rem 1.6rem 1.6rem;
+    background: var(--paper);
+    color: var(--ink);
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+    transform: rotate(-3deg);
+  }
+  .ticket__hole {
+    position: absolute;
+    top: 0.85rem;
+    left: 50%;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-left: -0.4rem;
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+  }
+  .ticket__k {
+    font-size: 0.58rem;
+    color: var(--madder);
+  }
+  .ticket__h {
+    margin: 0.3rem 0 1rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+  }
+  .ticket__list {
+    display: grid;
+    gap: 0.7rem;
+    margin: 0;
+    padding: 0.9rem 0 0;
+    list-style: none;
+    border-top: 1px dashed var(--hairline);
+    font-size: 0.95rem;
+  }
+  .ticket__list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .ticket__box {
+    flex: none;
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .ticket__box rect {
+    stroke: var(--ink);
+    stroke-width: 1.2;
+  }
+  .ticket__box path {
+    stroke: var(--madder);
+    stroke-width: 2.4;
+    stroke-dasharray: 1;
+  }
+  .ticket__stamp {
+    position: absolute;
+    right: 1rem;
+    top: 1.6rem;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 2px solid var(--indigo);
+    border-radius: 50%;
+    color: var(--indigo);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.1;
+    transform: rotate(-14deg);
+    opacity: 0.85;
+  }
+  .ticket__stamp .mono {
+    font-style: normal;
+    font-size: 0.5rem;
+  }
+
+  /* ---------- focus index ---------- */
+  .focus {
+    position: relative;
+  }
+  .focus__title {
+    font-size: var(--fs-h2);
+    font-weight: 300;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+  .focus__list {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--ink);
+  }
+  .frow {
+    border-bottom: 1px solid var(--hairline);
+  }
+  .frow__link {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1.2fr) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block: clamp(1.25rem, 2.4vw, 2rem);
+    transition: color 0.4s var(--ease-out);
+  }
+  .frow__n {
+    color: var(--madder);
+  }
+  .frow__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4.2vw, 3.75rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .frow__text {
+    color: var(--ink-soft);
+    max-width: 26rem;
+  }
+  .frow__thumb {
+    display: none;
+  }
+  .frow :global(.frow__arrow) {
+    color: var(--indigo);
+    opacity: 0;
+    transform: translateX(-12px);
+    transition:
+      opacity 0.4s var(--ease-out),
+      transform 0.4s var(--ease-out);
+  }
+  .frow__link:hover .frow__name,
+  .frow__link:focus-visible .frow__name {
+    transform: translateX(1rem);
+    font-style: italic;
+    color: var(--indigo);
+  }
+  .frow__link:hover :global(.frow__arrow),
+  .frow__link:focus-visible :global(.frow__arrow) {
+    opacity: 1;
+    transform: none;
+  }
+  .preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 18rem;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    box-shadow: 0 30px 60px -20px rgba(23, 21, 18, 0.5);
+  }
+  .preview img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+  }
+
+  /* ---------- approach ---------- */
+  .appr__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .appr__title {
+    margin-top: 1.5rem;
+    font-size: var(--fs-h2);
+    font-weight: 300;
+  }
+  .pillars {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pillar {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1.1fr) minmax(0, 1.2fr) 11rem;
+    align-items: center;
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .pillar__stitch {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    top: 0.6rem;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--madder) 0 6px, transparent 6px 11px);
+    transform-origin: left;
+  }
+  .pillar__n {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--madder);
+  }
+  .pillar__name .mono {
+    font-size: 0.6rem;
+    color: var(--ink-soft);
+  }
+  .pillar__name h3 {
+    margin-top: 0.35rem;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+  }
+  .pillar__text {
+    color: var(--ink-soft);
+  }
+  .pillar__tag {
+    justify-self: end;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--sage);
+    background: var(--sage-tint);
+    font-size: 0.58rem;
+    text-align: center;
+  }
+
+  /* ---------- location ---------- */
+  .loc__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    align-items: end;
+    gap: 1rem 3rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .loc__head .label {
+    grid-column: 1 / -1;
+  }
+  .loc__title {
+    font-size: var(--fs-h2);
+    font-weight: 300;
+  }
+  .loc__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: stretch;
+  }
+  .loc__photo {
+    position: relative;
+    margin: 0;
+    min-height: 26rem;
+  }
+  .loc__frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .loc__frame img {
+    position: absolute;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+  }
+  .loc__tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  .label-card {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: var(--paper);
+    border: 1px solid var(--ink);
+  }
+  .label-card__top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--ink);
+    font-size: 0.62rem;
+  }
+  .label-card__name {
+    margin-top: 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    line-height: 1.1;
+  }
+  .label-card__addr {
+    margin-top: 0.6rem;
+    font-style: normal;
+    color: var(--ink-soft);
+  }
+  .label-card__rows {
+    display: grid;
+    gap: 0.55rem;
+    margin: 1.25rem 0 0;
+    padding-top: 1.1rem;
+    border-top: 1px dashed var(--hairline);
+  }
+  .label-card__rows div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1rem;
+  }
+  .label-card__rows dt {
+    font-size: 0.6rem;
+    color: var(--ink-soft);
+    padding-top: 0.25rem;
+  }
+  .label-card__rows dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  .label-card__rows a {
+    text-decoration: underline;
+    text-decoration-color: var(--hairline);
+    text-underline-offset: 3px;
+  }
+  .label-card__rows a:hover {
+    text-decoration-color: var(--madder);
+  }
+  .label-card__bars {
+    height: 2.5rem;
+    margin-top: 1.5rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--ink) 0 2px,
+      transparent 2px 4px,
+      var(--ink) 4px 5px,
+      transparent 5px 9px,
+      var(--ink) 9px 12px,
+      transparent 12px 14px
+    );
+    opacity: 0.85;
+  }
+  .label-card__actions {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1023px) {
+    .biz__head,
+    .biz__body,
+    .qual__copy,
+    .qual__visual {
+      grid-column: 1 / -1;
+    }
+    .biz__sticky {
+      position: static;
+    }
+    .qual__visual {
+      margin-top: 2rem;
+    }
+    .ticket {
+      left: 1rem;
+    }
+    .appr__head,
+    .loc__head,
+    .loc__grid {
+      grid-template-columns: 1fr;
+    }
+    .pillar {
+      grid-template-columns: 3.5rem minmax(0, 1fr);
+    }
+    .pillar__text,
+    .pillar__tag {
+      grid-column: 2;
+    }
+    .pillar__tag {
+      justify-self: start;
+    }
+  }
+  @media (max-width: 760px) {
+    .frow__link {
+      grid-template-columns: 2.25rem minmax(0, 1fr) 4.5rem;
+      gap: 0.4rem 1rem;
+    }
+    .frow__text {
+      grid-column: 2;
+      grid-row: 2;
+      font-size: 0.92rem;
+    }
+    .frow__thumb {
+      display: block;
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .frow__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .frow :global(.frow__arrow) {
+      display: none;
+    }
+    .ticket {
+      position: relative;
+      left: auto;
+      width: auto;
+      margin: -3rem 1rem 0;
+    }
+    .qual__visual {
+      padding-bottom: 0;
+    }
+    .loc__photo {
+      min-height: 18rem;
+    }
+    .label-card__rows div {
+      grid-template-columns: 5rem 1fr;
+    }
+    .band__cap .band__plate {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, MQ } from '../scripts/motion/core';
+
+  const mm = gsap.matchMedia();
+
+  mm.add(MQ.motion, () => {
+    // wide plate opens from an inset card to full bleed while the photo settles
+    const band = document.querySelector<HTMLElement>('[data-band]')!;
+    gsap
+      .timeline({ scrollTrigger: { trigger: band, start: 'top 85%', end: 'bottom 70%', scrub: 0.6 } })
+      .fromTo('[data-band-frame]', { clipPath: 'inset(0% 8% 0% 8%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none' }, 0)
+      .fromTo('[data-band-img]', { scale: 1.18 }, { scale: 1, ease: 'none' }, 0);
+
+    // QC ticket: swings in, ticks each check, then stamps
+    const qual = document.querySelector<HTMLElement>('[data-qual]')!;
+    const ticks = qual.querySelectorAll<SVGPathElement>('[data-check] path');
+    gsap.set(ticks, { strokeDashoffset: 1 });
+    gsap
+      .timeline({ scrollTrigger: { trigger: '[data-ticket]', start: 'top 80%', once: true } })
+      .from('[data-ticket]', { y: 80, rotate: 6, autoAlpha: 0, duration: 1.1, ease: 'expo.out' })
+      .to(ticks, { strokeDashoffset: 0, duration: 0.35, ease: 'power2.out', stagger: 0.28 }, '-=0.3')
+      .from('[data-stamp]', { scale: 2.4, autoAlpha: 0, rotate: -40, duration: 0.5, ease: 'back.out(2.2)' }, '+=0.05');
+
+    // pillars: dashed stitch runs across, then content rises
+    gsap.utils.toArray<HTMLElement>('[data-pillar]').forEach((p) => {
+      gsap
+        .timeline({ scrollTrigger: { trigger: p, start: 'top 88%', once: true } })
+        .from(p, { y: 50, autoAlpha: 0, duration: 1, ease: 'expo.out' })
+        .from(p.querySelector('[data-pillar-stitch]'), { scaleX: 0, duration: 1.2, ease: 'expo.inOut' }, 0.1);
+    });
+
+    // focus rows slide in
+    gsap.from('[data-frow]', {
+      y: 40,
+      autoAlpha: 0,
+      duration: 1,
+      ease: 'expo.out',
+      stagger: 0.07,
+      scrollTrigger: { trigger: '[data-focus-list]', start: 'top 85%', once: true },
+    });
+  });
+
+  // cursor-following preview for the product focus list (mouse only)
+  mm.add(MQ.finePointer, () => {
+    const list = document.querySelector<HTMLElement>('[data-focus-list]')!;
+    const preview = document.querySelector<HTMLElement>('[data-preview]')!;
+    const imgs = Array.from(preview.querySelectorAll<HTMLElement>('[data-preview-img]'));
+    const xTo = gsap.quickTo(preview, 'x', { duration: 0.6, ease: 'power3.out' });
+    const yTo = gsap.quickTo(preview, 'y', { duration: 0.6, ease: 'power3.out' });
+    const rTo = gsap.quickTo(preview, 'rotate', { duration: 0.8, ease: 'power3.out' });
+    let lastX = 0;
+    let active = -1;
+    gsap.set(preview, { xPercent: 0, yPercent: -50, scale: 0.6, autoAlpha: 0 });
+
+    const move = (e: PointerEvent) => {
+      xTo(e.clientX + 60);
+      yTo(e.clientY);
+      rTo(gsap.utils.clamp(-8, 8, (e.clientX - lastX) * 0.6));
+      lastX = e.clientX;
+    };
+    const enterRow = (i: number) => {
+      if (i === active) return;
+      imgs.forEach((im, j) => gsap.to(im, { opacity: j === i ? 1 : 0, scale: j === i ? 1 : 1.08, duration: 0.45, ease: 'power2.out' }));
+      active = i;
+    };
+    const show = (e: PointerEvent) => {
+      gsap.set(preview, { x: e.clientX + 60, y: e.clientY });
+      gsap.to(preview, { scale: 1, autoAlpha: 1, duration: 0.45, ease: 'expo.out' });
+    };
+    const hide = () => {
+      gsap.to(preview, { scale: 0.6, autoAlpha: 0, duration: 0.35, ease: 'power2.in' });
+      active = -1;
+    };
+
+    const rows = Array.from(list.querySelectorAll<HTMLElement>('[data-frow]'));
+    const rowHandlers = rows.map((row, i) => {
+      const h = () => enterRow(i);
+      row.addEventListener('pointerenter', h);
+      return () => row.removeEventListener('pointerenter', h);
+    });
+    list.addEventListener('pointerenter', show);
+    list.addEventListener('pointerleave', hide);
+    list.addEventListener('pointermove', move);
+    return () => {
+      rowHandlers.forEach((off) => off());
+      list.removeEventListener('pointerenter', show);
+      list.removeEventListener('pointerleave', hide);
+      list.removeEventListener('pointermove', move);
+    };
+  });
+</script>

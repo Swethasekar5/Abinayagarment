@@ -1,0 +1,16 @@
+{
+  "desktop": {
+    "count": 76,
+    "width": 1440,
+    "height": 810,
+    "path": "/hero/seq/f_{i}.avif",
+    "pad": 3
+  },
+  "mobile": {
+    "count": 51,
+    "width": 720,
+    "height": 720,
+    "path": "/hero/seq-m/f_{i}.avif",
+    "pad": 3
+  }
+}

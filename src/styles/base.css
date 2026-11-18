@@ -1,0 +1,308 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* subtle woven paper texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(23, 21, 18, 0.045) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 350;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+
+em,
+.em {
+  font-style: italic;
+  color: var(--indigo);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--indigo);
+  color: var(--cream);
+}
+
+/* ---------- layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- type helpers ---------- */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+/* "(01) — WHY US" woven-label section marker */
+.label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.label::before {
+  content: '';
+  flex: none;
+  width: 22px;
+  height: 7px;
+  margin-top: 0.35em;
+  background:
+    linear-gradient(var(--madder), var(--madder)) 0 0 / 7px 7px no-repeat,
+    linear-gradient(var(--madder), var(--madder)) 11px 0 / 7px 7px no-repeat;
+}
+.label--light {
+  color: rgba(245, 241, 234, 0.7);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.section-head .mono {
+  color: var(--ink-soft);
+  text-align: right;
+}
+@media (max-width: 560px) {
+  .section-head {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .section-head .mono {
+    text-align: left;
+  }
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  --magnet-x: 0px;
+  --magnet-y: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0 1.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out);
+}
+.btn .arrow {
+  transition: transform 0.35s var(--ease-out);
+}
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+.btn--primary {
+  background: var(--indigo);
+  color: var(--cream);
+}
+.btn--primary:hover {
+  background: var(--indigo-deep);
+}
+.btn--outline {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn--outline:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn--ink {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn--ink svg {
+  color: var(--whatsapp);
+}
+.btn--ink:hover {
+  background: #2a2722;
+}
+.btn--cream {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* ---------- garment spec tag ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.8rem;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
+  box-shadow: 0 6px 20px rgba(23, 21, 18, 0.08);
+}
+.tag::before {
+  /* punched hole */
+  content: '';
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+
+/* stitched underline link */
+.stitch-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  padding-bottom: 0.4rem;
+  background: repeating-linear-gradient(90deg, var(--madder) 0 6px, transparent 6px 10px) bottom / 100% 1px no-repeat;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* dashed thread as CSS (vertical) */
+.thread-v {
+  width: 2px;
+  background: repeating-linear-gradient(180deg, var(--madder) 0 8px, transparent 8px 14px);
+}
+
+/* hero elements start hidden only when JS motion is active (see SiteLayout head script) */
+html.motion [data-hero-in],
+html.motion [data-page-in],
+html.motion [data-split] {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+body {
+  position: relative;
+}

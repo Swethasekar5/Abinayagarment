@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abinaya Garment Shop — Brand Style Tile &amp; Design System</title>
+<!-- Google Fonts: Fraunces, Manrope, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F5F1EA',
+            paper: '#FBF9F5',
+            ink: '#171512',
+            'ink-soft': '#5A554D',
+            sage: '#8B9D6F',
+            'sage-tint': '#E4E8DA',
+            indigo: '#26335F',
+            'madder-red': '#B5452B',
+            hairline: '#DDD6CA',
+            'whatsapp-green': '#25D366'
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            body: ['Manrope', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F5F1EA;
+      color: #171512;
+      font-family: 'Manrope', system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Woven cotton subtle texture simulation */
+    .woven-texture {
+      background-color: #F5F1EA;
+      background-image: radial-gradient(rgba(23, 21, 18, 0.03) 1px, transparent 0);
+      background-size: 8px 8px;
+    }
+
+    /* Dashed stitched thread line in Madder Red */
+    .stitched-line-vertical {
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #B5452B,
+        #B5452B 8px,
+        transparent 8px,
+        transparent 14px
+      );
+      width: 2px;
+    }
+
+    .stitched-line-horizontal {
+      background-image: repeating-linear-gradient(
+        to right,
+        #B5452B,
+        #B5452B 8px,
+        transparent 8px,
+        transparent 14px
+      );
+      height: 2px;
+    }
+
+    /* Garment Spec Tag with punched hole */
+    .garment-spec-tag {
+      position: relative;
+      background: #FBF9F5;
+      border: 1px solid #171512;
+      padding: 6px 14px 6px 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 1px 1px 0px rgba(23, 21, 18, 0.15);
+    }
+    .garment-spec-tag::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #F5F1EA;
+      border: 1px solid #5A554D;
+    }
+
+    /* Woven style section indicator */
+    .woven-section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5A554D;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .woven-section-label::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #B5452B;
+    }
+
+    /* Subtle industrial ruler lines */
+    .ruler-border {
+      border-bottom: 1px solid #DDD6CA;
+    }
+  </style>
+<meta content="web_standard" name="shell-type"/></head>
+<body class="woven-texture min-h-screen text-ink">
+<!-- TOP BAR: Brand Identity & Style Tile Metainfo -->
+<header class="border-b border-hairline bg-paper/90 sticky top-0 z-50 backdrop-blur-sm">
+<div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<img alt="Abinaya Garments Tiruppur Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAONxPzOFPigFg9MYpgZ3UEZZ5agpoKtEy1YP1_kbCYqkZ27ZBwPClMMZjyUwDax6VbanhDGxbQpVIijnvI2Wm0zC_uJHdFdDSqDOZ2Jd94NLpo3sk07NPK9yPDMHDegfYlum6LrSa9TUphzJs95VEhIbn6ww0-hoCKrVxwGMAk_QnFsIEKqnEorDJziJJrhnj4gH3YlswF7F7C4Bg9iMjhFdVKSgD8uKyHysKYJFWO"/>
+<div class="hidden md:block h-6 w-[1px] bg-hairline"></div>
+<div class="hidden md:flex flex-col">
+<span class="font-mono text-[11px] uppercase tracking-wider text-ink-soft">Style Tile &amp; Design Spec</span>
+<span class="font-mono text-[10px] text-sage font-medium tracking-tight">TIRUPPUR B2B TEXTILE HUB · VER 1.0</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="garment-spec-tag">
+          SPEC: 100% COMBED COTTON · 180-260 GSM
+        </span>
+<div class="hidden sm:flex items-center gap-2 border border-hairline px-3 py-1 bg-cream text-[11px] font-mono text-ink-soft">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-pulse"></span>
+          ACTIVE MILL PRODUCTION
+        </div>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER WITH SIGNATURE VERTICAL MADDER RED STITCHED THREAD -->
+<main class="max-w-[1280px] mx-auto px-6 py-12 relative"><div class="flex flex-col w-full">
+<!-- EDITORIAL ARCHIVE HERO -->
+<section class="relative mb-12 sm:mb-16">
+<!-- Top Register / Ledger Indices -->
+<div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-hairline">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-madder-red inline-block"></span>
+<span class="font-mono text-label-spec uppercase tracking-widest text-ink-soft">
+          (GALLERY) / ARCHIVE &amp; WORKSHOP DOCUMENTARY · TIRUPPUR UNIT 01 &amp; 02
+        </span>
+</div>
+<div class="flex items-center gap-4 text-ink-soft font-mono text-label-tag">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-madder-red"></span>
+          LEDGER LOT NO: TN-TP-7429
+        </span>
+<span class="hidden md:inline text-hairline">/</span>
+<span class="hidden md:inline">SYSTEM STATUS: FULL ARCHIVE CATALOGUED</span>
+</div>
+</div>
+<!-- Monumental Editorial Typography -->
+<div class="pt-8 sm:pt-12 pb-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+<div class="lg:col-span-8">
+<p class="font-mono text-label-tag tracking-[0.2em] text-ink-soft uppercase mb-3">
+          Photographic Register · Mill Floor to Logistics
+        </p>
+<h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight text-ink font-light leading-[0.95]">
+          Inside <em class="italic font-normal text-indigo">Abinaya</em>.
+        </h1>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end space-y-4 lg:pl-6 border-l border-hairline/60">
+<p class="font-mono text-body-sm text-ink-soft leading-relaxed">
+          [18] DOCUMENTED PLATES · 35MM INDUSTRIAL JOURNAL &amp; PRODUCT SPECIMEN SHEETS. VISUAL CHRONICLE OF KNITTING, REACTIVE DYEING, METRIC CUT-SEW, AND DOMESTIC DISPATCH.
+        </p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="garment-spec-tag text-[10px] py-1 px-3">
+            LOC: TIRUPPUR TEXTILE CLUSTER
+          </span>
+<span class="garment-spec-tag text-[10px] py-1 px-3">
+            CAM: 35MM LEICA ARCHIVE
+          </span>
+</div>
+</div>
+</div>
+<!-- Madder Red Basting Stitch Line -->
+<div class="stitched-line-horizontal w-full my-6"></div>
+<!-- Metainfo Ribbon -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-3 bg-paper px-4 border border-hairline text-ink-soft font-mono text-[11px]">
+<div>
+<span class="text-ink font-semibold">SUBJECT MATTERS:</span>
+<p class="truncate">CIRCULAR LOOMS, BIO-DYE, FINISHED BLANKS</p>
+</div>
+<div>
+<span class="text-ink font-semibold">PRODUCTION CYCLE:</span>
+<p>180-260 GSM COMBED COTTON</p>
+</div>
+<div>
+<span class="text-ink font-semibold">FACILITY CERT:</span>
+<p>OEKO-TEX 100 · GOTS CERTIFIED</p>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-3">
+<button class="inline-flex items-center gap-1.5 bg-indigo text-paper px-3 py-1 font-mono text-[10px] uppercase tracking-wider hover:bg-ink transition-colors" id="toggle-lightbox-demo-btn">
+<span class="material-symbols-outlined text-[13px]">aspect_ratio</span>
+          Preview Lightbox
+        </button>
+</div>
+</div>
+</section>
+<!-- FILTER CONTROLS & ARCHIVE STATUS BAR -->
+<section class="sticky top-[73px] z-30 bg-cream/95 backdrop-blur-sm border-y border-hairline py-3.5 mb-10 transition-all">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<!-- Tag Chips Filter -->
+<div class="flex flex-wrap items-center gap-1.5" id="filter-container">
+<button class="filter-chip active-filter px-3.5 py-1.5 text-xs font-mono tracking-wider transition-all bg-indigo text-cream border border-indigo" data-filter="all">
+          ALL [18]
+        </button>
+<button class="filter-chip px-3.5 py-1.5 text-xs font-mono tracking-wider transition-all bg-paper text-ink hover:border-ink border border-hairline" data-filter="fabric">
+          FABRIC [6]
+        </button>
+<button class="filter-chip px-3.5 py-1.5 text-xs font-mono tracking-wider transition-all bg-paper text-ink hover:border-ink border border-hairline" data-filter="stitching">
+          STITCHING [4]
+        </button>
+<button class="filter-chip px-3.5 py-1.5 text-xs font-mono tracking-wider transition-all bg-paper text-ink hover:border-ink border border-hairline" data-filter="collections">
+          COLLECTIONS [4]
+        </button>
+<button class="filter-chip px-3.5 py-1.5 text-xs font-mono tracking-wider transition-all bg-paper text-ink hover:border-ink border border-hairline" data-filter="logistics">
+          LOGISTICS [4]
+        </button>
+</div>
+<!-- Right Metadata Modes -->
+<div class="flex items-center justify-between sm:justify-end gap-4 font-mono text-[11px] text-ink-soft">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-sage inline-block"></span>
+<span>CURATION: CHRONOLOGICAL LOTS</span>
+</div>
+<div class="hidden md:flex items-center gap-1 text-ink border border-hairline px-2 py-1 bg-paper">
+<span class="material-symbols-outlined text-xs">view_quilt</span>
+<span>MASONRY SPEC</span>
+</div>
+</div>
+</div>
+</section>
+<!-- PHOTOGRAPHIC MASONRY GRID (3 COLUMNS DESKTOP) -->
+<section class="w-full">
+<div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery-masonry">
+<!-- PLATE 01 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="fabric" data-index="0">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Bolt Storage: Combed single jersey and interlock fabric rolls on heavy teak shelving in the mill" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02] filter contrast-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrAnHZh6ueVqIO_tp_-tsYc6fo60UhiYQAbpBCjUWAogauQDgogTU_qoEKCzrgi-6k_g5Y6LHA4bmj9OlRlBxuM8GF-u6iId3SeG4kTvGpEbtC8fmO9_mBtqYji869CCgJl9fj6GGN4f9NQ5dwRd6yJI9TBEcGrq6DJDctD98aUWZdHjMsUCjPeezohQmHYd-8zIJYlezU2HPdrjn0_cWkAT8BeElXe160mQh5dFP57YKA"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 01
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">BOLT STORAGE</span>
+<span class="text-sage font-medium">[LOT TN-04]</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Combed single jersey &amp; interlock knit rolls seasoned on kiln-dried teak racks.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>SPEC: 180 - 240 GSM</span>
+<span>TIRUPPUR UNIT 01</span>
+</div>
+</div>
+</article>
+<!-- PLATE 02 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="stitching" data-index="1">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Quality control inspection: measuring collar rib to shoulder tolerance on cutting table" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrDciJky18oLXsAC7ZEVs5rqWEP__Lcbn6HkrfjTiuxq87Dd3ppmERhZIBaq1SBpO5A_6xZq45_grZsdJpt0Rj_9JrwfPZAaON19EPwF_OQDz8rNVgORHIWV2M1Fk7lvSvZddgZtH_KDh7-kxMWZhzz34qV-hdojFocuC3mH81P2YN6-K_qaQtmGVroE4j9VBmIq94lp9ansXyx0gradXQtKQtcmzNWmd6RZ2MXw9l_Mqw"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 02
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">QA BENCH INSPECTION</span>
+<span class="text-madder-red font-medium">TOL: ±0.5CM</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Shoulder drop and 1x1 elastane rib tension calibration under industrial daylight.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>GAUGE: 24GG SINGLE JERSEY</span>
+<span>PATTERN AUDIT</span>
+</div>
+</div>
+</article>
+<!-- PLATE 03 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="fabric" data-index="2">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Factory floor overview showing daylight inspection runners and fabric cutting bays" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrCbyDA2vYJskxsvpXOeE7tWXnVDnMEORvQE8U5WTzcwT5uwTb8G8wBuhFQWZBAfazTUuKykfw1hDlb1nFJ3xlsC0LsSDKByzJE0FQHR8yu9z-5CQheYNdmaLxQFCzAeazbYUqK_jrdXhYakDoiQeYGSPKuYX_lkmJ1NJREMtci9MW5PfX41sR-DixT4ZmDtd1qpomdx-f8LjBT6a-ikRlbdcZDoEaZR79XQQiX5bgL2"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 03
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">WEAVING &amp; CUTTING BAY</span>
+<span class="text-indigo font-medium">BAY 03</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Central floor assembly with dual inspection backlights for defect pinpointing.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>CAPACITY: 12,000 PCS/DAY</span>
+<span>UNIT 02</span>
+</div>
+</div>
+</article>
+<!-- PLATE 04 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="logistics" data-index="3">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Private label custom packaging with unbleached kraft box, tissue wrap and damask woven neck label" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrCinBVIeYYRztXmk8XZwz8P9RxwXQCAsabhiAgclEp8tRO_HaUHmBDqoKlvB1wxFWfoP20w-0ywqlB5TWPG0ndB1iSjkn6-3XK4OY8bQQW6n__eSOiU_egyJlNsmwgoTWfbvsVEhowKNke0UbsTbW2c2MpEesI_F6PmNyTfVIsLvG0q2qKuhztiQxaZ-h4qvJIgSCFcp_cPy0h_rfurd1cPQIZek60ooydxUk0tDR0Q"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 04
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">PRIVATE LABEL PACK</span>
+<span class="text-sage font-medium">OEM RUN</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Unbleached recycled kraft unboxing kit with woven damask tags &amp; botanical wrap.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>FINISH: PLASTIC-FREE SHIP</span>
+<span>CUSTOM SPECS</span>
+</div>
+</div>
+</article>
+<!-- PLATE 05 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="collections" data-index="4">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Stacks of corporate indigo polo shirts with precision embroidered chest crest" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrDi3SwrYAJh0EGx8gyaaJOrcIADWjn6JtMVlXOWY9oFuItxFXrn-I-TG-cnDOY_8iKtIIX1ScL_DoCFBOoaBMp0u8Akm-Fxl2zQc3XBuWeLEsMOk4pJc3CsBmzLBhFSo6E9LwZ9gZgqgmtBKwmglT5t0CNT9wyHIH13PuHRrGBbDT3mLrEVVUvfsYthlL9RrMORPUU6P8i-9ner328iXUd8BLKg-yDXZwHVe-8lNjJS"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 05
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">HONEYCOMB PIQUÉ RUN</span>
+<span class="text-indigo font-medium">220 GSM</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Indigo melange corporate batch with Japanese Tajima multi-head chest embroidery.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>COLOR: INDIGO HEATHER</span>
+<span>MOQ: 300 PCS</span>
+</div>
+</div>
+</article>
+<!-- PLATE 06 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="logistics" data-index="5">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Wholesale warehouse manager auditing freight dispatch documents among stacked cartons" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrDPvPsMPX1iT-7VXsN04q-ny8ZdW3CNyI6SLlr_RPBPImKHc-7esHQ4WLdoHWXY3gkoFxYunRi537Gg_nE5-tDFco-Iok6lWrTAAb4srAEx7N4pE0gfwq3ZJiN6cz3jRrT-DN9X2WcW3ZHm5YD7eMr9Z782XgMMM_ih6MihneHWDtGYWIbo6u7sF-MgP8el8CE2wE4saP8IvnX3R_1yX3sPf715As6Z0kkZeTrSo5r_Aw"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 06
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">DISPATCH AUDIT</span>
+<span class="text-ink font-medium">B2B CARGO</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Cross-checking invoice manifest &amp; barcode consignment stickers for road transport.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>ROUTE: TIRUPPUR → MUMBAI</span>
+<span>CONSIGNMENT #810</span>
+</div>
+</div>
+</article>
+<!-- PLATE 07 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="collections" data-index="6">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Boutique display table featuring stacked organic cotton t-shirts in earthy terracotta and indigo" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrAo3mPYJ31qrkbVOTm0BL7HJo9xV8oLVSXdM01Wb7HjgJcnqeONnauPy5hfAIoPaCJpjdZaK-D56bAtuAYccTibi1yv93b5XjxmVgu6as1KNmqT1QIstVcmWy01swDxYVtrj78-Bq0_4Dfuqcgxmvp90KoUplKcmM5wgXW22ySropkAf31fi8vb6c5-0D6-R1P-JZLZLyXdLFpN4Yq-tN1cBFvrCa25K2qUOPhhXI-9AQ"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 07
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">RETAIL SHELF LIFE</span>
+<span class="text-sage font-medium">BIO-WASH</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Client showroom in Bangalore stocking 180 GSM natural terracotta and madder blanks.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>SHRINKAGE: &lt; 2% TESTED</span>
+<span>BOUTIQUE READY</span>
+</div>
+</div>
+</article>
+<!-- PLATE 08 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="fabric" data-index="7">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Terrot high precision circular knitting loom feeding yarn into single jersey tube" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrCHHq1OIIV9Qelz0bfj442_6igOCsaf9rosj4i3uQeraEfV7Ka0oOGGv9A_9k50T4UCVU1-g6-YI8XQCIb_F0nGYcihlCdh15qmqzE3zHXdV6an6Ar6sBSsDJfvRNz_7szRWbojyhr_RAJ5oX8kgB__KuFvIeo-8_ASMSetE1pQSHcbO9OF7ggnKGYObDnmGdywqpLA1meCukWzLauKkwvDbK70WtQF9xgqRyzYtk74UA"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 08
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">CIRCULAR KNITTING LOOM</span>
+<span class="text-madder-red font-medium">30" CYLINDER</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Multi-feeder circular frame producing seamless tubular jersey at 28 RPM.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>YARN: 34S COMBED RING-SPUN</span>
+<span>ZERO SPIRALITY</span>
+</div>
+</div>
+</article>
+<!-- PLATE 09 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="stitching" data-index="8">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Close-up of experienced seamstress operating industrial overlock sewing machine" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrCaVVJdz5MICJytYryUCGRRLjvexEx2qZ5zHXh_ejyZVPgHNu_I9F4M0LtosOd7BVwtpT-eixPWoSS_8c3FpPAray2t4k8TGtyNhDq81Cqd5rOKy_nNe-VNSqA2AvRYpgx1XU6FDm02IeOJe620K1ogvU88aizleYgzC468cpVK5Avryojes6wD1ox9VeoWNMzlHSXw-U8FbwCzyW5rcZDTvhADIdybj2m5Vm5em2AnFA"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 09
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">5-THREAD OVERLOCK</span>
+<span class="text-indigo font-medium">JUKI SYSTEM</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Double chainstitch seam reinforcement on heavy fleece crewneck armholes.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>SPI: 12 STITCHES/INCH</span>
+<span>CORE POLY THREAD</span>
+</div>
+</div>
+</article>
+<!-- PLATE 10 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="fabric" data-index="9">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Stainless steel soft-flow fabric dyeing vats with steam and rich indigo liquor" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrC34yMpz6yT8EmpWsBVadHdarW5e1SZvQ2HldkYhvB4NI4Ec_GQ93y_mv-GnP1aNUt5JklkKHgEhzkMXEpUV7J0LfqPZuT0ZJ9C-Li0Li2LurLesnhs3uD-m2hOweHOEROuLDHWSX5MKA_dS2eW-fajdYAZjF61pSHDrKMyQpV-V8e3Oa7E17qFHdfVR2pb_9jlvQMDKWgqPFWlHpvTOMLaiftHp9x1aVoRYYsE9lWhqw"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 10
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">BIO-WASH DYE HOUSE</span>
+<span class="text-indigo font-medium">REACTIVE DYE</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Low liquor ratio soft-flow dyeing vessel running GOTS compliant indigo dyes.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>TEMP: 80°C FIXATION</span>
+<span>WATER EFFLUENT ZLD</span>
+</div>
+</div>
+</article>
+<!-- PLATE 11 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="collections" data-index="10">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Charcoal drop shoulder heavy streetwear t-shirt on cream handmade paper" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrA2_CIKHcVJtyLHAay3m1hReYyE8Iv37KzYGoKMZ-6gPqBTofGrDucMR7MDQB4cx0TwOg9pEbslejeuI4CyBevgMJs6mC589WsA6s11k2mSr5l0sv90yUMd7azN47xDrjdas-pDXiPGmYkj1l2QqZnuzdj_8rgt08CEtoBlQvnTFnfjxGelRiHtEi1G0i6pAONvOsiFFDRmWJorPcK3qBce2OoGCGFMyJVZaEwO40m-9Q"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 11
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">BOX-FIT STREETWEAR BLANK</span>
+<span class="text-ink font-medium">260 GSM</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Dense French terry / heavy interlock silhouette engineered for vintage screen prints.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>COLOR: CARBON / VINTAGE WASH</span>
+<span>AVAILABLE BLANK</span>
+</div>
+</div>
+</article>
+<!-- PLATE 12 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="collections" data-index="11">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Stack of folded pique polo shirts on a wall-mounted wooden hanger" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrCaXV4rZyFt1qTxsXRAmC3lmQlA3SKEwTt5OWDEmr3qWJsEpQi4gDATUVbkJ-L9Q0kMG_0JiDv2GMjEi4HZ_VfOUi6PNyKMtjQVsoVh-0sJk1x2OAUnhenIt1o91pt-bgzCun44r5XSr0kYLuOo-gBm38fQAfrBHY-SgxgKGqNOZem5z_7msmrAK206mWuvwhx93cwpgPHRySAE5B0GBYJmsCK3etPMNIsaeM1Crp9qSQ"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 12
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">CLASSIC PIQUÉ COLORWAY</span>
+<span class="text-sage font-medium">6 SHADES</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Flat-knit collar &amp; sleeve cuffs matched with natural mother-of-pearl cross-stitched buttons.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>WEAVE: 100% COMBED PIQUÉ</span>
+<span>STOCK SERVICE</span>
+</div>
+</div>
+</article>
+<!-- PLATE 13 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="collections" data-index="12">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Flatlay of organic baby bodysuits and accessories in muted sage, ecru and soft dusty pink" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrCB-A5dVDx2xpjGusiKI5MKKmG9-rQmM-6vKxnQYl8pFUuDPWbZT6_6nyRNzTCiO2a4LKeMg2eS2R40wEy51Z9ncCmczid89Zv6XHF7oqbiOaYFTairrXyHZm2XT8kwJEvSa8L8-kQlYsG-bzIU-vx2mjINKMi_UwR3CLlrVMc0-S7CcOoa1w2gJMmfkujuZlFwaQV15ib4okWwHqVSuqFRU_9CGyT_ULLnpkndfw0K"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 13
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">INFANT ORGANIC CAPSULE</span>
+<span class="text-sage font-medium">GOTS BABY</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Hypoallergenic 200 GSM rib knits with lead &amp; nickel-free Japanese YKK snaps.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>FABRIC: 100% ORGANIC COTTON</span>
+<span>SAFETY: EN71-3 PASS</span>
+</div>
+</div>
+</article>
+<!-- PLATE 14 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="fabric" data-index="13">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Folded stack of cotton t-shirts in unbleached cream, sage green, indigo and charcoal" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrA0ydSiXy5BBKy0tPP-3K6Xr4DgpOD5sFqxVfJGJ4hfAYIJ9hYmEuLRYHRXzqzHk_5lMMWgxl2HUX2MQWlgGyOiIlmdkB7GpG4-rcNYYGMEPbVkNuGggjD1lnyjRMxHTtCl-H6k2ho6Avhu0YEcJe3guOlUMhDuBvL00tpWXxydwHo8tIryTXTPoIMLHudPc0CJzX7S7Mm8Jl2V1SaGj-BkSCVEhC5euRQQDP4IpIEGIA"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 14
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">EARTH TONE PALETTE</span>
+<span class="text-ink font-medium">SWATCH LOT 88</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Silicon enzyme finish for silky handfeel and consistent garment wash drape.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>DYE: COLORFAST GRADE 4.5</span>
+<span>READY GOODS</span>
+</div>
+</div>
+</article>
+<!-- PLATE 15 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="logistics" data-index="14">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Pallet of heavy duty corrugated export boxes packed and stamped ready for overseas transport" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrB5fA4K4w_m6UJly0K81uCfGzrSlFObPBNwwu43dT_gxeIPaLnjNZBtZrzmxhs1V0IAN64EAFS_13dBCTvXSNGWYyetE7OfZAm65zrkvZdOjlREeJYCGvwlzf9pji3_YKl2Raj03nqTsMPp9cZxh7JFG3WHev3mV0d0nSiwhmxw-bcbSmwSIOVgHI3CIZL4BH5aY3hMjWhapWu9tk9gVj7YkSoOck8HWyL1TltH-hejzA"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 15
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">FREIGHT PACKAGING SPEC</span>
+<span class="text-madder-red font-medium">5-PLY KRAFT</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Moisture barrier lined pallets strapped with composite bands for containerization.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>LOAD: 72 PCS / CARTON</span>
+<span>PORT: CHENNAI SEA PORT</span>
+</div>
+</div>
+</article>
+<!-- PLATE 16 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="stitching" data-index="15">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Master presser carefully folding a white cotton garment on an antique solid wood table" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrAuVA9d5O7Hwz4xkiDoQ2DOTgoNGt4KkxFmcY9NI1is-XB3B9VG_Yam_EiJo22tcH0F4NTSkf5V4Zccn6at_MXnfPgWvyfl_urmmLSVDHC0moS45ZrloprL8z3EuZXNU4rJBph5ZM4fsPO_QV0ijsuHnaeATrokj9kfEXLCB0lCUqRB0VY9MbsBj3qI5SNTguoBRqkc-HhcZVrFKpdRxS-7Xl9ECOAMHdhWe2SYxivZmw"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 16
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">HAND FINISHING TABLE</span>
+<span class="text-indigo font-medium">STAGE 07</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Vacuum steam vacuum board iron pass followed by manual card insert folding.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>PACK: BIODEGRADABLE POLY</span>
+<span>STEAM TEMP: 130°C</span>
+</div>
+</div>
+</article>
+<!-- PLATE 17 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="fabric" data-index="16">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Creel stand loaded with colorful spools of yarn feeding into the knitting frame" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrCt70Db_lu7fLY9p2PrvzX4ukjg39gRAefLs0k61AQNMXK15s26qFKaFMwEAezNkloiBEq0-gaGkfGKAfZCuaUNOwcRa2ihYtF7i3wkuIUTjo71lPJO0V2NlPwu9qth_ZCQVbaQMl5aiMBfRVQGi4ZOWAe3EMY-fUPfxv9fzo17-ZbapFd59zlhULizsigqtoaEKaKxZMJtD-Xg5s0ljBaLycojZCycUNcnI58o14QL_Q"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 17
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">CREEL CONE FEEDERS</span>
+<span class="text-sage font-medium">30S RING-SPUN</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Tension-controlled porcelain eyelets minimizing lint accumulation and yarn snags.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>STAPLE: 32MM EXTRA LONG</span>
+<span>SPINNING: COIMBATORE MILLS</span>
+</div>
+</div>
+</article>
+<!-- PLATE 18 -->
+<article class="gallery-card group break-inside-avoid bg-paper border border-hairline p-3 transition-all duration-300 hover:shadow-lg cursor-pointer" data-category="fabric" data-index="17">
+<div class="relative overflow-hidden bg-cream border border-hairline/80">
+<img alt="Macro texture of folded natural combed cotton tees showing clean rib collar and fine weave" class="w-full h-auto object-cover transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrBPnE-LxSmCpwAIUuhdAZBqFkq4Pie0WVeje75SPqx5Fy8yK6pU8f2mdiiEtHu1MB-yJ3vW9RhvxywD6_8UKBjcTeQsKYMlq-63NUiOvKKTavx0jzN5TkyrEN8cG2mGLUMBCv_A6krllgj1hqg1y_MdGZzE8QKBqP_xZklGVYjwqTV0XUSeheRBDo54QHXIMEC_ogLE3QWqSLHeUmiq_On1Y6k36uPOwGKbsgoYTqAU"/>
+<div class="absolute top-2.5 left-2.5 bg-ink/90 text-paper font-mono text-[10px] px-2 py-0.5 tracking-widest uppercase">
+            PLATE 18
+          </div>
+<div class="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-cream/90 text-ink px-2 py-1 flex items-center gap-1 font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs">zoom_in</span> EXPAND
+          </div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-hairline font-mono flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px]">
+<span class="font-semibold text-ink uppercase tracking-wider">FABRIC SURFACE GRAIN</span>
+<span class="text-ink font-medium">MACRO 1:1</span>
+</div>
+<p class="text-[11px] text-ink-soft leading-snug">
+            Zero fuzz, compact spun knit surface offering optimum ink adhesion for discharge prints.
+          </p>
+<div class="flex items-center justify-between text-[10px] text-ink-soft/75 pt-1 border-t border-hairline/40">
+<span>PILLING GRADE: 4.5 OF 5</span>
+<span>WEIGHT: 200 GSM</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- RECTO-VERSO SPECIFICATION FOOTNOTE & B2B CALL TO ACTION -->
+<section class="mt-16 sm:mt-24 pt-8 border-t border-hairline">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-paper p-8 border border-hairline relative">
+<div class="absolute -top-3 left-6 bg-cream border border-hairline px-3 py-0.5 font-mono text-[10px] tracking-wider text-ink-soft uppercase">
+        ARCHIVAL FACILITY LOGISTICS · TIRUPPUR
+      </div>
+<div class="lg:col-span-8 flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-madder-red"></span>
+<span class="font-mono text-xs uppercase tracking-widest text-ink-soft">COMMERCIAL DIRECTORY &amp; WHOLESALE DISPATCH</span>
+</div>
+<h3 class="font-display text-2xl sm:text-3xl text-ink font-normal leading-tight">
+          Commission a dedicated production run or request fabric swatch cards.
+        </h3>
+<p class="font-mono text-body-sm text-ink-soft leading-relaxed max-w-2xl">
+          We engineer cotton blanks and custom apparel lines for independent apparel labels, corporate uniforms, and international distributors. Typical production turnaround: 14 business days from lab-dip approval.
+        </p>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
+<a class="inline-flex items-center justify-center gap-2 bg-whatsapp-green text-white font-mono text-xs font-semibold px-5 py-3 hover:opacity-95 transition-all text-center" href="https://wa.me/919876543210?text=Hello%20Abinaya%20Garments,%20I%20am%20interested%20in%20commissioning%20a%20bulk%20cotton%20production%20run" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-base">chat</span>
+          REQUEST BULK QUOTE (MOQ 300 PCS)
+        </a>
+<button class="inline-flex items-center justify-center gap-2 bg-paper text-ink border border-ink font-mono text-xs font-medium px-5 py-3 hover:bg-cream transition-all text-center" id="open-swatch-modal">
+<span class="material-symbols-outlined text-base">palette</span>
+          ORDER SWATCH LEDGER (₹350)
+        </button>
+</div>
+</div>
+</section>
+<!-- ARCHIVE TECHNICAL FOOTER LEDGER -->
+<footer class="mt-12 py-6 border-t border-hairline flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-ink-soft">
+<div>
+      © ABINAYA GARMENT MFG CO. · TIRUPPUR KNITWEAR PARK · ALL RIGHTS RESERVED
+    </div>
+<div class="flex items-center gap-4">
+<span>LAT: 11.1085° N, 77.3411° E</span>
+<span class="text-hairline">|</span>
+<span>REVISION: SPEC_ARCHIVE_2025</span>
+</div>
+</footer>
+<!-- FULLSCREEN LIGHTBOX MODAL -->
+<div class="fixed inset-0 z-[100] bg-ink/95 text-paper hidden flex flex-col justify-between backdrop-blur-md transition-opacity duration-300" id="archive-lightbox">
+<!-- Lightbox Header Bar -->
+<div class="w-full max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between border-b border-paper/15 font-mono text-xs">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 bg-madder-red"></span>
+<span class="tracking-widest uppercase text-paper/80 hidden sm:inline">
+          ABINAYA MILL ARCHIVE · EXPANDED SPEC SHEET
+        </span>
+<span class="tracking-widest uppercase text-paper/80 sm:hidden">
+          ARCHIVE SPEC
+        </span>
+</div>
+<!-- Current Plate Index Counter -->
+<div class="bg-paper/10 px-3 py-1 text-cream tracking-widest font-mono text-xs" id="lb-counter">
+        PLATE 01 / 18
+      </div>
+<!-- Close Button -->
+<button class="flex items-center gap-1.5 text-paper/90 hover:text-white transition-colors bg-paper/10 hover:bg-paper/20 px-3 py-1" id="lb-close">
+<span>✕ CLOSE</span>
+<span class="text-[10px] text-paper/50 hidden md:inline">[ESC]</span>
+</button>
+</div>
+<!-- Center Stage: Photo Frame & Nav Arrows -->
+<div class="relative flex-1 flex items-center justify-center p-4 sm:p-8 max-w-[1280px] mx-auto w-full overflow-hidden">
+<!-- Prev Arrow -->
+<button aria-label="Previous image" class="absolute left-2 sm:left-6 z-10 bg-ink/80 hover:bg-paper hover:text-ink text-paper p-3 border border-paper/20 transition-all" id="lb-prev">
+<span class="material-symbols-outlined text-2xl sm:text-3xl">west</span>
+</button>
+<!-- Active Big Image Container -->
+<div class="max-h-[68vh] max-w-full flex items-center justify-center border border-paper/20 bg-ink p-1">
+<img alt="Expanded textile archival specimen" class="max-h-[66vh] max-w-full object-contain" id="lb-image" src="https://lh3.googleusercontent.com/aida/ALJJyrAnHZh6ueVqIO_tp_-tsYc6fo60UhiYQAbpBCjUWAogauQDgogTU_qoEKCzrgi-6k_g5Y6LHA4bmj9OlRlBxuM8GF-u6iId3SeG4kTvGpEbtC8fmO9_mBtqYji869CCgJl9fj6GGN4f9NQ5dwRd6yJI9TBEcGrq6DJDctD98aUWZdHjMsUCjPeezohQmHYd-8zIJYlezU2HPdrjn0_cWkAT8BeElXe160mQh5dFP57YKA"/>
+</div>
+<!-- Next Arrow -->
+<button aria-label="Next image" class="absolute right-2 sm:right-6 z-10 bg-ink/80 hover:bg-paper hover:text-ink text-paper p-3 border border-paper/20 transition-all" id="lb-next">
+<span class="material-symbols-outlined text-2xl sm:text-3xl">east</span>
+</button>
+</div>
+<!-- Lightbox Bottom Caption Bar -->
+<div class="w-full bg-ink border-t border-paper/15 py-4 px-6">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono">
+<div class="space-y-1">
+<div class="flex items-center gap-3">
+<h4 class="text-sm font-semibold text-paper tracking-wider uppercase" id="lb-title">
+              BOLT STORAGE: COMBED SINGLE JERSEY &amp; INTERLOCK
+            </h4>
+<span class="text-[10px] bg-sage/20 text-sage px-2 py-0.5" id="lb-badge">FABRIC LOT</span>
+</div>
+<p class="text-xs text-paper/70 max-w-2xl font-light" id="lb-desc">
+            Seasoned rolls of combed organic cotton stored in humidity-controlled bays prior to tension relaxation.
+          </p>
+</div>
+<div class="flex items-center gap-3 self-stretch md:self-auto justify-between md:justify-end">
+<div class="text-[11px] text-paper/60 border-l border-paper/20 pl-4 hidden lg:block" id="lb-spec">
+            EXPOSURE: 35MM INDUSTRIAL LEICA · ISO 400
+          </div>
+<a class="bg-paper text-ink hover:bg-cream text-[11px] px-3.5 py-2 font-mono font-medium tracking-wider uppercase transition-colors inline-flex items-center gap-1.5" href="https://wa.me/919876543210?text=Inquiry%20regarding%20plate%20specification%20from%20Abinaya%20Gallery" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+            Inquire This Lot
+          </a>
+</div>
+</div>
+</div>
+</div>
+<!-- INLINE VANILLA JAVASCRIPT FOR ARCHIVE FILTERING & LIGHTBOX INTERACTIONS -->
+<script>
+    (function initAbinayaGallery() {
+      // Archive Database Map
+      const galleryData = [
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrAnHZh6ueVqIO_tp_-tsYc6fo60UhiYQAbpBCjUWAogauQDgogTU_qoEKCzrgi-6k_g5Y6LHA4bmj9OlRlBxuM8GF-u6iId3SeG4kTvGpEbtC8fmO9_mBtqYji869CCgJl9fj6GGN4f9NQ5dwRd6yJI9TBEcGrq6DJDctD98aUWZdHjMsUCjPeezohQmHYd-8zIJYlezU2HPdrjn0_cWkAT8BeElXe160mQh5dFP57YKA",
+          title: "PLATE 01 — BOLT STORAGE: COMBED SINGLE JERSEY & INTERLOCK",
+          badge: "FABRIC LOT",
+          desc: "Heavy fabric bolts stacked on kiln-dried teak racks allowing uniform air circulation and 24-hour tension relaxation before cutting.",
+          spec: "RAW GOODS · 180-240 GSM · TIRUPPUR BAY 01",
+          cat: "fabric"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrDciJky18oLXsAC7ZEVs5rqWEP__Lcbn6HkrfjTiuxq87Dd3ppmERhZIBaq1SBpO5A_6xZq45_grZsdJpt0Rj_9JrwfPZAaON19EPwF_OQDz8rNVgORHIWV2M1Fk7lvSvZddgZtH_KDh7-kxMWZhzz34qV-hdojFocuC3mH81P2YN6-K_qaQtmGVroE4j9VBmIq94lp9ansXyx0gradXQtKQtcmzNWmd6RZ2MXw9l_Mqw",
+          title: "PLATE 02 — QA BENCH INSPECTION: RIB & SHOULDER TOLERANCE",
+          badge: "STITCHING SPEC",
+          desc: "Shoulder seam taper and neck rib elasticity verified on calibrated hardwood inspection benches with ±0.5cm tolerance stricture.",
+          spec: "DIMENSIONAL AUDIT · 1X1 LYCRA RIB · REINFORCED STITCH",
+          cat: "stitching"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrCbyDA2vYJskxsvpXOeE7tWXnVDnMEORvQE8U5WTzcwT5uwTb8G8wBuhFQWZBAfazTUuKykfw1hDlb1nFJ3xlsC0LsSDKByzJE0FQHR8yu9z-5CQheYNdmaLxQFCzAeazbYUqK_jrdXhYakDoiQeYGSPKuYX_lkmJ1NJREMtci9MW5PfX41sR-DixT4ZmDtd1qpomdx-f8LjBT6a-ikRlbdcZDoEaZR79XQQiX5bgL2",
+          title: "PLATE 03 — WEAVING & CUTTING BAY: DAYLIGHT INSPECTION RUNNER",
+          badge: "MILL FLOOR",
+          desc: "Wide panoramic view of central cutting tables equipped with low-glare diffuse linear lights for zero-shadow fabric alignment.",
+          spec: "CAPACITY 12,000 PCS/DAY · UNIT 02 · CLIMATE CONTROLLED",
+          cat: "fabric"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrCinBVIeYYRztXmk8XZwz8P9RxwXQCAsabhiAgclEp8tRO_HaUHmBDqoKlvB1wxFWfoP20w-0ywqlB5TWPG0ndB1iSjkn6-3XK4OY8bQQW6n__eSOiU_egyJlNsmwgoTWfbvsVEhowKNke0UbsTbW2c2MpEesI_F6PmNyTfVIsLvG0q2qKuhztiQxaZ-h4qvJIgSCFcp_cPy0h_rfurd1cPQIZek60ooydxUk0tDR0Q",
+          title: "PLATE 04 — PRIVATE LABEL PACKAGING: UNBLEACHED KRAFT & DAMASK TAGS",
+          badge: "OEM LOGISTICS",
+          desc: "Eco-friendly retail presentation kit for export brands including high-density woven damask neck labels and water-based printed boxes.",
+          spec: "100% RECYCLED CARDBOARD · FSC CERTIFIED TISSUE",
+          cat: "logistics"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrDi3SwrYAJh0EGx8gyaaJOrcIADWjn6JtMVlXOWY9oFuItxFXrn-I-TG-cnDOY_8iKtIIX1ScL_DoCFBOoaBMp0u8Akm-Fxl2zQc3XBuWeLEsMOk4pJc3CsBmzLBhFSo6E9LwZ9gZgqgmtBKwmglT5t0CNT9wyHIH13PuHRrGBbDT3mLrEVVUvfsYthlL9RrMORPUU6P8i-9ner328iXUd8BLKg-yDXZwHVe-8lNjJS",
+          title: "PLATE 05 — HONEYCOMB PIQUÉ POLOS: HIGH DENSITY CHEST EMBROIDERY",
+          badge: "COLLECTION RUN",
+          desc: "Multi-layered corporate run crafted with 220 GSM combed piqué jersey featuring micro-stitch crest detailing on left breast.",
+          spec: "100% COMBED COTTON · FAST DYE · TAJIMA STITCH",
+          cat: "collections"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrDPvPsMPX1iT-7VXsN04q-ny8ZdW3CNyI6SLlr_RPBPImKHc-7esHQ4WLdoHWXY3gkoFxYunRi537Gg_nE5-tDFco-Iok6lWrTAAb4srAEx7N4pE0gfwq3ZJiN6cz3jRrT-DN9X2WcW3ZHm5YD7eMr9Z782XgMMM_ih6MihneHWDtGYWIbo6u7sF-MgP8el8CE2wE4saP8IvnX3R_1yX3sPf715As6Z0kkZeTrSo5r_Aw",
+          title: "PLATE 06 — CENTRAL DISPATCH HUB: PALLET MANIFEST AUDIT",
+          badge: "LOGISTICS AUDIT",
+          desc: "Warehouse chief verifying domestic transport manifests and moisture-resistant barcoded pallet wrapping for all-India road logistics.",
+          spec: "DISPATCH WEIGHT CHECK · TRANSIT TO METRO HUBS",
+          cat: "logistics"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrAo3mPYJ31qrkbVOTm0BL7HJo9xV8oLVSXdM01Wb7HjgJcnqeONnauPy5hfAIoPaCJpjdZaK-D56bAtuAYccTibi1yv93b5XjxmVgu6as1KNmqT1QIstVcmWy01swDxYVtrj78-Bq0_4Dfuqcgxmvp90KoUplKcmM5wgXW22ySropkAf31fi8vb6c5-0D6-R1P-JZLZLyXdLFpN4Yq-tN1cBFvrCa25K2qUOPhhXI-9AQ",
+          title: "PLATE 07 — RETAIL SHELF LIFE: 180 GSM BIO-WASH CREWS",
+          badge: "STORE MERCH",
+          desc: "Finished retail display in client boutique showing drape retention and color constancy of madder red, sage, and indigo tees.",
+          spec: "ENZYME WASHED · ZERO PILL SURFACE · BOUTIQUE SPEC",
+          cat: "collections"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrCHHq1OIIV9Qelz0bfj442_6igOCsaf9rosj4i3uQeraEfV7Ka0oOGGv9A_9k50T4UCVU1-g6-YI8XQCIb_F0nGYcihlCdh15qmqzE3zHXdV6an6Ar6sBSsDJfvRNz_7szRWbojyhr_RAJ5oX8kgB__KuFvIeo-8_ASMSetE1pQSHcbO9OF7ggnKGYObDnmGdywqpLA1meCukWzLauKkwvDbK70WtQF9xgqRyzYtk74UA",
+          title: "PLATE 08 — CIRCULAR KNITTING LOOM: HIGH TENSION COMBED CYLINDER",
+          badge: "MILL PROCESS",
+          desc: "German-engineered circular knitting cylinder operating 24 gauge single jersey at sustained rotation with micro-feeder synchronization.",
+          spec: "30-INCH DIAMETER · 24 GAUGE · RING SPUN YARN 34S",
+          cat: "fabric"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrCaVVJdz5MICJytYryUCGRRLjvexEx2qZ5zHXh_ejyZVPgHNu_I9F4M0LtosOd7BVwtpT-eixPWoSS_8c3FpPAray2t4k8TGtyNhDq81Cqd5rOKy_nNe-VNSqA2AvRYpgx1XU6FDm02IeOJe620K1ogvU88aizleYgzC468cpVK5Avryojes6wD1ox9VeoWNMzlHSXw-U8FbwCzyW5rcZDTvhADIdybj2m5Vm5em2AnFA",
+          title: "PLATE 09 — OVERLOCK STITCHING: TWIN-NEEDLE HEM REINFORCEMENT",
+          badge: "STITCHING SPEC",
+          desc: "Senior tailoring specialist operating industrial differential feed sewing machines for reinforced neck taping and split hems.",
+          spec: "JUKI HIGH-SPEED · CORE-SPUN POLY THREAD · 12 SPI",
+          cat: "stitching"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrC34yMpz6yT8EmpWsBVadHdarW5e1SZvQ2HldkYhvB4NI4Ec_GQ93y_mv-GnP1aNUt5JklkKHgEhzkMXEpUV7J0LfqPZuT0ZJ9C-Li0Li2LurLesnhs3uD-m2hOweHOEROuLDHWSX5MKA_dS2eW-fajdYAZjF61pSHDrKMyQpV-V8e3Oa7E17qFHdfVR2pb_9jlvQMDKWgqPFWlHpvTOMLaiftHp9x1aVoRYYsE9lWhqw",
+          title: "PLATE 10 — DYE & BIO-WASH VATS: REACTIVE ECO-DYES & SILICON SOFTENER",
+          badge: "FABRIC PROCESSING",
+          desc: "Soft-flow stainless atmospheric dyeing machine processing unbleached jersey rolls with zero-effluent discharge water recirculation.",
+          spec: "GOTS CERTIFIED REACTIVE DYES · COLORFAST FASTNESS 4+",
+          cat: "fabric"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrA2_CIKHcVJtyLHAay3m1hReYyE8Iv37KzYGoKMZ-6gPqBTofGrDucMR7MDQB4cx0TwOg9pEbslejeuI4CyBevgMJs6mC589WsA6s11k2mSr5l0sv90yUMd7azN47xDrjdas-pDXiPGmYkj1l2QqZnuzdj_8rgt08CEtoBlQvnTFnfjxGelRiHtEi1G0i6pAONvOsiFFDRmWJorPcK3qBce2OoGCGFMyJVZaEwO40m-9Q",
+          title: "PLATE 11 — STREETWEAR SILHOUETTE: 240 GSM DROP-SHOULDER BLANK",
+          badge: "HEAVY KNIT",
+          desc: "Contemporary relaxed silhouette designed with tighter neck rib, reinforced shoulder-to-shoulder tape, and dense single jersey drape.",
+          spec: "240 GSM COMBED HEAVY JERSEY · CARBON / ACID BLACK",
+          cat: "collections"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrCaXV4rZyFt1qTxsXRAmC3lmQlA3SKEwTt5OWDEmr3qWJsEpQi4gDATUVbkJ-L9Q0kMG_0JiDv2GMjEi4HZ_VfOUi6PNyKMtjQVsoVh-0sJk1x2OAUnhenIt1o91pt-bgzCun44r5XSr0kYLuOo-gBm38fQAfrBHY-SgxgKGqNOZem5z_7msmrAK206mWuvwhx93cwpgPHRySAE5B0GBYJmsCK3etPMNIsaeM1Crp9qSQ",
+          title: "PLATE 12 — CLASSIC PIQUÉ: THREE-BUTTON REINFORCED PLACKET",
+          badge: "PIQUÉ SERIES",
+          desc: "Tonal folded garment showing collar roll rigidity, heat-pressed inner buggy, and laser-engraved horn finish buttons.",
+          spec: "220 GSM HONEYCOMB KNIT · MERCERIZED COLORWAY",
+          cat: "collections"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrCB-A5dVDx2xpjGusiKI5MKKmG9-rQmM-6vKxnQYl8pFUuDPWbZT6_6nyRNzTCiO2a4LKeMg2eS2R40wEy51Z9ncCmczid89Zv6XHF7oqbiOaYFTairrXyHZm2XT8kwJEvSa8L8-kQlYsG-bzIU-vx2mjINKMi_UwR3CLlrVMc0-S7CcOoa1w2gJMmfkujuZlFwaQV15ib4okWwHqVSuqFRU_9CGyT_ULLnpkndfw0K",
+          title: "PLATE 13 — GOTS INFANT LINE: NICKEL-FREE SNAP BUTTON ROMPERS",
+          badge: "ORGANIC BABY",
+          desc: "Ultra-soft combed 200 GSM infant collection dyed using non-toxic botanical and reactive extracts for delicate skin tolerances.",
+          spec: "OEKO-TEX CLASS 1 · NICKEL-FREE SNAPS · NATURAL PIGMENT",
+          cat: "collections"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrA0ydSiXy5BBKy0tPP-3K6Xr4DgpOD5sFqxVfJGJ4hfAYIJ9hYmEuLRYHRXzqzHk_5lMMWgxl2HUX2MQWlgGyOiIlmdkB7GpG4-rcNYYGMEPbVkNuGggjD1lnyjRMxHTtCl-H6k2ho6Avhu0YEcJe3guOlUMhDuBvL00tpWXxydwHo8tIryTXTPoIMLHudPc0CJzX7S7Mm8Jl2V1SaGj-BkSCVEhC5euRQQDP4IpIEGIA",
+          title: "PLATE 14 — EARTH PALETTE: NATURAL SAGE, ECRU & RAW INDIGO LOTS",
+          badge: "COLOR COLLECTION",
+          desc: "Seasonal capsule stack demonstrating exact laboratory dip reproducibility and low-tension shrinkage resistance.",
+          spec: "100% ORGANIC COTTON · ENZYME TREATED HANDFEEL",
+          cat: "fabric"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrB5fA4K4w_m6UJly0K81uCfGzrSlFObPBNwwu43dT_gxeIPaLnjNZBtZrzmxhs1V0IAN64EAFS_13dBCTvXSNGWYyetE7OfZAm65zrkvZdOjlREeJYCGvwlzf9pji3_YKl2Raj03nqTsMPp9cZxh7JFG3WHev3mV0d0nSiwhmxw-bcbSmwSIOVgHI3CIZL4BH5aY3hMjWhapWu9tk9gVj7YkSoOck8HWyL1TltH-hejzA",
+          title: "PLATE 15 — FREIGHT CARTONS: 5-PLY KRAFT EXPORT PACKAGING",
+          badge: "EXPORT CONSIGNMENT",
+          desc: "Palletized master export boxes with moisture silicate packs and burst-resistant corner edge boards for container vessel transit.",
+          spec: "5-PLY VIRGIN KRAFT · 275 LBS MULLEN TEST VERIFIED",
+          cat: "logistics"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrAuVA9d5O7Hwz4xkiDoQ2DOTgoNGt4KkxFmcY9NI1is-XB3B9VG_Yam_EiJo22tcH0F4NTSkf5V4Zccn6at_MXnfPgWvyfl_urmmLSVDHC0moS45ZrloprL8z3EuZXNU4rJBph5ZM4fsPO_QV0ijsuHnaeATrokj9kfEXLCB0lCUqRB0VY9MbsBj3qI5SNTguoBRqkc-HhcZVrFKpdRxS-7Xl9ECOAMHdhWe2SYxivZmw",
+          title: "PLATE 16 — FINAL PACK-DOWN: MASTER FOLDER HAND FINISH",
+          badge: "FINAL FINISHING",
+          desc: "Individual manual shirt folding over 350 GSM card templates to maintain sharp store display folds before transparent bio-bag sealing.",
+          spec: "POST-IRON PACK DOWN · BARCODE STICKER AUDITED",
+          cat: "stitching"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrCt70Db_lu7fLY9p2PrvzX4ukjg39gRAefLs0k61AQNMXK15s26qFKaFMwEAezNkloiBEq0-gaGkfGKAfZCuaUNOwcRa2ihYtF7i3wkuIUTjo71lPJO0V2NlPwu9qth_ZCQVbaQMl5aiMBfRVQGi4ZOWAe3EMY-fUPfxv9fzo17-ZbapFd59zlhULizsigqtoaEKaKxZMJtD-Xg5s0ljBaLycojZCycUNcnI58o14QL_Q",
+          title: "PLATE 17 — CREEL YARN CONES: 30S COMBED COTTON RING-SPUN THREADS",
+          badge: "RAW MATERIAL",
+          desc: "Overhead creel bank loaded with 1.8kg precision cones feeding into yarn tensioners with automated optical break detectors.",
+          spec: "30S COMBED RING-SPUN YARN · 100% GIZA LONG STAPLE",
+          cat: "fabric"
+        },
+        {
+          src: "https://lh3.googleusercontent.com/aida/ALJJyrBPnE-LxSmCpwAIUuhdAZBqFkq4Pie0WVeje75SPqx5Fy8yK6pU8f2mdiiEtHu1MB-yJ3vW9RhvxywD6_8UKBjcTeQsKYMlq-63NUiOvKKTavx0jzN5TkyrEN8cG2mGLUMBCv_A6krllgj1hqg1y_MdGZzE8QKBqP_xZklGVYjwqTV0XUSeheRBDo54QHXIMEC_ogLE3QWqSLHeUmiq_On1Y6k36uPOwGKbsgoYTqAU",
+          title: "PLATE 18 — FABRIC GRAIN: 100% ORGANIC LONG-STAPLE MACRO",
+          badge: "SURFACE DETAIL",
+          desc: "1:1 macro photograph showcasing tight stitch loops, singed hairless surface, and uniform vertical wale alignment.",
+          spec: "ZERO SPIRALITY · COMPACT SPUN · SILICON SOFTENED",
+          cat: "fabric"
+        }
+      ];
+
+      let currentIndex = 0;
+
+      // Element References
+      const lightbox = document.getElementById('archive-lightbox');
+      const lbImage = document.getElementById('lb-image');
+      const lbTitle = document.getElementById('lb-title');
+      const lbBadge = document.getElementById('lb-badge');
+      const lbDesc = document.getElementById('lb-desc');
+      const lbSpec = document.getElementById('lb-spec');
+      const lbCounter = document.getElementById('lb-counter');
+      const lbClose = document.getElementById('lb-close');
+      const lbPrev = document.getElementById('lb-prev');
+      const lbNext = document.getElementById('lb-next');
+      const filterBtns = document.querySelectorAll('.filter-chip');
+      const cards = document.querySelectorAll('.gallery-card');
+      const toggleDemoBtn = document.getElementById('toggle-lightbox-demo-btn');
+
+      // Update Lightbox UI
+      function updateLightbox(index) {
+        if (index < 0) index = galleryData.length - 1;
+        if (index >= galleryData.length) index = 0;
+        currentIndex = index;
+
+        const data = galleryData[currentIndex];
+        lbImage.src = data.src;
+        lbTitle.textContent = data.title;
+        lbBadge.textContent = data.badge;
+        lbDesc.textContent = data.desc;
+        lbSpec.textContent = data.spec;
+        lbCounter.textContent = `PLATE ${String(currentIndex + 1).padStart(2, '0')} / ${String(galleryData.length).padStart(2, '0')}`;
+      }
+
+      function openLightbox(index) {
+        updateLightbox(index);
+        lightbox.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      // Card Click Handler
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          const idx = parseInt(card.getAttribute('data-index'), 10);
+          openLightbox(idx);
+        });
+      });
+
+      // Lightbox Controls
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateLightbox(currentIndex - 1);
+      });
+      lbNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateLightbox(currentIndex + 1);
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
+        if (e.key === 'ArrowRight') updateLightbox(currentIndex + 1);
+      });
+
+      // Filter Chips Functionality
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          // Style active button
+          filterBtns.forEach(b => {
+            b.classList.remove('active-filter', 'bg-indigo', 'text-cream', 'border-indigo');
+            b.classList.add('bg-paper', 'text-ink', 'border-hairline');
+          });
+          btn.classList.add('active-filter', 'bg-indigo', 'text-cream', 'border-indigo');
+          btn.classList.remove('bg-paper', 'text-ink', 'border-hairline');
+
+          // Filter masonry items
+          cards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Quick Preview Trigger
+      if (toggleDemoBtn) {
+        toggleDemoBtn.addEventListener('click', () => {
+          openLightbox(3); // open Plate 04
+        });
+      }
+
+    })();
+  </script>
+</div></main>
+</body></html>

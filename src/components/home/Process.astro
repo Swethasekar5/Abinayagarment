@@ -1,0 +1,324 @@
+---
+import { Image } from 'astro:assets';
+import { photos } from '../../assets/photos';
+
+const steps = [
+  {
+    title: 'Yarn',
+    kicker: 'Raw sourcing',
+    text: 'Combed cotton yarn sourced from trusted Tamil Nadu spinners and checked lot by lot.',
+    tag: 'Combed cotton · Ring spun',
+    image: photos.yarnConesLoom,
+    alt: 'Yarn cones mounted on a knitting machine',
+  },
+  {
+    title: 'Knitting',
+    kicker: 'Circular knitting',
+    text: 'Knitted in-house to the GSM you need, with tight, even stitch loops.',
+    tag: '160–280 GSM',
+    image: photos.circularKnittingMachine,
+    alt: 'Circular knitting machine producing a cotton fabric tube',
+  },
+  {
+    title: 'Dyeing & washing',
+    kicker: 'Wet processing',
+    text: 'Colour-fast, bio-washed and shrink-controlled fabric, batch after batch.',
+    tag: 'Colour-fast · Bio-washed',
+    image: photos.dyeingVats,
+    alt: 'Fabric dyeing and washing vats',
+  },
+  {
+    title: 'Cutting & stitching',
+    kicker: 'Tailoring & assembly',
+    text: 'Precise patterns and a double-needle finish from experienced line tailors.',
+    tag: 'Double-needle finish',
+    image: photos.doubleNeedleStitching,
+    alt: 'Tailor stitching t-shirt seams on an industrial machine',
+  },
+  {
+    title: 'QC & dispatch',
+    kicker: 'Quality audit & logistics',
+    text: 'Every piece checked, packed and shipped on time, with tracked dispatch across India.',
+    tag: 'Piece-by-piece inspection',
+    image: photos.qcMeasuringTape,
+    alt: 'Quality inspector measuring a t-shirt',
+  },
+];
+---
+
+<section class="section process" id="process" data-process>
+  <div class="container">
+    <div class="section-head">
+      <p class="label">(04) — Process</p>
+      <p class="mono">Integrated Tiruppur value chain</p>
+    </div>
+    <h2 class="process__title">From yarn to <em>your shelf</em>.</h2>
+    <p class="mono process__sub">Yarn · Knitting · Dyeing · Stitching · Quality check · Dispatch</p>
+
+    <div class="process__steps" data-steps>
+      <svg class="process__svg" aria-hidden="true">
+        <path data-process-path d=""></path>
+      </svg>
+      <!-- needle travelling at the tip of the thread -->
+      <svg class="process__needle" data-needle viewBox="0 0 40 12" aria-hidden="true">
+        <path d="M2 6 H34" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round"></path>
+        <path d="M34 6 L39 6" stroke="var(--ink)" stroke-width="1" stroke-linecap="round"></path>
+        <ellipse cx="7" cy="6" rx="3" ry="1.1" fill="var(--cream)" stroke="var(--ink)" stroke-width="1"></ellipse>
+      </svg>
+
+      {steps.map((s, i) => (
+        <article class:list={['step', { 'step--flip': i % 2 === 1 }]} data-step>
+          <figure class="step__media" data-step-media>
+            <Image src={s.image} alt={s.alt} widths={[480, 720, 960]} sizes="(min-width: 1024px) 44vw, 92vw" />
+            <span class="tag step__tag">{s.tag}</span>
+          </figure>
+          <span class="step__node" data-node aria-hidden="true"></span>
+          <div class="step__body" data-step-body>
+            <p class="step__meta">
+              <span class="step__num">0{i + 1}</span>
+              <span class="mono">{s.kicker}</span>
+            </p>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process__title {
+    font-size: clamp(2.8rem, 7vw, 6.5rem);
+    font-weight: 300;
+  }
+  .process__sub {
+    margin-top: 1.25rem;
+    color: var(--ink-soft);
+  }
+
+  .process__steps {
+    position: relative;
+    margin-top: clamp(3rem, 7vw, 6rem);
+    display: grid;
+    gap: clamp(4rem, 9vw, 8rem);
+  }
+  .process__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .process__svg path {
+    fill: none;
+    stroke: var(--madder);
+    stroke-width: 2;
+    stroke-dasharray: 8 7;
+  }
+  .process__needle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 12px;
+    margin: -6px 0 0 -20px;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .step {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .step__media {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .step__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .step__tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    box-shadow: none;
+  }
+  .step__node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--madder);
+    box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 10px var(--ink);
+    z-index: 2;
+  }
+  .step__meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--ink-soft);
+  }
+  .step__meta .mono {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.66rem;
+  }
+  .step__meta .mono::before {
+    content: '';
+    width: 2.5rem;
+    height: 1px;
+    background: var(--hairline);
+  }
+  .step__num {
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    color: var(--sage);
+  }
+  .step__body h3 {
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .step__body p:last-child {
+    margin-top: 1rem;
+    max-width: 30rem;
+    color: var(--ink-soft);
+  }
+  /* alternate sides */
+  .step--flip .step__media {
+    order: 2;
+  }
+  .step--flip .step__body {
+    text-align: right;
+    justify-self: end;
+  }
+  .step--flip .step__meta {
+    flex-direction: row-reverse;
+  }
+  .step--flip .step__meta .mono {
+    flex-direction: row-reverse;
+  }
+  .step--flip .step__body p:last-child {
+    margin-left: auto;
+  }
+
+  @media (max-width: 1023px) {
+    .step,
+    .step--flip {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .step--flip .step__media {
+      order: 0;
+    }
+    .step--flip .step__body {
+      text-align: left;
+      justify-self: start;
+    }
+    .step--flip .step__meta,
+    .step--flip .step__meta .mono {
+      flex-direction: row;
+    }
+    .step--flip .step__body p:last-child {
+      margin-left: 0;
+    }
+    .step__node,
+    .process__svg,
+    .process__needle {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, drawable, setPath, MQ } from '../../scripts/motion/core';
+
+  const root = document.querySelector<HTMLElement>('[data-process]')!;
+  const stepsEl = root.querySelector<HTMLElement>('[data-steps]')!;
+  const path = root.querySelector<SVGPathElement>('[data-process-path]')!;
+  const needle = root.querySelector<SVGElement>('[data-needle]')!;
+  const nodes = Array.from(root.querySelectorAll<HTMLElement>('[data-node]'));
+  const steps = Array.from(root.querySelectorAll<HTMLElement>('[data-step]'));
+
+  /** Build a snaking curve through every step node, starting above the first. */
+  function buildPath() {
+    const box = stepsEl.getBoundingClientRect();
+    const pts = nodes.map((n) => {
+      const r = n.getBoundingClientRect();
+      return { x: r.left + r.width / 2 - box.left, y: r.top + r.height / 2 - box.top };
+    });
+    const w = box.width;
+    let d = `M ${pts[0].x} -80 C ${pts[0].x} ${pts[0].y * 0.4}, ${pts[0].x} ${pts[0].y * 0.7}, ${pts[0].x} ${pts[0].y}`;
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1];
+      const b = pts[i];
+      const side = i % 2 === 1 ? 0.9 : 0.1; // swing out toward alternating edges
+      const mid = (a.y + b.y) / 2;
+      d += ` C ${a.x} ${a.y + (b.y - a.y) * 0.35}, ${w * side} ${mid - (b.y - a.y) * 0.15}, ${w * side} ${mid}`;
+      d += ` S ${b.x} ${b.y - (b.y - a.y) * 0.3}, ${b.x} ${b.y}`;
+    }
+    const last = pts[pts.length - 1];
+    d += ` L ${last.x} ${box.height + 80}`;
+    setPath(path, d);
+  }
+
+  gsap.matchMedia().add(MQ.desktop, () => {
+    buildPath();
+    const mask = drawable(path);
+
+    // the thread is stitched in sync with scroll, a needle riding its tip
+    const thread = ScrollTrigger.create({
+      trigger: stepsEl,
+      start: 'top 70%',
+      end: 'bottom 60%',
+      scrub: 0.6,
+      onUpdate: (self) => {
+        const p = self.progress;
+        mask.style.strokeDashoffset = String(1 - p);
+        const total = path.getTotalLength();
+        const at = Math.max(0.01, p * total);
+        const pt = path.getPointAtLength(at);
+        const ahead = path.getPointAtLength(Math.min(total, at + 2));
+        const angle = (Math.atan2(ahead.y - pt.y, ahead.x - pt.x) * 180) / Math.PI;
+        gsap.set(needle, { x: pt.x, y: pt.y, rotation: angle, opacity: p > 0.002 && p < 0.995 ? 1 : 0 });
+      },
+      onRefresh: buildPath,
+    });
+
+    // each step unfolds as it enters the viewport
+    steps.forEach((step, i) => {
+      const fromRight = i % 2 === 1;
+      const tl = gsap.timeline({ scrollTrigger: { trigger: step, start: 'top 72%', once: true } });
+      tl.from(step.querySelector('[data-node]'), { scale: 0, duration: 0.7, ease: 'back.out(3)' })
+        .fromTo(
+          step.querySelector('[data-step-media]'),
+          { clipPath: fromRight ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)' },
+          { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'expo.out' },
+          0,
+        )
+        .from(step.querySelector('[data-step-media] img'), { scale: 1.2, duration: 1.8, ease: 'expo.out' }, 0)
+        .from(step.querySelectorAll('[data-step-body] > *'), { y: 30, autoAlpha: 0, duration: 1, stagger: 0.08, ease: 'power3.out' }, 0.15);
+    });
+
+    return () => thread.kill();
+  });
+</script>

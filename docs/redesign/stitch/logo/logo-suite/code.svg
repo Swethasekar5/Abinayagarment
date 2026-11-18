@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200" style="background:#F5F1EA; font-family:'Fraunces', 'Playfair Display', Georgia, serif;">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap');
+      .serif-display { font-family: 'Fraunces', Georgia, serif; }
+      .mono-label { font-family: 'JetBrains Mono', monospace, Courier; letter-spacing: 0.18em; }
+    </style>
+    
+    <!-- Pattern for grid guide in style-spec sheets -->
+    <pattern id="stitch-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#E6E0D4" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="1" fill="#C8BFB0"/>
+    </pattern>
+
+    <!-- REUSABLE MARK: Ink Color (#171512) -->
+    <!-- Continuous thread A: starts at bottom left loop, travels up apex, loops around eye, descends right, crossbar formed by industrial needle piercing thread -->
+    <g id="monogram-ink">
+      <!-- Continuous Thread Body -->
+      <!-- Left leg up to apex -->
+      <path d="M 28 116 C 22 116 16 110 16 102 C 16 90 28 84 38 72 L 68 18 C 70.5 13.5 73.5 11 77 11 C 80.5 11 83.5 13.5 86 18 L 118 78 C 126 92 136 98 136 107 C 136 113 130 117 124 117 C 116 117 112 110 110 102 L 97 74" 
+            fill="none" stroke="#171512" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Loop at base of left leg -->
+      <circle cx="25" cy="103" r="7" fill="none" stroke="#171512" stroke-width="3" stroke-dasharray="2.5 2.5"/>
+      <!-- Delicate thread crossbar / needle -->
+      <!-- Needle eye on left, sharp point piercing through right leg -->
+      <g id="needle-ink">
+        <!-- Needle shaft -->
+        <path d="M 40 68 L 112 68" stroke="#171512" stroke-width="3.6" stroke-linecap="round"/>
+        <!-- Needle eye slot -->
+        <ellipse cx="46" cy="68" rx="4.5" ry="1.6" fill="#F5F1EA" stroke="#171512" stroke-width="1.8"/>
+        <!-- Needle sharp tip on right -->
+        <path d="M 112 68 L 119 68" stroke="#171512" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- Thread looping through eye -->
+        <path d="M 46 68 C 42 62 38 60 34 65 C 30 71 36 78 44 76 L 52 74" fill="none" stroke="#171512" stroke-width="2.2" stroke-dasharray="2 2"/>
+      </g>
+      <!-- Small delicate tension stitch marks at apex -->
+      <circle cx="77" cy="15" r="2.2" fill="#171512"/>
+    </g>
+
+    <!-- REUSABLE MARK: Madder Red (#B5452B) Thread with Ink Needle -->
+    <g id="monogram-red">
+      <path d="M 28 116 C 22 116 16 110 16 102 C 16 90 28 84 38 72 L 68 18 C 70.5 13.5 73.5 11 77 11 C 80.5 11 83.5 13.5 86 18 L 118 78 C 126 92 136 98 136 107 C 136 113 130 117 124 117 C 116 117 112 110 110 102 L 97 74" 
+            fill="none" stroke="#B5452B" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="25" cy="103" r="7" fill="none" stroke="#B5452B" stroke-width="3" stroke-dasharray="2.5 2.5"/>
+      <!-- Needle in crisp Ink contrast -->
+      <path d="M 38 68 L 112 68" stroke="#171512" stroke-width="3.6" stroke-linecap="round"/>
+      <ellipse cx="45" cy="68" rx="4.5" ry="1.6" fill="#F5F1EA" stroke="#171512" stroke-width="1.8"/>
+      <path d="M 112 68 L 119 68" stroke="#171512" stroke-width="1.6" stroke-linecap="round"/>
+      <!-- Thread looping through needle eye in Madder Red -->
+      <path d="M 45 68 C 41 61 36 60 33 65 C 30 71 37 78 44 76 L 52 74" fill="none" stroke="#B5452B" stroke-width="2.2" stroke-dasharray="2 2"/>
+      <circle cx="77" cy="15" r="2.2" fill="#B5452B"/>
+    </g>
+
+    <!-- REUSABLE MARK: Cream (#FFF8F3) on Dark Substrate -->
+    <g id="monogram-cream">
+      <path d="M 28 116 C 22 116 16 110 16 102 C 16 90 28 84 38 72 L 68 18 C 70.5 13.5 73.5 11 77 11 C 80.5 11 83.5 13.5 86 18 L 118 78 C 126 92 136 98 136 107 C 136 113 130 117 124 117 C 116 117 112 110 110 102 L 97 74" 
+            fill="none" stroke="#FFF8F3" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="25" cy="103" r="7" fill="none" stroke="#FFF8F3" stroke-width="3" stroke-dasharray="2.5 2.5"/>
+      <path d="M 38 68 L 112 68" stroke="#FFF8F3" stroke-width="3.6" stroke-linecap="round"/>
+      <ellipse cx="45" cy="68" rx="4.5" ry="1.6" fill="#171512" stroke="#FFF8F3" stroke-width="1.8"/>
+      <path d="M 112 68 L 119 68" stroke="#FFF8F3" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M 45 68 C 41 61 36 60 33 65 C 30 71 37 78 44 76 L 52 74" fill="none" stroke="#E6DFD5" stroke-width="2.2" stroke-dasharray="2 2"/>
+      <circle cx="77" cy="15" r="2.2" fill="#FFF8F3"/>
+    </g>
+
+    <!-- REUSABLE MARK: 32px Favicon Geometry Optimized (Bold Strokes for Readability) -->
+    <g id="favicon-32">
+      <!-- Bounded strictly inside 32x32 view -->
+      <rect width="32" height="32" rx="4" fill="#171512"/>
+      <!-- Thread A glyph -->
+      <path d="M 6 26 C 6 24 8 23 10 20 L 15 8 C 15.6 6.8 16.4 6.8 17 8 L 22 20 C 23.5 23 25 24 26 25" 
+            fill="none" stroke="#FFF8F3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Needle Bar -->
+      <line x1="9" y1="17" x2="23" y2="17" stroke="#B5452B" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- Loop dot -->
+      <circle cx="7" cy="24" r="1.2" fill="#FFF8F3"/>
+    </g>
+  </defs>
+
+  <!-- Background Texture Grid -->
+  <rect width="100%" height="100%" fill="#F5F1EA"/>
+  <rect x="40" y="40" width="1520" height="1120" fill="url(#stitch-grid)" stroke="#E0D8CB" stroke-width="1"/>
+
+  <!-- Outer Technical Border with Stitched Dashes -->
+  <rect x="60" y="60" width="1480" height="1080" fill="none" stroke="#D8CEBD" stroke-width="1"/>
+  <rect x="68" y="68" width="1464" height="1064" fill="none" stroke="#B5452B" stroke-width="1" stroke-dasharray="6 6" opacity="0.65"/>
+
+  <!-- ================= TOP HEADER / SPEC SHEET BANNER ================= -->
+  <g transform="translate(100, 110)">
+    <text x="0" y="0" class="mono-label" font-size="11" font-weight="600" fill="#B5452B">ABINAYA GARMENT SHOP · TIRUPPUR B2B TEXTILE HUB</text>
+    <text x="0" y="24" class="mono-label" font-size="10" fill="#756D63">SPEC SHEET REF: AGS-LOGO-2026-V1 · ARTISANAL INDUSTRIAL BRAND IDENTITY</text>
+    <text x="1400" y="0" text-anchor="end" class="mono-label" font-size="10" fill="#756D63">KNITWEAR MILL EST. 1994 · 100% COMBED COTTON</text>
+    <line x1="0" y1="36" x2="1400" y2="36" stroke="#D8CEBD" stroke-width="1"/>
+  </g>
+
+  <!-- ================= SECTION 1: MONOGRAM MARK (3 COLORWAYS) ================= -->
+  <!-- Box 1A: Primary Ink on Cream -->
+  <g transform="translate(100, 180)">
+    <rect width="260" height="260" rx="2" fill="#FFFFFF" stroke="#E2DACD" stroke-width="1"/>
+    <!-- Technical framing marks -->
+    <path d="M 10 20 L 10 10 L 20 10 M 240 10 L 250 10 L 250 20 M 10 240 L 10 250 L 20 250 M 250 240 L 250 250 L 240 250" stroke="#C8BFB0" stroke-width="1" fill="none"/>
+    <text x="20" y="32" class="mono-label" font-size="9" fill="#8C8275">01 · MONOGRAM (INK)</text>
+    <!-- Centered scaled mark -->
+    <g transform="translate(55, 60) scale(0.98)">
+      <use href="#monogram-ink"/>
+    </g>
+    <text x="130" y="235" text-anchor="middle" class="mono-label" font-size="8.5" fill="#5A534A">INK #171512 · CONTINUOUS THREAD</text>
+  </g>
+
+  <!-- Box 1B: Thread in Madder Red (#B5452B) -->
+  <g transform="translate(380, 180)">
+    <rect width="260" height="260" rx="2" fill="#FFFFFF" stroke="#E2DACD" stroke-width="1"/>
+    <path d="M 10 20 L 10 10 L 20 10 M 240 10 L 250 10 L 250 20 M 10 240 L 10 250 L 20 250 M 250 240 L 250 250 L 240 250" stroke="#C8BFB0" stroke-width="1" fill="none"/>
+    <text x="20" y="32" class="mono-label" font-size="9" fill="#B5452B">02 · MADDER RED THREAD</text>
+    <g transform="translate(55, 60) scale(0.98)">
+      <use href="#monogram-red"/>
+    </g>
+    <text x="130" y="235" text-anchor="middle" class="mono-label" font-size="8.5" fill="#B5452B">MADDER RED #B5452B + INK NEEDLE</text>
+  </g>
+
+  <!-- Box 1C: Reversed Cream on Ink -->
+  <g transform="translate(660, 180)">
+    <rect width="260" height="260" rx="2" fill="#171512" stroke="#2B2723" stroke-width="1"/>
+    <path d="M 10 20 L 10 10 L 20 10 M 240 10 L 250 10 L 250 20 M 10 240 L 10 250 L 20 250 M 250 240 L 250 250 L 240 250" stroke="#4A433B" stroke-width="1" fill="none"/>
+    <text x="20" y="32" class="mono-label" font-size="9" fill="#D4CCC0">03 · REVERSED (CREAM)</text>
+    <g transform="translate(55, 60) scale(0.98)">
+      <use href="#monogram-cream"/>
+    </g>
+    <text x="130" y="235" text-anchor="middle" class="mono-label" font-size="8.5" fill="#A8A094">CREAM #FFF8F3 ON INK #171512</text>
+  </g>
+
+  <!-- ================= SECTION 2: STANDALONE WORDMARK ================= -->
+  <g transform="translate(940, 180)">
+    <!-- Light Container -->
+    <rect width="560" height="122" rx="2" fill="#FFFFFF" stroke="#E2DACD" stroke-width="1"/>
+    <text x="24" y="26" class="mono-label" font-size="9" fill="#8C8275">04 · STANDALONE WORDMARK (PRIMARY INK)</text>
+    <g transform="translate(40, 72)">
+      <text x="0" y="0" class="serif-display" font-size="44" font-weight="600" fill="#171512" letter-spacing="-0.02em">Abinaya</text>
+      <!-- Refined stitch dot accent on dot of i -->
+      <circle cx="84.5" cy="-28" r="2.8" fill="#B5452B"/>
+      <!-- Tagline underneath with dot dividers -->
+      <text x="2" y="24" class="mono-label" font-size="11" font-weight="500" fill="#6B6256" letter-spacing="0.22em">TIRUPPUR · KNITWEAR</text>
+      <line x1="2" y1="32" x2="204" y2="32" stroke="#B5452B" stroke-width="1" stroke-dasharray="3 3"/>
+    </g>
+
+    <!-- Dark Container -->
+    <g transform="translate(0, 138)">
+      <rect width="560" height="122" rx="2" fill="#171512" stroke="#2B2723" stroke-width="1"/>
+      <text x="24" y="26" class="mono-label" font-size="9" fill="#D4CCC0">05 · STANDALONE WORDMARK (REVERSED ON INK)</text>
+      <g transform="translate(40, 72)">
+        <text x="0" y="0" class="serif-display" font-size="44" font-weight="600" fill="#FFF8F3" letter-spacing="-0.02em">Abinaya</text>
+        <circle cx="84.5" cy="-28" r="2.8" fill="#B5452B"/>
+        <text x="2" y="24" class="mono-label" font-size="11" font-weight="500" fill="#D4CCC0" letter-spacing="0.22em">TIRUPPUR · KNITWEAR</text>
+        <line x1="2" y1="32" x2="204" y2="32" stroke="#D4CCC0" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= SECTION 3: FULL HORIZONTAL LOCKUPS (HERO DISPLAY) ================= -->
+  <!-- Horizontal Lockup 01: Primary Ink on Cream (#F5F1EA / White Card) -->
+  <g transform="translate(100, 480)">
+    <rect width="680" height="230" rx="2" fill="#FFFFFF" stroke="#E2DACD" stroke-width="1"/>
+    <text x="24" y="30" class="mono-label" font-size="9" fill="#8C8275">06 · PRIMARY HORIZONTAL LOCKUP (INK ON CREAM / WHITE)</text>
+    
+    <!-- Lockup Content -->
+    <g transform="translate(48, 55)">
+      <!-- Mark -->
+      <g transform="translate(0, 5) scale(0.85)">
+        <use href="#monogram-ink"/>
+      </g>
+      <!-- Vertical Mill Divider Line with lockstitch motif -->
+      <line x1="140" y1="12" x2="140" y2="120" stroke="#D8CEBD" stroke-width="1.2"/>
+      <circle cx="140" cy="66" r="3" fill="#B5452B"/>
+      <!-- Wordmark Typography -->
+      <g transform="translate(175, 68)">
+        <text x="0" y="0" class="serif-display" font-size="52" font-weight="600" fill="#171512" letter-spacing="-0.02em">Abinaya</text>
+        <!-- Distinctive Madder Red thread dot on the "i" -->
+        <circle cx="100" cy="-33" r="3.2" fill="#B5452B"/>
+        <text x="2" y="28" class="mono-label" font-size="12.5" font-weight="600" fill="#5A534A" letter-spacing="0.25em">TIRUPPUR · KNITWEAR</text>
+        <!-- Stitched Dashed Baseline -->
+        <line x1="2" y1="38" x2="242" y2="38" stroke="#B5452B" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="2" y="52" class="mono-label" font-size="8.5" fill="#8C8275">EST. 1994 · B2B DIRECT MILL PROVENANCE</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Horizontal Lockup 02: Madder Red Accent Thread on Paper Substrate -->
+  <g transform="translate(820, 480)">
+    <rect width="680" height="230" rx="2" fill="#FFFFFF" stroke="#E2DACD" stroke-width="1"/>
+    <text x="24" y="30" class="mono-label" font-size="9" fill="#B5452B">07 · SIGNATURE MADDER RED STITCH ACCENT LOCKUP</text>
+    
+    <!-- Lockup Content -->
+    <g transform="translate(48, 55)">
+      <!-- Mark with Madder Red Thread -->
+      <g transform="translate(0, 5) scale(0.85)">
+        <use href="#monogram-red"/>
+      </g>
+      <line x1="140" y1="12" x2="140" y2="120" stroke="#E6DAC8" stroke-width="1.2"/>
+      <circle cx="140" cy="66" r="3" fill="#171512"/>
+      <g transform="translate(175, 68)">
+        <text x="0" y="0" class="serif-display" font-size="52" font-weight="600" fill="#171512" letter-spacing="-0.02em">Abinaya</text>
+        <circle cx="100" cy="-33" r="3.2" fill="#B5452B"/>
+        <text x="2" y="28" class="mono-label" font-size="12.5" font-weight="600" fill="#B5452B" letter-spacing="0.25em">TIRUPPUR · KNITWEAR</text>
+        <line x1="2" y1="38" x2="242" y2="38" stroke="#B5452B" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="2" y="52" class="mono-label" font-size="8.5" fill="#8C8275">100% COMBED COTTON · GOTS &amp; OEKO-TEX 100</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Horizontal Lockup 03: Full Inverted Cream on Ink (#171512) -->
+  <g transform="translate(100, 740)">
+    <rect width="1400" height="200" rx="2" fill="#171512" stroke="#2B2723" stroke-width="1"/>
+    <text x="32" y="30" class="mono-label" font-size="9" fill="#B8AFA2">08 · REVERSED FULL-WIDTH MASTER LOCKUP (CREAM ON RICH INK #171512)</text>
+    
+    <!-- Centered Content -->
+    <g transform="translate(440, 48)">
+      <!-- Mark -->
+      <g transform="translate(0, 10) scale(0.85)">
+        <use href="#monogram-cream"/>
+      </g>
+      <!-- Vertical Divider -->
+      <line x1="150" y1="14" x2="150" y2="114" stroke="#38322B" stroke-width="1.2"/>
+      <circle cx="150" cy="64" r="3" fill="#B5452B"/>
+      <!-- Wordmark -->
+      <g transform="translate(185, 64)">
+        <text x="0" y="0" class="serif-display" font-size="54" font-weight="600" fill="#FFF8F3" letter-spacing="-0.02em">Abinaya</text>
+        <circle cx="104" cy="-34" r="3.2" fill="#B5452B"/>
+        <text x="2" y="28" class="mono-label" font-size="13" font-weight="500" fill="#E6DFD5" letter-spacing="0.26em">TIRUPPUR · KNITWEAR</text>
+        <line x1="2" y1="38" x2="256" y2="38" stroke="#B5452B" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="2" y="52" class="mono-label" font-size="8.5" fill="#8E8578">COTTON SPUN &amp; CIRCULAR KNIT SPECIALISTS</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= SECTION 4: 32PX FAVICON & OPTICAL SCALE TEST ================= -->
+  <g transform="translate(100, 970)">
+    <rect width="1400" height="130" rx="2" fill="#ECE6DB" stroke="#D8CEBD" stroke-width="1"/>
+    <text x="24" y="24" class="mono-label" font-size="9" fill="#756D63">09 · OPTICAL SCALING SPEC &amp; 32PX FAVICON RESOLUTION TEST (FLAT / NO SHADOWS / NO 3D / NO GRADIENTS)</text>
+    
+    <!-- 32px test at 1x actual size -->
+    <g transform="translate(50, 42)">
+      <use href="#favicon-32"/>
+      <text x="42" y="21" class="mono-label" font-size="9.5" fill="#171512">32×32 PX (ACTUAL SIZE)</text>
+    </g>
+
+    <!-- 32px test at 2x scaled up for inspection -->
+    <g transform="translate(260, 26)">
+      <g transform="scale(2)">
+        <use href="#favicon-32"/>
+      </g>
+      <text x="76" y="37" class="mono-label" font-size="9.5" fill="#171512">64×64 PX (2X RETINA)</text>
+    </g>
+
+    <!-- 16px micro favicon -->
+    <g transform="translate(480, 50)">
+      <g transform="scale(0.5)">
+        <use href="#favicon-32"/>
+      </g>
+      <text x="26" y="13" class="mono-label" font-size="9.5" fill="#171512">16×16 PX (BROWSER TAB)</text>
+    </g>
+
+    <!-- Palette Swatches for quick engineer reference -->
+    <g transform="translate(740, 36)">
+      <!-- Ink Swatch -->
+      <rect x="0" y="0" width="130" height="48" rx="2" fill="#171512"/>
+      <text x="12" y="24" class="mono-label" font-size="8.5" fill="#FFF8F3" font-weight="600">INK #171512</text>
+      <text x="12" y="38" class="mono-label" font-size="7.5" fill="#999185">PRIMARY MARK</text>
+
+      <!-- Cream Swatch -->
+      <rect x="140" y="0" width="130" height="48" rx="2" fill="#F5F1EA" stroke="#D8CEBD"/>
+      <text x="152" y="24" class="mono-label" font-size="8.5" fill="#171512" font-weight="600">CREAM #F5F1EA</text>
+      <text x="152" y="38" class="mono-label" font-size="7.5" fill="#787063">SUBSTRATE</text>
+
+      <!-- Madder Red Swatch -->
+      <rect x="280" y="0" width="130" height="48" rx="2" fill="#B5452B"/>
+      <text x="292" y="24" class="mono-label" font-size="8.5" fill="#FFF8F3" font-weight="600">MADDER RED</text>
+      <text x="292" y="38" class="mono-label" font-size="7.5" fill="#F8DFD8">#B5452B THREAD</text>
+
+      <!-- Indigo Swatch -->
+      <rect x="420" y="0" width="130" height="48" rx="2" fill="#26335F"/>
+      <text x="432" y="24" class="mono-label" font-size="8.5" fill="#FFF8F3" font-weight="600">INDIGO #26335F</text>
+      <text x="432" y="38" class="mono-label" font-size="7.5" fill="#B8C4E8">ACCENT TONE</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,99 @@
+---
+const items = ["Men's Tees", 'Polos', 'Kids Wear', 'Oversized', 'Hoodies', 'Track Pants', 'Custom Print'];
+---
+
+<section class="marquee" aria-label="Product categories" data-marquee>
+  <div class="marquee__track" data-marquee-track>
+    {[0, 1].map((copy) => (
+      <div class="marquee__set" aria-hidden={copy === 1 ? 'true' : undefined}>
+        {items.map((item, i) => (
+          <>
+            <span class:list={['marquee__word', { 'is-outline': i % 2 === 1 }]}>{item}</span>
+            <span class="marquee__x" aria-hidden="true">✕</span>
+          </>
+        ))}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee {
+    position: relative;
+    z-index: 3;
+    background: var(--ink);
+    color: var(--cream);
+    padding-block: clamp(1.5rem, 3vw, 2.5rem);
+    overflow: hidden;
+    border-block: 1px dashed rgba(181, 69, 43, 0.55);
+  }
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+  .marquee__set {
+    display: flex;
+    align-items: center;
+    flex: none;
+  }
+  .marquee__word {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7.5vw, 7rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    transition: color 0.4s, -webkit-text-stroke-color 0.4s;
+  }
+  .marquee__word.is-outline {
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(245, 241, 234, 0.85);
+  }
+  .marquee__word.is-outline:hover {
+    color: var(--cream);
+  }
+  .marquee__x {
+    margin-inline: clamp(1.25rem, 3vw, 2.75rem);
+    font-size: clamp(1rem, 1.8vw, 1.6rem);
+    color: var(--madder);
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, MQ } from '../../scripts/motion/core';
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    const section = document.querySelector<HTMLElement>('[data-marquee]')!;
+    const track = section.querySelector<HTMLElement>('[data-marquee-track]')!;
+    const wrap = gsap.utils.wrap(-50, 0);
+    let pos = 0; // xPercent of the track (one set = 50%)
+    let dir = 1; // 1 = leftward, -1 = rightward (follows scroll direction)
+    let boost = 0; // extra speed from scroll velocity, decays each frame
+    let visible = false;
+
+    const st = ScrollTrigger.create({
+      trigger: section,
+      start: 'top bottom',
+      end: 'bottom top',
+      onToggle: (self) => (visible = self.isActive),
+      onUpdate: (self) => {
+        dir = self.direction;
+        boost = Math.min(Math.abs(self.getVelocity()) / 220, 7);
+      },
+    });
+
+    const tick = (_t: number, dt: number) => {
+      if (!visible) return;
+      pos = wrap(pos - dir * (0.012 + boost * 0.02) * (dt / 16.7));
+      boost *= 0.92;
+      gsap.set(track, { xPercent: pos });
+    };
+    gsap.ticker.add(tick);
+    return () => {
+      gsap.ticker.remove(tick);
+      st.kill();
+    };
+  });
+</script>

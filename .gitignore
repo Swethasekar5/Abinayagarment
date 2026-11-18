@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Astro / Node
+node_modules/
+dist/
+.astro/
+
+# macOS
+.DS_Store

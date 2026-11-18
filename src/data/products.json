@@ -1,0 +1,269 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Men's Cotton T-Shirt",
+    "description": "High-quality 100% cotton t-shirt for men. Comfortable fit, durable fabric.",
+    "category": "Men's Cotton T-Shirts",
+    "fabric": "100% Premium Cotton",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "White",
+      "Black",
+      "Navy",
+      "Gray",
+      "Red",
+      "Blue"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+  },
+  {
+    "id": 2,
+    "name": "Women's Cotton T-Shirt",
+    "description": "Elegant women's cotton t-shirt with a flattering fit. Perfect for wholesale.",
+    "category": "Women's Cotton T-Shirts",
+    "fabric": "100% Premium Cotton",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "availableColors": [
+      "White",
+      "Black",
+      "Pink",
+      "Purple",
+      "Beige",
+      "Sage Green"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1770294759055-2fddfc606537?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Kids' Cotton T-Shirt",
+    "description": "Soft and safe cotton t-shirt for children. Available in multiple sizes.",
+    "category": "Kids Cotton Wear",
+    "fabric": "100% Organic Cotton",
+    "availableSizes": [
+      "2-4Y",
+      "4-6Y",
+      "6-8Y",
+      "8-10Y",
+      "10-12Y"
+    ],
+    "availableColors": [
+      "White",
+      "Yellow",
+      "Light Blue",
+      "Pink",
+      "Green"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1558452013-194c0f870dd2?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "id": 4,
+    "name": "Classic Polo T-Shirt",
+    "description": "Timeless polo shirt perfect for corporate and casual wear.",
+    "category": "Polo T-Shirts",
+    "fabric": "100% Cotton Pique",
+    "availableSizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "White",
+      "Black",
+      "Navy",
+      "Red",
+      "Khaki"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1564722713549-91da4a8d3fe4?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "id": 5,
+    "name": "Oversized Cotton T-Shirt",
+    "description": "Trendy oversized fit perfect for modern fashion. Comfortable and stylish.",
+    "category": "Oversized T-Shirts",
+    "fabric": "100% Premium Cotton",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "White",
+      "Black",
+      "Cream",
+      "Olive",
+      "Charcoal"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1503342217505-b0a15ec3dd18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+  },
+  {
+    "id": 6,
+    "name": "Regular Fit Cotton Shirt",
+    "description": "Versatile cotton shirt suitable for various occasions and seasons.",
+    "category": "Cotton Shirts",
+    "fabric": "100% Cotton",
+    "availableSizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "White",
+      "Light Blue",
+      "Light Pink",
+      "Cream"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1509305717900-84f40e786d82?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "id": 7,
+    "name": "Cotton Hoodie",
+    "description": "Comfortable and warm cotton hoodie for all seasons.",
+    "category": "Hoodies",
+    "fabric": "80% Cotton, 20% Polyester",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "Black",
+      "Gray",
+      "Navy",
+      "Charcoal",
+      "White"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1556821552-7f41c5d440db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+  },
+  {
+    "id": 8,
+    "name": "Cotton Sweatshirt",
+    "description": "Premium cotton sweatshirt for comfort and casual style.",
+    "category": "Sweatshirts",
+    "fabric": "80% Cotton, 20% Polyester",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "Gray",
+      "Navy",
+      "Black",
+      "Cream",
+      "Maroon"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+  },
+  {
+    "id": 9,
+    "name": "Cotton Track Pants",
+    "description": "Comfortable and breathable cotton track pants for athletic and casual wear.",
+    "category": "Track Pants",
+    "fabric": "100% Cotton",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "Black",
+      "Gray",
+      "Navy",
+      "Charcoal",
+      "Maroon"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1621376225370-2781217c204c?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "id": 10,
+    "name": "Custom Printed Apparel",
+    "description": "Customizable cotton apparel with your brand or design. Perfect for corporate gifts.",
+    "category": "Custom Printed Apparel",
+    "fabric": "100% Premium Cotton",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "Any Custom Color"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1618885472089-43e8227c6ad7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+  },
+  {
+    "id": 11,
+    "name": "Casual Wear Collection",
+    "description": "versatile casual wear collection for everyday comfort.",
+    "category": "Casual Wear",
+    "fabric": "100% Cotton",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "White",
+      "Black",
+      "Navy",
+      "Khaki",
+      "Olive"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1556439130-8a42ec494a22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+  },
+  {
+    "id": 12,
+    "name": "Premium Cotton Blend",
+    "description": "High-quality cotton blend for enhanced durability and softness.",
+    "category": "Casual Wear",
+    "fabric": "95% Cotton, 5% Elastane",
+    "availableSizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "availableColors": [
+      "Black",
+      "Navy",
+      "Gray",
+      "Heather"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+  }
+]

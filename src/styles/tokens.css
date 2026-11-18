@@ -1,0 +1,42 @@
+/* Abinaya design system: tokens from the Stitch style tile */
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/fraunces/full-italic.css';
+@import '@fontsource-variable/manrope/index.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/600.css';
+
+:root {
+  /* colour */
+  --cream: #f5f1ea;
+  --paper: #fbf9f5;
+  --ink: #171512;
+  --ink-soft: #5a554d;
+  --sage: #8b9d6f;
+  --sage-tint: #e4e8da;
+  --indigo: #26335f;
+  --indigo-deep: #1b2547;
+  --madder: #b5452b; /* thread only */
+  --hairline: #ddd6ca;
+  --whatsapp: #25d366;
+
+  /* type */
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope Variable', 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(3.4rem, 8.4vw, 8rem);
+  --fs-h2: clamp(2.5rem, 5.4vw, 4.75rem);
+  --fs-h3: clamp(1.6rem, 2.4vw, 2.25rem);
+  --fs-lead: clamp(1.05rem, 1.3vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-label: 0.75rem;
+
+  /* layout */
+  --max: 1280px;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section-y: clamp(6rem, 12vw, 10rem);
+  --radius: 2px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

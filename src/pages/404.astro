@@ -1,0 +1,111 @@
+---
+import { url } from '../lib/url';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Icon from '../components/site/Icon.astro';
+---
+
+<SiteLayout title="Page not found" description="This page doesn't exist.">
+  <section class="lost">
+    <svg class="lost__thread" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
+      <path data-lost-thread vector-effect="non-scaling-stroke" d="M -20 300 C 160 300, 220 120, 380 140 C 520 158, 520 300, 660 290 C 780 282, 800 170, 900 170 C 980 170, 1010 240, 1060 250 C 1120 262, 1150 300, 1180 340"></path>
+    </svg>
+    <span class="lost__end" data-lost-end aria-hidden="true"></span>
+
+    <div class="container lost__inner">
+      <p class="label" data-page-in>Error 404 — Page not found</p>
+      <p class="lost__code" aria-hidden="true" data-split="now">404</p>
+      <h1 class="lost__title" data-split="now">We dropped a <em>stitch</em>.</h1>
+      <p class="lead lost__text" data-page-in>
+        The page you're looking for doesn't exist or has moved. Let's get you back on the thread.
+      </p>
+      <div class="lost__actions" data-page-in>
+        <a href={url('/')} class="btn btn--primary" data-magnetic>Back to home <Icon name="arrow" size={16} /></a>
+        <a href={url('/products')} class="btn btn--outline">Browse products</a>
+        <a href={url('/contact-us')} class="stitch-link">Contact us →</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .lost {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-block: calc(88px + 3rem) 4rem;
+    overflow: hidden;
+  }
+  .lost__thread {
+    position: absolute;
+    inset: 18% 0 auto;
+    width: 100%;
+    height: 60%;
+    pointer-events: none;
+  }
+  .lost__thread path {
+    fill: none;
+    stroke: var(--madder);
+    stroke-width: 2;
+    stroke-dasharray: 8 7;
+    stroke-linecap: round;
+  }
+  .lost__end {
+    /* the loose thread end */
+    position: absolute;
+    right: 1.5%;
+    top: calc(18% + 60% * 0.85 - 6px);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--madder);
+    animation: dangle 2.8s ease-in-out infinite;
+  }
+  @keyframes dangle {
+    50% {
+      transform: translate(-4px, 10px);
+    }
+  }
+  .lost__inner {
+    position: relative;
+  }
+  .lost__code {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 30vw, 24rem);
+    font-weight: 250;
+    line-height: 0.8;
+    letter-spacing: -0.06em;
+    color: var(--indigo);
+    font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+    font-style: italic;
+  }
+  .lost__title {
+    margin-top: 1.5rem;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    font-weight: 300;
+  }
+  .lost__text {
+    max-width: 32rem;
+    margin-top: 1.25rem;
+  }
+  .lost__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.25rem;
+    margin-top: 2.25rem;
+  }
+</style>
+
+<script>
+  import { gsap, drawable, MQ } from '../scripts/motion/core';
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    const thread = drawable(document.querySelector<SVGPathElement>('[data-lost-thread]')!);
+    gsap
+      .timeline({ delay: 0.3 })
+      .to(thread, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' })
+      .from('[data-lost-end]', { scale: 0, duration: 0.5, ease: 'back.out(3)' }, '-=0.2');
+  });
+</script>

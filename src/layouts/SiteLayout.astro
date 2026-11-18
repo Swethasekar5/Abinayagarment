@@ -1,0 +1,83 @@
+---
+import { url } from '../lib/url';
+import '../styles/base.css';
+import Nav from '../components/site/Nav.astro';
+import Footer from '../components/site/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Premium cotton apparel made and supplied in bulk from Tiruppur: for retailers, distributors and brands across India.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F5F1EA" />
+    <link rel="icon" href={url('/favicon.ico')} />
+    <title>{title} · {site.name}</title>
+    <meta property="og:title" content={`${title} · ${site.name}`} />
+    <meta property="og:description" content={description} />
+    <script is:inline>
+      // Enable entrance animations only when motion is allowed; failsafe reveals content if JS stalls.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('motion');
+        setTimeout(function () {
+          if (!window.__heroReady) document.documentElement.classList.remove('motion');
+        }, 3500);
+      }
+    </script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Nav />
+    <div class="page-thread thread-v" aria-hidden="true"></div>
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      import '../scripts/motion/core';
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+  /* long stitched thread in the left margin, drawn by scroll progress */
+  .page-thread {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: clamp(12px, 1.6vw, 28px);
+    z-index: 2;
+    transform-origin: top;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+  @media (max-width: 1023px) {
+    .page-thread {
+      display: none;
+    }
+  }
+</style>

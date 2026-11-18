@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "title": "Cotton T-Shirt Collection",
+    "category": "Cotton Apparel",
+    "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 2,
+    "title": "Premium Cotton Fabric Detail",
+    "category": "Cotton Apparel",
+    "imageUrl": "https://images.unsplash.com/photo-1599122954975-e4da3b5b4356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1599122954975-e4da3b5b4356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 3,
+    "title": "Folded Cotton Garments",
+    "category": "Cotton Apparel",
+    "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 4,
+    "title": "Colorful T-Shirt Range",
+    "category": "T-Shirt Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 5,
+    "title": "Plain T-Shirt Selection",
+    "category": "T-Shirt Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1505152505862-e1c2192fb4f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1505152505862-e1c2192fb4f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 6,
+    "title": "Premium Cotton T-Shirts",
+    "category": "T-Shirt Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1503341338985-37898b6baf30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1503341338985-37898b6baf30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 7,
+    "title": "Men's Casual Wear",
+    "category": "Men's Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 8,
+    "title": "Men's Polo Collection",
+    "category": "Men's Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 9,
+    "title": "Men's Formal Shirts",
+    "category": "Men's Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1596362829167-6a6e4c8c3a79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1596362829167-6a6e4c8c3a79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 10,
+    "title": "Women's T-Shirt Collection",
+    "category": "Women's Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1502716707956-5d505b8e6b4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1502716707956-5d505b8e6b4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 11,
+    "title": "Women's Casual Wear",
+    "category": "Women's Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1506629082632-401017bb5791?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1506629082632-401017bb5791?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 12,
+    "title": "Women's Summer Collection",
+    "category": "Women's Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1509631179647-0177331693ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1509631179647-0177331693ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 13,
+    "title": "Kids Colorful Wear",
+    "category": "Kids Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1519238263413-b37e4baf58d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1519238263413-b37e4baf58d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 14,
+    "title": "Cute Kids T-Shirts",
+    "category": "Kids Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1536882240095-0379873feb4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1536882240095-0379873feb4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 15,
+    "title": "Kids Playful Apparel",
+    "category": "Kids Wear",
+    "imageUrl": "https://images.unsplash.com/photo-1503696146481-e4635abfb374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1503696146481-e4635abfb374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 16,
+    "title": "Premium Cotton Texture",
+    "category": "Fabric Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 17,
+    "title": "Textile Weave Detail",
+    "category": "Fabric Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1582901694515-bc119e7409b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1582901694515-bc119e7409b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 18,
+    "title": "Organic Cotton Material",
+    "category": "Fabric Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1599122954975-e4da3b5b4356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1599122954975-e4da3b5b4356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 19,
+    "title": "Complete Garment Range",
+    "category": "Garment Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 20,
+    "title": "Wholesale Collection Display",
+    "category": "Garment Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1569810189672-b9fbb5e67098?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1569810189672-b9fbb5e67098?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  },
+  {
+    "id": 21,
+    "title": "Premium Apparel Showcase",
+    "category": "Garment Collections",
+    "imageUrl": "https://images.unsplash.com/photo-1551028719-00167b16ebc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1551028719-00167b16ebc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300"
+  }
+]

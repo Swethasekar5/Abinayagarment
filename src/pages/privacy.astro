@@ -1,0 +1,255 @@
+---
+/**
+ * Plain-language privacy notice describing how THIS site actually works
+ * (static pages, forms that hand off to WhatsApp, quote list in local storage, Google Maps embed).
+ * ⚠️ Have it reviewed before launch, and update it if analytics, cookies or a form backend are added.
+ */
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntro from '../components/page/PageIntro.astro';
+import { site } from '../data/site';
+
+const updated = '18 November 2026';
+const sections = [
+  { id: 'who', title: 'Who we are' },
+  { id: 'collect', title: 'What this website collects' },
+  { id: 'forms', title: 'Inquiry forms and WhatsApp' },
+  { id: 'use', title: 'How we use your details' },
+  { id: 'third', title: 'Third-party services' },
+  { id: 'storage', title: 'Cookies and local storage' },
+  { id: 'keep', title: 'How long we keep information' },
+  { id: 'rights', title: 'Your choices' },
+  { id: 'changes', title: 'Changes to this notice' },
+];
+---
+
+<SiteLayout title="Privacy policy" description={`How ${site.name} handles the information you share through this website.`}>
+  <PageIntro
+    label="(01) — Privacy"
+    crumb={`Last updated · ${updated}`}
+    title="Privacy, <em>plainly</em>."
+    size="lg"
+    lead="What happens to the details you share with us through this website, in plain language."
+  />
+
+  <section class="section legal">
+    <div class="container legal__grid">
+      <nav class="toc" aria-label="On this page">
+        <p class="mono toc__k">On this page</p>
+        <ol>
+          {sections.map((s, i) => (
+            <li><a href={`#${s.id}`} data-toc={s.id}><span class="mono">0{i + 1}</span> {s.title}</a></li>
+          ))}
+        </ol>
+      </nav>
+
+      <article class="prose">
+        <section id="who" data-sec>
+          <h2><span class="mono">01</span> Who we are</h2>
+          <p>
+            This website belongs to {site.name}, a cotton apparel wholesale business at {site.address.line1},
+            {site.address.city}, {site.address.state}, {site.address.country}. You can reach us at
+            <a href={`mailto:${site.email}`}>{site.email}</a> or <a href={site.phoneHref}>{site.phone}</a>.
+          </p>
+        </section>
+
+        <section id="collect" data-sec>
+          <h2><span class="mono">02</span> What this website collects</h2>
+          <p>
+            This website has no user accounts and no sign-in. It does not run analytics or advertising trackers, and
+            it does not store anything you type into its forms on our servers.
+          </p>
+        </section>
+
+        <section id="forms" data-sec>
+          <h2><span class="mono">03</span> Inquiry forms and WhatsApp</h2>
+          <p>
+            The inquiry forms and the quote list don't send your details to us directly. When you press send, your
+            details are placed into a WhatsApp message on your own device. Nothing reaches us until you choose to send
+            that message in WhatsApp.
+          </p>
+          <p>
+            Messages you send through WhatsApp are also covered by WhatsApp's own privacy policy.
+          </p>
+        </section>
+
+        <section id="use" data-sec>
+          <h2><span class="mono">04</span> How we use your details</h2>
+          <p>When you contact us by WhatsApp, phone or email, we use what you share to:</p>
+          <ul>
+            <li>reply to your inquiry and send quotations;</li>
+            <li>process, deliver and support your orders;</li>
+            <li>keep records we need for our business and legal obligations.</li>
+          </ul>
+          <p>We don't sell your details, and we don't share them except where needed to fulfil your order or required by law.</p>
+        </section>
+
+        <section id="third" data-sec>
+          <h2><span class="mono">05</span> Third-party services</h2>
+          <p>
+            Our contact page shows a Google Maps map. When it loads, Google may collect information under its own
+            privacy policy. Links to WhatsApp and Google Maps take you to those services, whose own policies apply.
+          </p>
+          <p>The fonts and images on this website are served from our own site, not from third-party font services.</p>
+        </section>
+
+        <section id="storage" data-sec>
+          <h2><span class="mono">06</span> Cookies and local storage</h2>
+          <p>
+            This website doesn't set its own cookies. If you use the quote list on the products page, the products you
+            add are saved in your browser's local storage so the list is still there when you come back. It stays on
+            your device; you can empty it with “Clear list” or by clearing your browser data.
+          </p>
+        </section>
+
+        <section id="keep" data-sec>
+          <h2><span class="mono">07</span> How long we keep information</h2>
+          <p>
+            We keep inquiry and order details for as long as we need them to respond to you, complete orders, and meet
+            our accounting and legal obligations.
+          </p>
+        </section>
+
+        <section id="rights" data-sec>
+          <h2><span class="mono">08</span> Your choices</h2>
+          <p>
+            You can ask us what information we hold about you, and ask us to correct or delete it, by writing to
+            <a href={`mailto:${site.email}`}>{site.email}</a> or messaging us on WhatsApp.
+          </p>
+        </section>
+
+        <section id="changes" data-sec>
+          <h2><span class="mono">09</span> Changes to this notice</h2>
+          <p>If we change how this website handles information, we will update this page and the date at the top.</p>
+          <p class="mono prose__date">Last updated · {updated}</p>
+        </section>
+      </article>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .legal__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 18rem) minmax(0, 44rem);
+    justify-content: space-between;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .toc {
+    position: sticky;
+    top: 110px;
+  }
+  .toc__k {
+    font-size: 0.62rem;
+    color: var(--ink-soft);
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .toc a {
+    position: relative;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0 0.6rem 0.9rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    transition: color 0.3s;
+  }
+  .toc a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: repeating-linear-gradient(180deg, var(--madder) 0 4px, transparent 4px 7px);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.45s var(--ease-out);
+  }
+  .toc a .mono {
+    padding-top: 0.2rem;
+    font-size: 0.6rem;
+    color: var(--madder);
+  }
+  .toc a:hover,
+  .toc a.is-active {
+    color: var(--ink);
+  }
+  .toc a.is-active::before {
+    transform: scaleY(1);
+  }
+
+  .prose section {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px dashed var(--hairline);
+    scroll-margin-top: 110px;
+  }
+  .prose section:last-child {
+    border-bottom: 0;
+  }
+  .prose h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  }
+  .prose h2 .mono {
+    color: var(--madder);
+  }
+  .prose p,
+  .prose li {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+  .prose p + p,
+  .prose ul + p {
+    margin-top: 1rem;
+  }
+  .prose ul {
+    margin: 0.75rem 0 0;
+    padding-left: 1.2rem;
+  }
+  .prose a {
+    color: var(--indigo);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose__date {
+    margin-top: 1.5rem !important;
+    font-size: 0.62rem;
+  }
+
+  @media (max-width: 900px) {
+    .legal__grid {
+      grid-template-columns: 1fr;
+    }
+    .toc {
+      position: static;
+    }
+  }
+</style>
+
+<script>
+  import { ScrollTrigger } from '../scripts/motion/core';
+
+  // scroll-spy: highlight the section being read
+  const links = new Map(
+    Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-toc]')).map((a) => [a.dataset.toc!, a]),
+  );
+  document.querySelectorAll<HTMLElement>('[data-sec]').forEach((sec) => {
+    ScrollTrigger.create({
+      trigger: sec,
+      start: 'top 45%',
+      end: 'bottom 45%',
+      onToggle: ({ isActive }) => links.get(sec.id)?.classList.toggle('is-active', isActive),
+    });
+  });
+</script>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <rect x="2" y="2" width="60" height="60" rx="2" stroke="#26335F" stroke-width="1.5" fill="#FBF9F5"/>
+  <!-- Cotton boll geometric icon -->
+  <circle cx="32" cy="32" r="14" stroke="#26335F" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
+  <path d="M26 34C26 29 32 23 32 23C32 23 38 29 38 34C38 37.3 35.3 40 32 40C28.7 40 26 37.3 26 34Z" fill="#26335F"/>
+  <path d="M22 36C22 33 27 30 27 30C27 30 31 35 30 38C29 41 22 39 22 36Z" fill="#8B9D6F" opacity="0.9"/>
+  <path d="M42 36C42 33 37 30 37 30C37 30 33 35 34 38C35 41 42 39 42 36Z" fill="#8B9D6F" opacity="0.9"/>
+  <circle cx="32" cy="32" r="2.5" fill="#FBF9F5"/>
+  <!-- Typography -->
+  <text x="76" y="28" font-family="'Fraunces', serif, Georgia" font-size="20" font-weight="600" letter-spacing="-0.02em" fill="#171512">ABINAYA</text>
+  <text x="76" y="44" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="500" letter-spacing="0.16em" fill="#5A554D">GARMENTS · TIRUPPUR</text>
+  <text x="76" y="56" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="400" letter-spacing="0.1em" fill="#8B9D6F">B2B KNITWEAR MANUFACTURER</text>
+</svg>

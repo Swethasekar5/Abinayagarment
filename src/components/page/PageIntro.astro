@@ -1,0 +1,158 @@
+---
+/**
+ * Opening block for inner pages: woven label, oversized headline (lines rise on load),
+ * a lead/aside column and an optional spec strip. A dashed madder "stitch" closes it.
+ */
+interface Props {
+  label: string;
+  crumb?: string;
+  /** headline HTML, e.g. 'The <em>catalogue</em>.' */
+  title: string;
+  lead?: string;
+  meta?: Array<{ k: string; v: string }>;
+  size?: 'xl' | 'lg';
+}
+const { label, crumb, title, lead, meta, size = 'xl' } = Astro.props;
+---
+
+<section class:list={['intro', `intro--${size}`]} data-intro>
+  <div class="container">
+    <div class="intro__top" data-page-in>
+      <p class="label">{label}</p>
+      {crumb && <p class="mono intro__crumb">{crumb}</p>}
+    </div>
+
+    <div class="intro__main">
+      <h1 class="intro__title" data-split="now" set:html={title} />
+      <div class="intro__aside" data-page-in>
+        {lead && <p class="lead">{lead}</p>}
+        <slot name="aside" />
+      </div>
+    </div>
+
+    {meta && (
+      <dl class="intro__meta" data-page-in>
+        {meta.map((m) => (
+          <div>
+            <dt class="mono">{m.k}</dt>
+            <dd>{m.v}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+  <span class="intro__stitch" data-intro-stitch aria-hidden="true"></span>
+</section>
+
+<style>
+  .intro {
+    position: relative;
+    padding-top: calc(88px + clamp(2.5rem, 6vw, 5rem));
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .intro__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .intro__crumb {
+    color: var(--ink-soft);
+    text-align: right;
+  }
+  .intro__main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    align-items: end;
+    gap: clamp(2rem, 5vw, 5rem);
+    margin-top: clamp(2.5rem, 6vw, 5rem);
+  }
+  .intro__title {
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+  }
+  .intro--xl .intro__title {
+    font-size: clamp(3.6rem, 10.5vw, 10rem);
+  }
+  .intro--lg .intro__title {
+    font-size: clamp(3rem, 7.4vw, 7rem);
+  }
+  .intro__aside {
+    display: grid;
+    gap: 1.5rem;
+    padding-bottom: 0.6rem;
+  }
+  .intro__meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+    border: 1px solid var(--hairline);
+    background: rgba(251, 249, 245, 0.6);
+  }
+  .intro__meta div {
+    padding: 1.1rem 1.25rem 1.25rem;
+    border-left: 1px solid var(--hairline);
+  }
+  .intro__meta div:first-child {
+    border-left: 0;
+  }
+  .intro__meta dt {
+    font-size: 0.62rem;
+    color: var(--ink-soft);
+  }
+  .intro__meta dd {
+    margin: 0.45rem 0 0;
+    font-weight: 600;
+    font-size: 0.98rem;
+  }
+  .intro__stitch {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--madder) 0 9px, transparent 9px 15px);
+    transform-origin: left;
+  }
+
+  @media (max-width: 900px) {
+    .intro__main {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .intro__meta {
+      grid-template-columns: 1fr 1fr;
+    }
+    .intro__meta div:nth-child(3) {
+      border-left: 0;
+    }
+    .intro__meta div:nth-child(n + 3) {
+      border-top: 1px solid var(--hairline);
+    }
+  }
+  @media (max-width: 560px) {
+    .intro {
+      padding-top: calc(76px + 2rem);
+    }
+    .intro__top {
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .intro__crumb {
+      text-align: left;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, MQ } from '../../scripts/motion/core';
+
+  gsap.matchMedia().add(MQ.motion, () => {
+    document.querySelectorAll('[data-intro-stitch]').forEach((el) => {
+      gsap.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: 1.6, ease: 'expo.inOut', delay: 0.3 });
+    });
+  });
+</script>

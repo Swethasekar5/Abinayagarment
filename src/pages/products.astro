@@ -1,0 +1,987 @@
+---
+import { url } from '../lib/url';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntro from '../components/page/PageIntro.astro';
+import PageCta from '../components/page/PageCta.astro';
+import Icon from '../components/site/Icon.astro';
+import { photos } from '../assets/photos';
+import products from '../data/products.json';
+import { site, waLink } from '../data/site';
+import { swatch, hasSwatch } from '../data/swatches';
+
+/** Product photos by product id. Products without one get a folded-stack illustration in their colours. */
+const media: Record<number, ImageMetadata> = {
+  1: photos.mensCrewnecksFlatlay,
+  2: photos.teesFoldedNaturalTones,
+  3: photos.kidsCottonFlatlay,
+  4: photos.poloTeesHanger,
+  5: photos.teeOversized240gsm,
+  6: photos.cottonShirtsStack,
+  7: photos.hoodieSweatshirtStack,
+  8: photos.sweatshirtsCrewneck,
+  9: photos.trackPantsFolded,
+  10: photos.teeCharcoalHeavyweight,
+  11: photos.teesFourpackWorkbench,
+  12: photos.handsFoldingTee,
+};
+
+const groups = [
+  { id: 'tees', label: 'T-shirts', cats: ["Men's Cotton T-Shirts", "Women's Cotton T-Shirts", 'Oversized T-Shirts'] },
+  { id: 'polos', label: 'Polos & shirts', cats: ['Polo T-Shirts', 'Cotton Shirts'] },
+  { id: 'kids', label: 'Kids', cats: ['Kids Cotton Wear'] },
+  { id: 'fleece', label: 'Hoodies & sweats', cats: ['Hoodies', 'Sweatshirts'] },
+  { id: 'casual', label: 'Casual & track', cats: ['Casual Wear', 'Track Pants'] },
+  { id: 'custom', label: 'Custom print', cats: ['Custom Printed Apparel'] },
+];
+const groupOf = (cat: string) => groups.find((g) => g.cats.includes(cat))?.id ?? 'other';
+
+const pad = (n: number) => String(n).padStart(2, '0');
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const enquire = (name: string) =>
+  waLink(`Hello Abinaya Garment Shop, I am interested in "${name}". Please share wholesale pricing and minimum order details.`);
+
+const items = products.map((p) => ({
+  ...p,
+  no: pad(p.id),
+  group: groupOf(p.category),
+  description: cap(p.description),
+  image: media[p.id],
+  shades: p.availableColors.filter(hasSwatch),
+  search: [p.name, p.category, p.fabric, p.description, ...p.availableColors].join(' ').toLowerCase(),
+}));
+const counts = Object.fromEntries(groups.map((g) => [g.id, items.filter((i) => i.group === g.id).length]));
+---
+
+<SiteLayout
+  title="Products"
+  description="Wholesale cotton apparel catalogue from Tiruppur: t-shirts, polos, kidswear, hoodies, sweatshirts, track pants and custom printed apparel."
+>
+  <PageIntro
+    label="(01) — Catalogue"
+    crumb={`Tiruppur · ${pad(items.length)} products · Wholesale only`}
+    title="The <em>catalogue</em>."
+    lead="Premium cotton apparel for wholesale buyers, retailers and distributors. Pick what you need, add it to your quote list, and we'll reply with pricing."
+    meta={[
+      { k: 'Made in', v: `${site.address.city}, ${site.address.state}` },
+      { k: 'Range', v: 'Men · Women · Kids' },
+      { k: 'Fabrics', v: 'Cotton, pique, fleece blends' },
+      { k: 'Custom', v: 'Printing & private label' },
+    ]}
+  />
+
+  <section class="cat" data-catalogue>
+    <div class="tools" data-tools>
+      <div class="container tools__inner">
+        <label class="tools__search">
+          <Icon name="search" size={18} />
+          <span class="visually-hidden">Search products</span>
+          <input type="search" placeholder="Search style, fabric or colour…" autocomplete="off" data-search />
+        </label>
+        <div class="tools__chips" role="group" aria-label="Filter by category">
+          <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All <sup>{pad(items.length)}</sup></button>
+          {groups.map((g) => (
+            <button type="button" class="chip" data-filter={g.id} aria-pressed="false">{g.label} <sup>{pad(counts[g.id])}</sup></button>
+          ))}
+        </div>
+        <p class="mono tools__count" aria-live="polite"><span data-result-count>{items.length} of {items.length}</span></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <ul class="grid" data-grid>
+        {items.map((p, i) => (
+          <li class="pc" data-product={p.id} data-group={p.group} data-search={p.search}>
+            <article>
+              <figure class="pc__media">
+                {p.image ? (
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    widths={[420, 640, 900]}
+                    sizes="(min-width: 1100px) 31vw, (min-width: 700px) 46vw, 92vw"
+                    loading={i < 3 ? 'eager' : 'lazy'}
+                  />
+                ) : (
+                  <div class="pc__stack" aria-hidden="true">
+                    {p.availableColors.filter(hasSwatch).slice(0, 5).map((c, j) => (
+                      <span style={`--c:${swatch[c]};--i:${j}`}></span>
+                    ))}
+                  </div>
+                )}
+                <span class="pc__lot mono">No. {p.no} · {p.category}</span>
+                <span class="pc__fabric mono">{p.fabric}</span>
+              </figure>
+              <div class="pc__body">
+                <h2 class="pc__name">{p.name}</h2>
+                <p class="pc__desc">{p.description}</p>
+                <dl class="pc__spec">
+                  <div>
+                    <dt class="mono">Sizes</dt>
+                    <dd class="pc__sizes">{p.availableSizes.map((s) => <span>{s}</span>)}</dd>
+                  </div>
+                  <div>
+                    <dt class="mono">Shades</dt>
+                    <dd class="pc__shades">
+                      {p.shades.length ? (
+                        p.shades.map((c) => <span class="pc__swatch" style={`background:${swatch[c]}`} title={c}><span class="visually-hidden">{c}</span></span>)
+                      ) : (
+                        <span class="pc__any">{p.availableColors.join(', ')}</span>
+                      )}
+                    </dd>
+                  </div>
+                </dl>
+                <div class="pc__actions">
+                  <a href={enquire(p.name)} target="_blank" rel="noopener" class="pc__wa mono">
+                    <Icon name="whatsapp" size={15} /> WhatsApp
+                  </a>
+                  <button type="button" class="pc__add mono" data-quote-add={p.id} aria-pressed="false">
+                    <span class="pc__add-off"><Icon name="plus" size={15} /> Add to quote</span>
+                    <span class="pc__add-on"><Icon name="check" size={15} /> In quote list</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+
+      <div class="empty" data-empty hidden>
+        <p class="empty__title">Nothing matches that yet.</p>
+        <p class="lead">Try another word or category, or ask us directly: we make more than what's listed here.</p>
+        <button type="button" class="btn btn--outline" data-reset>Show all products</button>
+      </div>
+    </div>
+
+    <!-- quote list: floating pill + side drawer -->
+    <button type="button" class="qpill" data-qpill hidden>
+      <span class="mono">Quote list</span>
+      <span class="qpill__n" data-qpill-n>0</span>
+    </button>
+
+    <dialog class="qd" data-qdrawer aria-labelledby="qd-title" data-lenis-prevent>
+      <div class="qd__panel" data-qd-panel>
+        <header class="qd__head">
+          <div>
+            <p class="label">Your quote list</p>
+            <h2 id="qd-title" class="qd__title">Request <em>pricing</em></h2>
+          </div>
+          <button type="button" class="qd__close" data-qd-close>
+            <span class="visually-hidden">Close quote list</span>
+            <Icon name="close" size={22} />
+          </button>
+        </header>
+
+        <ol class="qd__list">
+          {items.map((p) => (
+            <li class="qd__row" data-qd-row={p.id} hidden>
+              <div class="qd__thumb">
+                {p.image ? (
+                  <Image src={p.image} alt="" widths={[160]} sizes="72px" />
+                ) : (
+                  <span class="qd__chip" style={`background:${swatch[p.shades[0]] ?? 'var(--sage-tint)'}`}></span>
+                )}
+              </div>
+              <div class="qd__info">
+                <p class="qd__name">{p.name}</p>
+                <p class="mono qd__cat">{p.category}</p>
+                <label class="qd__qty">
+                  <span class="visually-hidden">Quantity for {p.name}</span>
+                  <input type="text" inputmode="numeric" placeholder="Qty, e.g. 500 pcs" data-qd-qty={p.id} />
+                </label>
+              </div>
+              <button type="button" class="qd__remove" data-qd-remove={p.id}>
+                <span class="visually-hidden">Remove {p.name}</span>
+                <Icon name="close" size={16} />
+              </button>
+            </li>
+          ))}
+        </ol>
+        <p class="qd__empty" data-qd-empty>Your list is empty. Use “Add to quote” on any product.</p>
+
+        <footer class="qd__foot">
+          <label class="qd__field">
+            <span class="mono">Your name / shop</span>
+            <input type="text" autocomplete="organization" placeholder="Optional" data-qd-name />
+          </label>
+          <button type="button" class="btn btn--ink qd__send" data-qd-send>
+            <Icon name="whatsapp" size={18} /> Send list on WhatsApp
+          </button>
+          <div class="qd__sub">
+            <a href={url('/contact-us')} class="stitch-link">Prefer a form? →</a>
+            <button type="button" class="qd__clear mono" data-qd-clear>Clear list</button>
+          </div>
+        </footer>
+      </div>
+    </dialog>
+  </section>
+
+  <PageCta
+    label="Custom & bulk orders"
+    title="Need a custom print, <em>your own label</em>, or a bulk run?"
+    text="Tell us your quantity and requirements and we will share the best wholesale options. We work with businesses of all sizes."
+    primary={{ href: url('/contact-us'), label: 'Request a quote' }}
+  />
+</SiteLayout>
+
+<style>
+  /* ---------- toolbar ---------- */
+  .tools {
+    position: sticky;
+    top: 72px;
+    z-index: 20;
+    padding-block: 1rem;
+    background: rgba(245, 241, 234, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tools__inner {
+    display: grid;
+    grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .tools__search {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--ink);
+    color: var(--ink-soft);
+  }
+  .tools__search input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.55rem 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 0.98rem;
+    color: var(--ink);
+  }
+  .tools__search input:focus {
+    outline: none;
+  }
+  .tools__search:focus-within {
+    border-bottom-color: var(--indigo);
+    color: var(--indigo);
+  }
+  .tools__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tools__chips::-webkit-scrollbar {
+    display: none;
+  }
+  .chip {
+    flex: none;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+    transition:
+      background-color 0.3s var(--ease-out),
+      color 0.3s var(--ease-out),
+      border-color 0.3s var(--ease-out);
+  }
+  .chip sup {
+    color: var(--ink-soft);
+    font-size: 0.6rem;
+  }
+  .chip:hover {
+    border-color: var(--ink);
+  }
+  .chip.is-active {
+    background: var(--indigo);
+    border-color: var(--indigo);
+    color: var(--cream);
+  }
+  .chip.is-active sup {
+    color: rgba(245, 241, 234, 0.65);
+  }
+  .tools__count {
+    font-size: 0.64rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  /* ---------- grid + card ---------- */
+  .cat {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(2.5rem, 4vw, 3.5rem) clamp(1rem, 2vw, 1.75rem);
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pc.is-hidden {
+    display: none;
+  }
+  .pc article {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .pc__media {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .pc__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease-out);
+  }
+  .pc:hover .pc__media img {
+    transform: scale(1.05);
+  }
+  .pc__lot {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    right: 0.85rem;
+    width: fit-content;
+    max-width: calc(100% - 1.7rem);
+    padding: 0.3rem 0.55rem;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    font-size: 0.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .pc__fabric {
+    position: absolute;
+    right: 0.85rem;
+    bottom: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba(23, 21, 18, 0.72);
+    color: var(--cream);
+    font-size: 0.58rem;
+  }
+
+  /* folded-stack illustration for products without a photo */
+  .pc__stack {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 22%;
+    background:
+      radial-gradient(120% 80% at 30% 10%, rgba(255, 255, 255, 0.7), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(23, 21, 18, 0.025) 0 1px, transparent 1px 4px),
+      #ece5d8;
+  }
+  .pc__stack span {
+    position: relative;
+    width: 62%;
+    height: 11%;
+    margin-top: -1.5%;
+    border-radius: 10px 10px 6px 6px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0.12)), var(--c);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.25) inset,
+      0 6px 14px -6px rgba(23, 21, 18, 0.45);
+    transform: translateX(calc((var(--i) - 2) * 1.2%)) rotate(calc((var(--i) - 2) * 0.6deg));
+    transition: transform 0.8s var(--ease-out);
+  }
+  .pc__stack span::after {
+    /* stitched hem */
+    content: '';
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: 30%;
+    border-top: 1px dashed rgba(245, 241, 234, 0.55);
+  }
+  .pc:hover .pc__stack span {
+    transform: translateX(calc((var(--i) - 2) * 2.4%)) translateY(calc(var(--i) * -4%)) rotate(calc((var(--i) - 2) * 1.2deg));
+  }
+
+  .pc__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-top: 1.2rem;
+  }
+  .pc__name {
+    font-size: clamp(1.45rem, 1.9vw, 1.8rem);
+  }
+  .pc__desc {
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .pc__spec {
+    display: grid;
+    gap: 0.7rem;
+    margin: 1.1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--hairline);
+  }
+  .pc__spec div {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .pc__spec dt {
+    font-size: 0.6rem;
+    color: var(--ink-soft);
+  }
+  .pc__spec dd {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .pc__sizes span {
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--hairline);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+  }
+  .pc__swatch {
+    width: 0.95rem;
+    height: 0.95rem;
+    border-radius: 50%;
+    border: 1px solid rgba(23, 21, 18, 0.2);
+    transition: transform 0.3s var(--ease-out);
+  }
+  .pc:hover .pc__swatch {
+    transform: scale(1.2);
+  }
+  .pc__any {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .pc__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+  }
+  .pc__wa,
+  .pc__add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    background: transparent;
+    font-size: 0.64rem;
+    color: var(--ink);
+    cursor: pointer;
+    transition:
+      background-color 0.3s var(--ease-out),
+      color 0.3s var(--ease-out);
+  }
+  .pc__wa svg {
+    color: #1da851;
+  }
+  .pc__wa:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .pc__wa:hover svg {
+    color: var(--whatsapp);
+  }
+  .pc__add {
+    background: var(--indigo);
+    border-color: var(--indigo);
+    color: var(--cream);
+  }
+  .pc__add:hover {
+    background: var(--indigo-deep);
+  }
+  .pc__add-on {
+    display: none;
+  }
+  .pc__add[aria-pressed='true'] {
+    background: var(--sage-tint);
+    border-color: var(--sage);
+    color: var(--ink);
+  }
+  .pc__add[aria-pressed='true'] .pc__add-off {
+    display: none;
+  }
+  .pc__add[aria-pressed='true'] .pc__add-on {
+    display: inline-flex;
+  }
+  .pc__add-off,
+  .pc__add-on {
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .pc__add-off {
+    display: inline-flex;
+  }
+
+  .empty {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    max-width: 34rem;
+    padding: 4rem 0 2rem;
+  }
+  .empty[hidden] {
+    display: none;
+  }
+  .empty__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    font-weight: 300;
+  }
+
+  /* ---------- quote pill ---------- */
+  .qpill {
+    position: fixed;
+    right: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.55rem 0.6rem 0.55rem 1.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--cream);
+    box-shadow: 0 18px 40px -16px rgba(23, 21, 18, 0.6);
+    cursor: pointer;
+  }
+  .qpill[hidden] {
+    display: none;
+  }
+  .qpill .mono {
+    font-size: 0.68rem;
+  }
+  .qpill__n {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding-inline: 0.4rem;
+    border-radius: 999px;
+    background: var(--madder);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  /* ---------- quote drawer ---------- */
+  .qd {
+    width: min(460px, 100vw);
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0 0 0 auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    overflow: visible;
+  }
+  .qd::backdrop {
+    background: rgba(23, 21, 18, 0.45);
+    backdrop-filter: blur(3px);
+  }
+  .qd__panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--cream);
+    border-left: 1px solid var(--hairline);
+  }
+  .qd__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.75rem 1.5rem 1.25rem;
+    border-bottom: 1px dashed var(--madder);
+  }
+  .qd__title {
+    margin-top: 0.75rem;
+    font-size: 2.1rem;
+    font-weight: 300;
+  }
+  .qd__close,
+  .qd__remove {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--hairline);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .qd__close:hover,
+  .qd__remove:hover {
+    border-color: var(--ink);
+  }
+  .qd__list {
+    flex: 1;
+    margin: 0;
+    padding: 0.5rem 1.5rem;
+    overflow-y: auto;
+    list-style: none;
+  }
+  .qd__row {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .qd__row[hidden] {
+    display: none;
+  }
+  .qd__thumb {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .qd__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .qd__chip {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .qd__name {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .qd__cat {
+    margin-top: 0.2rem;
+    font-size: 0.58rem;
+    color: var(--ink-soft);
+  }
+  .qd__qty input,
+  .qd__field input {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .qd__qty input:focus,
+  .qd__field input:focus {
+    outline: none;
+    border-bottom-color: var(--madder);
+  }
+  .qd__empty {
+    padding: 2rem 1.5rem;
+    color: var(--ink-soft);
+  }
+  .qd__empty[hidden] {
+    display: none;
+  }
+  .qd__foot {
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem 1.5rem;
+    border-top: 1px solid var(--hairline);
+    background: var(--paper);
+  }
+  .qd__field .mono {
+    font-size: 0.6rem;
+    color: var(--ink-soft);
+  }
+  .qd__send {
+    width: 100%;
+  }
+  .qd__send:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .qd__sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .qd__clear {
+    border: 0;
+    background: none;
+    font-size: 0.64rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 1100px) {
+    .tools__inner {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .tools__chips {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-inline: calc(var(--gutter) * -1);
+      padding-inline: var(--gutter);
+    }
+    .tools__chips::-webkit-scrollbar {
+      display: none;
+    }
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 1023px) {
+    .tools {
+      top: 72px;
+    }
+  }
+  @media (max-width: 680px) {
+    .tools {
+      padding-block: 0.75rem;
+    }
+    .tools__inner {
+      gap: 0.75rem 1rem;
+    }
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .pc__media {
+      aspect-ratio: 5 / 4;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, lenis, MQ, reduceMotion } from '../scripts/motion/core';
+  import { Flip } from 'gsap/Flip';
+  import { waLink } from '../data/site';
+
+  gsap.registerPlugin(Flip);
+
+  const root = document.querySelector<HTMLElement>('[data-catalogue]')!;
+  const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-product]'));
+  const chips = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const search = root.querySelector<HTMLInputElement>('[data-search]')!;
+  const countEl = root.querySelector<HTMLElement>('[data-result-count]')!;
+  const empty = root.querySelector<HTMLElement>('[data-empty]')!;
+  const nameOf = (id: string) => root.querySelector(`[data-product="${id}"] .pc__name`)?.textContent?.trim() ?? '';
+  const catOf = (id: string) => root.querySelector(`[data-qd-row="${id}"] .qd__cat`)?.textContent?.trim() ?? '';
+
+  /* ---------------- entrance ---------------- */
+  let entrance: ScrollTrigger[] = [];
+  const mm = gsap.matchMedia();
+  mm.add(MQ.motion, () => {
+    gsap.set(cards, { autoAlpha: 0, y: 60 });
+    entrance = ScrollTrigger.batch(cards, {
+      start: 'top 92%',
+      once: true,
+      onEnter: (batch) => gsap.to(batch, { autoAlpha: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08, overwrite: true }),
+    });
+    return () => gsap.set(cards, { clearProps: 'opacity,visibility,transform' });
+  });
+  const endEntrance = () => {
+    if (!entrance.length) return;
+    entrance.forEach((t) => t.kill());
+    entrance = [];
+    gsap.set(cards, { autoAlpha: 1, y: 0 });
+  };
+
+  /* ---------------- filter + search ---------------- */
+  let group = 'all';
+  const matches = (card: HTMLElement) => {
+    const words = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const inGroup = group === 'all' || card.dataset.group === group;
+    return inGroup && words.every((w) => card.dataset.search!.includes(w));
+  };
+
+  function apply() {
+    endEntrance();
+    const state = Flip.getState(cards);
+    let shown = 0;
+    cards.forEach((c) => {
+      const ok = matches(c);
+      c.classList.toggle('is-hidden', !ok);
+      if (ok) shown++;
+    });
+    countEl.textContent = `${shown} of ${cards.length}`;
+    empty.hidden = shown > 0;
+
+    if (reduceMotion) return ScrollTrigger.refresh();
+    Flip.from(state, {
+      duration: 0.65,
+      ease: 'power3.inOut',
+      onEnter: (els) => gsap.fromTo(els, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'power3.out' }),
+      onLeave: (els) => gsap.to(els, { autoAlpha: 0, scale: 0.94, duration: 0.3, ease: 'power2.in' }),
+      onComplete: () => ScrollTrigger.refresh(),
+    });
+  }
+
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      group = chip.dataset.filter!;
+      chips.forEach((c) => {
+        const on = c === chip;
+        c.classList.toggle('is-active', on);
+        c.setAttribute('aria-pressed', String(on));
+      });
+      apply();
+    }),
+  );
+  let t = 0;
+  search.addEventListener('input', () => {
+    clearTimeout(t);
+    t = window.setTimeout(apply, 180);
+  });
+  root.querySelector('[data-reset]')!.addEventListener('click', () => {
+    search.value = '';
+    chips[0].click();
+  });
+
+  /* ---------------- quote list ---------------- */
+  const KEY = 'abinaya-quote-v1';
+  const ids = new Set(cards.map((c) => c.dataset.product!));
+  let list: Record<string, string> = {};
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
+    for (const [k, v] of Object.entries(raw ?? {})) if (ids.has(k)) list[k] = typeof v === 'string' ? v : '';
+  } catch {
+    /* storage unavailable: list lives in memory only */
+  }
+  const save = () => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(list));
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const pill = root.querySelector<HTMLButtonElement>('[data-qpill]')!;
+  const pillN = root.querySelector<HTMLElement>('[data-qpill-n]')!;
+  const drawer = root.querySelector<HTMLDialogElement>('[data-qdrawer]')!;
+  const panel = root.querySelector<HTMLElement>('[data-qd-panel]')!;
+  const sendBtn = root.querySelector<HTMLButtonElement>('[data-qd-send]')!;
+  const qdEmpty = root.querySelector<HTMLElement>('[data-qd-empty]')!;
+  const nameInput = root.querySelector<HTMLInputElement>('[data-qd-name]')!;
+
+  function render(bump = false) {
+    const n = Object.keys(list).length;
+    root.querySelectorAll<HTMLButtonElement>('[data-quote-add]').forEach((b) => {
+      b.setAttribute('aria-pressed', String(b.dataset.quoteAdd! in list));
+    });
+    root.querySelectorAll<HTMLElement>('[data-qd-row]').forEach((row) => {
+      const id = row.dataset.qdRow!;
+      row.hidden = !(id in list);
+      const input = row.querySelector<HTMLInputElement>('input')!;
+      if (id in list && input.value !== list[id]) input.value = list[id];
+    });
+    const wasHidden = pill.hidden;
+    pill.hidden = n === 0;
+    pillN.textContent = String(n);
+    qdEmpty.hidden = n > 0;
+    sendBtn.disabled = n === 0;
+    if (!reduceMotion && n > 0) {
+      if (wasHidden) gsap.fromTo(pill, { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, ease: 'expo.out' });
+      else if (bump) gsap.fromTo(pillN, { scale: 1.45 }, { scale: 1, duration: 0.5, ease: 'back.out(3)' });
+    }
+  }
+
+  root.querySelectorAll<HTMLButtonElement>('[data-quote-add]').forEach((b) =>
+    b.addEventListener('click', () => {
+      const id = b.dataset.quoteAdd!;
+      if (id in list) delete list[id];
+      else list[id] = '';
+      save();
+      render(true);
+    }),
+  );
+  root.querySelectorAll<HTMLButtonElement>('[data-qd-remove]').forEach((b) =>
+    b.addEventListener('click', () => {
+      delete list[b.dataset.qdRemove!];
+      save();
+      render();
+    }),
+  );
+  root.querySelectorAll<HTMLInputElement>('[data-qd-qty]').forEach((input) =>
+    input.addEventListener('input', () => {
+      if (input.dataset.qdQty! in list) list[input.dataset.qdQty!] = input.value;
+      save();
+    }),
+  );
+  root.querySelector('[data-qd-clear]')!.addEventListener('click', () => {
+    list = {};
+    save();
+    render();
+  });
+
+  function openDrawer() {
+    drawer.showModal();
+    lenis?.stop();
+    if (!reduceMotion) gsap.fromTo(panel, { xPercent: 100 }, { xPercent: 0, duration: 0.6, ease: 'expo.out' });
+  }
+  function closeDrawer() {
+    const done = () => {
+      drawer.close();
+      lenis?.start();
+      pill.focus();
+    };
+    if (reduceMotion) return done();
+    gsap.to(panel, { xPercent: 100, duration: 0.4, ease: 'power3.in', onComplete: done });
+  }
+  pill.addEventListener('click', openDrawer);
+  root.querySelector('[data-qd-close]')!.addEventListener('click', closeDrawer);
+  drawer.addEventListener('cancel', (e) => {
+    e.preventDefault();
+    closeDrawer();
+  });
+  drawer.addEventListener('click', (e) => {
+    if (e.target === drawer) closeDrawer();
+  });
+
+  sendBtn.addEventListener('click', () => {
+    const lines = Object.entries(list).map(
+      ([id, qty], i) => `${i + 1}. ${nameOf(id)} (${catOf(id)})${qty.trim() ? `: ${qty.trim()}` : ''}`,
+    );
+    if (!lines.length) return;
+    const msg = [
+      'Hello Abinaya Garment Shop, I would like wholesale pricing for:',
+      ...lines,
+      nameInput.value.trim() ? `Name / shop: ${nameInput.value.trim()}` : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
+    window.open(waLink(msg), '_blank', 'noopener');
+  });
+
+  render();
+</script>

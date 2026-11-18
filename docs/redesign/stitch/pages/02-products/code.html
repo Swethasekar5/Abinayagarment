@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abinaya Garment Shop — Brand Style Tile &amp; Design System</title>
+<!-- Google Fonts: Fraunces, Manrope, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F5F1EA',
+            paper: '#FBF9F5',
+            ink: '#171512',
+            'ink-soft': '#5A554D',
+            sage: '#8B9D6F',
+            'sage-tint': '#E4E8DA',
+            indigo: '#26335F',
+            'madder-red': '#B5452B',
+            hairline: '#DDD6CA',
+            'whatsapp-green': '#25D366'
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            body: ['Manrope', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F5F1EA;
+      color: #171512;
+      font-family: 'Manrope', system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Woven cotton subtle texture simulation */
+    .woven-texture {
+      background-color: #F5F1EA;
+      background-image: radial-gradient(rgba(23, 21, 18, 0.03) 1px, transparent 0);
+      background-size: 8px 8px;
+    }
+
+    /* Dashed stitched thread line in Madder Red */
+    .stitched-line-vertical {
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #B5452B,
+        #B5452B 8px,
+        transparent 8px,
+        transparent 14px
+      );
+      width: 2px;
+    }
+
+    .stitched-line-horizontal {
+      background-image: repeating-linear-gradient(
+        to right,
+        #B5452B,
+        #B5452B 8px,
+        transparent 8px,
+        transparent 14px
+      );
+      height: 2px;
+    }
+
+    /* Garment Spec Tag with punched hole */
+    .garment-spec-tag {
+      position: relative;
+      background: #FBF9F5;
+      border: 1px solid #171512;
+      padding: 6px 14px 6px 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 1px 1px 0px rgba(23, 21, 18, 0.15);
+    }
+    .garment-spec-tag::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #F5F1EA;
+      border: 1px solid #5A554D;
+    }
+
+    /* Woven style section indicator */
+    .woven-section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5A554D;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .woven-section-label::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #B5452B;
+    }
+
+    /* Subtle industrial ruler lines */
+    .ruler-border {
+      border-bottom: 1px solid #DDD6CA;
+    }
+  </style>
+<meta content="web_standard" name="shell-type"/></head>
+<body class="woven-texture min-h-screen text-ink">
+<!-- TOP BAR: Brand Identity & Style Tile Metainfo -->
+<header class="border-b border-hairline bg-paper/90 sticky top-0 z-50 backdrop-blur-sm">
+<div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<img alt="Abinaya Garments Tiruppur Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAONxPzOFPigFg9MYpgZ3UEZZ5agpoKtEy1YP1_kbCYqkZ27ZBwPClMMZjyUwDax6VbanhDGxbQpVIijnvI2Wm0zC_uJHdFdDSqDOZ2Jd94NLpo3sk07NPK9yPDMHDegfYlum6LrSa9TUphzJs95VEhIbn6ww0-hoCKrVxwGMAk_QnFsIEKqnEorDJziJJrhnj4gH3YlswF7F7C4Bg9iMjhFdVKSgD8uKyHysKYJFWO"/>
+<div class="hidden md:block h-6 w-[1px] bg-hairline"></div>
+<div class="hidden md:flex flex-col">
+<span class="font-mono text-[11px] uppercase tracking-wider text-ink-soft">Style Tile &amp; Design Spec</span>
+<span class="font-mono text-[10px] text-sage font-medium tracking-tight">TIRUPPUR B2B TEXTILE HUB · VER 1.0</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="garment-spec-tag">
+          SPEC: 100% COMBED COTTON · 180-260 GSM
+        </span>
+<div class="hidden sm:flex items-center gap-2 border border-hairline px-3 py-1 bg-cream text-[11px] font-mono text-ink-soft">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-pulse"></span>
+          ACTIVE MILL PRODUCTION
+        </div>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER WITH SIGNATURE VERTICAL MADDER RED STITCHED THREAD -->
+<main class="max-w-[1280px] mx-auto px-6 py-12 relative"><div class="flex flex-col w-full">
+<!-- SIGNATURE LOCKSTITCH DIVIDER LINE -->
+<div class="w-full stitched-line-horizontal mb-6 opacity-75"></div>
+<!-- 1. HERO SECTION -->
+<section class="relative bg-surface rounded-xl p-8 md:p-12 mb-8 shadow-sm">
+<!-- Section Identifier Label -->
+<div class="flex flex-wrap items-center gap-3 mb-6">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span class="font-label-tag text-label-tag uppercase tracking-wider text-on-surface-variant">(PRODUCTS)</span>
+</div>
+<span class="text-outline-variant font-code-num text-code-num">/</span>
+<span class="font-label-tag text-label-tag uppercase tracking-widest text-secondary font-semibold">TIRUPPUR DIRECT MILL APPAREL CATALOGUE</span>
+</div>
+<!-- Editorial Big Headline -->
+<div class="max-w-4xl mb-6">
+<h1 class="font-headline-xl text-headline-xl text-on-surface leading-none tracking-tight">
+        The <em class="italic font-normal text-primary-container">catalogue</em>.
+      </h1>
+</div>
+<!-- Monospaced Spec Banner -->
+<div class="inline-flex flex-wrap items-center gap-2 px-4 py-2 bg-surface-container rounded border-0 text-on-surface mb-6 shadow-sm">
+<span class="font-label-spec text-label-spec text-primary font-semibold">[12] CATEGORIES</span>
+<span class="text-outline font-label-spec text-label-spec">·</span>
+<span class="font-label-spec text-label-spec text-on-surface-variant font-medium">WHOLESALE ONLY</span>
+<span class="text-outline font-label-spec text-label-spec">·</span>
+<span class="font-label-spec text-label-spec text-on-surface-variant font-medium">DIRECT FROM LOOM TO SHELF</span>
+<span class="text-outline font-label-spec text-label-spec">·</span>
+<span class="font-label-spec text-label-spec text-tertiary-container font-semibold">MIN ORDER 50 PCS</span>
+</div>
+<!-- Brief Editorial Sentence -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+      Manufactured from 100% combed organic cotton in Tiruppur. Ready-to-ship blanks and custom private label programs with certified bio-wash finishing.
+    </p>
+<!-- Structural Hairline Metric Accent -->
+<div class="mt-8 pt-6 grid grid-cols-2 md:grid-cols-4 gap-4 bg-surface-container-low rounded-lg p-5">
+<div>
+<p class="font-label-tag text-label-tag text-outline uppercase tracking-wider">Milling Base</p>
+<p class="font-code-num text-code-num text-on-surface font-semibold mt-0.5">Tiruppur Hub, TN</p>
+</div>
+<div>
+<p class="font-label-tag text-label-tag text-outline uppercase tracking-wider">Turnaround SLA</p>
+<p class="font-code-num text-code-num text-on-surface font-semibold mt-0.5">7–10 Working Days</p>
+</div>
+<div>
+<p class="font-label-tag text-label-tag text-outline uppercase tracking-wider">Quality Standard</p>
+<p class="font-code-num text-code-num text-secondary font-semibold mt-0.5">GOTS &amp; OEKO-TEX 100</p>
+</div>
+<div>
+<p class="font-label-tag text-label-tag text-outline uppercase tracking-wider">Live Inventory</p>
+<p class="font-code-num text-code-num text-tertiary font-semibold mt-0.5">42,500+ Ready Blanks</p>
+</div>
+</div>
+</section>
+<!-- 2. STICKY FILTER & SEARCH TOOLBAR -->
+<aside aria-label="Filters and search" class="sticky top-20 z-30 bg-surface/95 backdrop-blur-md rounded-xl p-4 md:p-5 mb-10 shadow-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<!-- Search Input with Subtle Bottom Stroke -->
+<div class="relative flex-1 min-w-[280px]">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3.5 py-2.5 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-outline text-[20px]">search</span>
+<input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface placeholder-outline focus:outline-none" placeholder="Search styles, GSM, fabric (e.g. 240 GSM, Pique, French Terry)..." type="text"/>
+</div>
+</div>
+<!-- Sort Selector Dropdown -->
+<div class="flex items-center justify-between sm:justify-end gap-3 self-stretch lg:self-auto">
+<label class="font-label-spec text-label-spec text-on-surface-variant whitespace-nowrap" for="catalog-sort">SORT BY:</label>
+<div class="relative">
+<select class="bg-surface-container-lowest font-code-num text-code-num text-on-surface font-medium pl-3 pr-8 py-2 rounded shadow-sm focus:outline-none cursor-pointer appearance-none" id="catalog-sort">
+<option>POPULARITY / MILL VOLUME</option>
+<option>MOQ (LOW TO HIGH)</option>
+<option>GSM (HIGH TO LOW)</option>
+<option>RECENT RUN LOTS</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2 top-2.5 text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Filter Category Pills Horizontal Track -->
+<div class="flex items-center gap-2 overflow-x-auto pt-4 pb-1 no-scrollbar text-nowrap">
+<!-- ALL [38] - Active Pill -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary font-label-tag text-label-tag transition-colors shadow-sm">
+<span>ALL</span>
+<span class="opacity-80 font-code-num text-[10px]">[38]</span>
+</button>
+<!-- CREWNECK TEES [12] -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-tag text-label-tag hover:bg-secondary-fixed transition-colors">
+<span>CREWNECK TEES</span>
+<span class="opacity-75 font-code-num text-[10px]">[12]</span>
+</button>
+<!-- HEAVY OVERSIZED [6] -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-tag text-label-tag transition-colors">
+<span>HEAVY OVERSIZED</span>
+<span class="opacity-75 font-code-num text-[10px]">[6]</span>
+</button>
+<!-- CLASSIC POLOS [8] -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-tag text-label-tag transition-colors">
+<span>CLASSIC POLOS</span>
+<span class="opacity-75 font-code-num text-[10px]">[8]</span>
+</button>
+<!-- KIDS & INFANTS [5] -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-tag text-label-tag transition-colors">
+<span>KIDS &amp; INFANTS</span>
+<span class="opacity-75 font-code-num text-[10px]">[5]</span>
+</button>
+<!-- HOODIES & FLEECE [4] -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-tag text-label-tag transition-colors">
+<span>HOODIES &amp; FLEECE</span>
+<span class="opacity-75 font-code-num text-[10px]">[4]</span>
+</button>
+<!-- TRACK PANTS [3] -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-tag text-label-tag transition-colors">
+<span>TRACK PANTS</span>
+<span class="opacity-75 font-code-num text-[10px]">[3]</span>
+</button>
+</div>
+</aside>
+<!-- 3. PRODUCT CARDS GRID (3 Columns Desktop, 1 Column Mobile) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+<!-- PRODUCT 1: The Heavy Oversized Drop-Shoulder Tee -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-shadow duration-300">
+<!-- Image with Tag Placement -->
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Flat lay photograph of a premium charcoal grey washed heavyweight cotton streetwear t-shirt on a warm cream textile backdrop with natural linen textures, soft diffused directional light, crisp garment edges, and realistic fabric fold draping." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6vAyNHZ1q2Os6w6_0JAsQmEvwl12_P3omthGKq6pkviiSHSFJoZP8NCbT_vdhY5NMBCBBMJ_OfBZNaCOtqgcB5WTuJ0EjiwSGBx1WRLHFxkZIfWnR9skPSxSiirxH_OuSstRbPzCvtgsnZ1diVLQbu14nRsP61f9Y6N0vs-EEwkYehgILGAScZeBHG4NPGKQ5OfO8Y4D_1T4_EBg070vNeKjiwz0CGQSKYhS6rjmj"/>
+<div class="absolute top-4 left-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded bg-surface/90 backdrop-blur font-label-tag text-label-tag uppercase tracking-wider text-on-surface shadow-sm">
+            STREETWEAR FIT · LOT #TS-240
+          </span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-highest/90 px-2 py-0.5 rounded text-[10px] font-code-num text-on-surface">
+          BIO-WASHED 240G
+        </div>
+</div>
+<!-- Card Body Content -->
+<div class="flex flex-col flex-1 p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
+          240 GSM Heavy Oversized Tee
+        </h2>
+<p class="font-label-spec text-label-spec text-secondary font-medium tracking-wide mb-4">
+          100% COMBED COTTON · 240 GSM · XS TO 3XL
+        </p>
+<!-- Color Swatches Matrix -->
+<div class="flex items-center gap-2 mb-5">
+<span class="font-label-tag text-[10px] uppercase text-outline tracking-wider mr-1">Shades:</span>
+<span class="w-4 h-4 rounded-full bg-[#F4EFEA] shadow-sm" title="Natural Ecru"></span>
+<span class="w-4 h-4 rounded-full bg-[#1E2B4D] shadow-sm" title="Deep Indigo"></span>
+<span class="w-4 h-4 rounded-full bg-[#647361] shadow-sm" title="Sage Green"></span>
+<span class="w-4 h-4 rounded-full bg-[#22201E] shadow-sm" title="Washed Black"></span>
+<span class="w-4 h-4 rounded-full bg-[#9B4E38] shadow-sm" title="Terracotta"></span>
+<span class="font-code-num text-[11px] text-outline ml-1">+7 more</span>
+</div>
+<!-- Pricing and MOQ Ledger Slot -->
+<div class="mt-auto bg-surface-container-low rounded p-3 mb-5">
+<div class="flex items-center justify-between">
+<span class="font-label-tag text-label-tag text-on-surface-variant">MOQ: 50 PCS</span>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹185 / PC (EST. SLAB)</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-2">
+<a class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm transition-colors text-center" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20am%20interested%20in%20240%20GSM%20Heavy%20Oversized%20Tee" target="_blank">
+<span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+<span class="font-semibold text-[12px] tracking-tight">WHATSAPP</span>
+</a>
+<button class="flex items-center justify-center gap-1 py-2.5 px-3 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm transition-colors shadow-sm text-center" onclick="addToQuote('240 GSM Heavy Oversized Tee', 'LOT #TS-240', 200, 'Natural Ecru &amp; Deep Indigo', '₹185')">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-semibold text-[12px] tracking-tight">ADD TO QUOTE</span>
+</button>
+</div>
+</div>
+</article>
+<!-- PRODUCT 2: The Heritage Mercerized Pique Polo -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-shadow duration-300">
+<!-- Image with Tag Placement -->
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Editorial lookbook photograph of neatly folded knit pique polo shirts arranged stacked on a wooden wall hanger, showing rich navy indigo, bottle green, and chalk white tones with fine mother of pearl buttons and clean waffle honeycomb textures under soft architectural studio light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNEOn5PGpZmeZv45SgiR4Tc6SBO4WLiwCjT22Cg6PIEFrLxdkl4S0Q7My-CuDOSa8j_EyW_yv8ScEtGpFaZHZcQ0RHCr91tB5pCY5iEC3GdHDSbPOOP1ckh_VU1JaSHoop3QlBBpREfAwCb-k72YXdqu6OPEbS8rOOv9FGiRr8aPeCesS4XoKhsv7OsJ_ZTRUr0kxc20OM2RmsPJYfZpM9jegFTZPojioS48d8BKbz"/>
+<div class="absolute top-4 left-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded bg-surface/90 backdrop-blur font-label-tag text-label-tag uppercase tracking-wider text-on-surface shadow-sm">
+            CORPORATE / RETAIL · LOT #PL-220
+          </span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-highest/90 px-2 py-0.5 rounded text-[10px] font-code-num text-on-surface">
+          HONEYCOMB PIQUE
+        </div>
+</div>
+<!-- Card Body Content -->
+<div class="flex flex-col flex-1 p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
+          220 GSM Pique Knit Classic Polo
+        </h2>
+<p class="font-label-spec text-label-spec text-secondary font-medium tracking-wide mb-4">
+          COMBED HONEYCOMB PIQUE · 220 GSM · S TO 4XL
+        </p>
+<!-- Color Swatches Matrix -->
+<div class="flex items-center gap-2 mb-5">
+<span class="font-label-tag text-[10px] uppercase text-outline tracking-wider mr-1">Shades:</span>
+<span class="w-4 h-4 rounded-full bg-[#1E2B4D] shadow-sm" title="Navy Indigo"></span>
+<span class="w-4 h-4 rounded-full bg-[#FFFFFF] shadow-sm" title="Pure White"></span>
+<span class="w-4 h-4 rounded-full bg-[#6F7B86] shadow-sm" title="Heather Slate"></span>
+<span class="w-4 h-4 rounded-full bg-[#464F3E] shadow-sm" title="Forest Olive"></span>
+<span class="font-code-num text-[11px] text-outline ml-1">+12 more</span>
+</div>
+<!-- Pricing and MOQ Ledger Slot -->
+<div class="mt-auto bg-surface-container-low rounded p-3 mb-5">
+<div class="flex items-center justify-between">
+<span class="font-label-tag text-label-tag text-on-surface-variant">MOQ: 50 PCS</span>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹245 / PC</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-2">
+<a class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm transition-colors text-center" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20am%20interested%20in%20220%20GSM%20Pique%20Knit%20Classic%20Polo" target="_blank">
+<span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+<span class="font-semibold text-[12px] tracking-tight">WHATSAPP</span>
+</a>
+<button class="flex items-center justify-center gap-1 py-2.5 px-3 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm transition-colors shadow-sm text-center" onclick="addToQuote('220 GSM Pique Knit Classic Polo', 'LOT #PL-220', 150, 'Navy Indigo &amp; Chalk White', '₹245')">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-semibold text-[12px] tracking-tight">ADD TO QUOTE</span>
+</button>
+</div>
+</div>
+</article>
+<!-- PRODUCT 3: Organic Cotton Baby & Kids Essentials -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-shadow duration-300">
+<!-- Image with Tag Placement -->
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Overhead flat lay of certified organic cotton baby clothes, rompers, and swaddles in earthy sage, muted rose, and butter yellow on textured cream muslin, with natural wooden teething toys and minimal typography tags under natural sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC-DKuy5pmQs1AbJaIgVPz3hSzqQRbbKhNXTePnH1e4qaVAPkE4Y50Ja39QnJBaPf5u7wh2fDx6uWbX-KaATJ77fJYQwT7WGUwN3aRDcmPVtmMwa2pHoDvT_tvaOZsb_rikoe7DlCs9odmfzGaS4x1pWmyUP8pXKgDFQlG8KoP8lsCtJjRDF2-lytAFHHSCBSad2R_Q5_oj3zDO0GX8jBBgriE3JMgODQcCXPeTBa8"/>
+<div class="absolute top-4 left-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded bg-surface/90 backdrop-blur font-label-tag text-label-tag uppercase tracking-wider text-secondary shadow-sm font-semibold">
+            GOTS CERTIFIED · LOT #KD-180
+          </span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-highest/90 px-2 py-0.5 rounded text-[10px] font-code-num text-on-surface">
+          CHEMICAL-FREE DYES
+        </div>
+</div>
+<!-- Card Body Content -->
+<div class="flex flex-col flex-1 p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
+          180 GSM Organic Infant Rompers &amp; Tees
+        </h2>
+<p class="font-label-spec text-label-spec text-secondary font-medium tracking-wide mb-4">
+          100% GOTS ORGANIC COTTON · 180 GSM · 0-3M TO 6Y
+        </p>
+<!-- Color Swatches Matrix -->
+<div class="flex items-center gap-2 mb-5">
+<span class="font-label-tag text-[10px] uppercase text-outline tracking-wider mr-1">Shades:</span>
+<span class="w-4 h-4 rounded-full bg-[#F6F1D8] shadow-sm" title="Butter Cream"></span>
+<span class="w-4 h-4 rounded-full bg-[#CBD5C0] shadow-sm" title="Powder Sage"></span>
+<span class="w-4 h-4 rounded-full bg-[#BAC7D5] shadow-sm" title="Sky Indigo"></span>
+<span class="w-4 h-4 rounded-full bg-[#E0C4BE] shadow-sm" title="Rose Clay"></span>
+<span class="font-code-num text-[11px] text-outline ml-1">+5 pastels</span>
+</div>
+<!-- Pricing and MOQ Ledger Slot -->
+<div class="mt-auto bg-surface-container-low rounded p-3 mb-5">
+<div class="flex items-center justify-between">
+<span class="font-label-tag text-label-tag text-on-surface-variant">MOQ: 100 PCS</span>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹120 / PC</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-2">
+<a class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm transition-colors text-center" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20am%20interested%20in%20180%20GSM%20Organic%20Infant%20Rompers" target="_blank">
+<span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+<span class="font-semibold text-[12px] tracking-tight">WHATSAPP</span>
+</a>
+<button class="flex items-center justify-center gap-1 py-2.5 px-3 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm transition-colors shadow-sm text-center" onclick="addToQuote('180 GSM Organic Infant Rompers', 'LOT #KD-180', 100, 'Powder Sage &amp; Butter Cream', '₹120')">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-semibold text-[12px] tracking-tight">ADD TO QUOTE</span>
+</button>
+</div>
+</div>
+</article>
+<!-- PRODUCT 4: Standard Raw Edge Crewneck Tee -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-shadow duration-300">
+<!-- Image with Tag Placement -->
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Still life photograph of a four-pack stack of combed cotton t-shirts neatly folded on an aged workshop workbench with handmade deckle-edge paper, wooden spool of thread, showing sage, navy, cream, and olive textile tones with tactile cotton fiber texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-E4Zg7UUQ9WuDEAXg9wfR6BtYkenMFbdeu_WOe7VjSUfI59US3US5DBPYZ4olL6dORm2tqEeGTiQQ6WASdjD_sIseRmq7L5cdbiRGvGFM189oycyFcdPzN_O7Qs6s_lSvqhLY01ETWhRpr3HBuC0UkKbps1kJfypLeWujQ62gPgqV_in-eQJCp71JIRQJLXNLtsrqgcGy0FlcZ7AX92BKZj08erbpzRshd9VGZTl7"/>
+<div class="absolute top-4 left-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded bg-surface/90 backdrop-blur font-label-tag text-label-tag uppercase tracking-wider text-on-surface shadow-sm">
+            CORE BASIC · LOT #TS-180
+          </span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-highest/90 px-2 py-0.5 rounded text-[10px] font-code-num text-on-surface">
+          HIGH SILICON SOFTENER
+        </div>
+</div>
+<!-- Card Body Content -->
+<div class="flex flex-col flex-1 p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
+          180 GSM Bio-Washed Crewneck Tee
+        </h2>
+<p class="font-label-spec text-label-spec text-secondary font-medium tracking-wide mb-4">
+          SINGLE JERSEY RING-SPUN · 180 GSM · S TO XXL
+        </p>
+<!-- Color Swatches Matrix -->
+<div class="flex items-center gap-2 mb-5">
+<span class="font-label-tag text-[10px] uppercase text-outline tracking-wider mr-1">Shades:</span>
+<span class="w-4 h-4 rounded-full bg-[#F3ECE2] shadow-sm" title="Raw Natural"></span>
+<span class="w-4 h-4 rounded-full bg-[#181716] shadow-sm" title="Jet Black"></span>
+<span class="w-4 h-4 rounded-full bg-[#1B2544] shadow-sm" title="Navy"></span>
+<span class="w-4 h-4 rounded-full bg-[#B8B9B7] shadow-sm" title="Melange Grey"></span>
+<span class="w-4 h-4 rounded-full bg-[#933E2B] shadow-sm" title="Rust"></span>
+<span class="w-4 h-4 rounded-full bg-[#3A4738] shadow-sm" title="Forest"></span>
+<span class="font-code-num text-[11px] text-outline ml-1">+24 shades</span>
+</div>
+<!-- Pricing and MOQ Ledger Slot -->
+<div class="mt-auto bg-surface-container-low rounded p-3 mb-5">
+<div class="flex items-center justify-between">
+<span class="font-label-tag text-label-tag text-on-surface-variant">MOQ: 100 PCS</span>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹135 / PC</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-2">
+<a class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm transition-colors text-center" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20am%20interested%20in%20180%20GSM%20Bio-Washed%20Crewneck%20Tee" target="_blank">
+<span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+<span class="font-semibold text-[12px] tracking-tight">WHATSAPP</span>
+</a>
+<button class="flex items-center justify-center gap-1 py-2.5 px-3 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm transition-colors shadow-sm text-center" onclick="addToQuote('180 GSM Bio-Washed Crewneck Tee', 'LOT #TS-180', 100, 'Jet Black', '₹135')">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-semibold text-[12px] tracking-tight">ADD TO QUOTE</span>
+</button>
+</div>
+</div>
+</article>
+<!-- PRODUCT 5: Tactile Folded Multi-Tone Sample Pack -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-shadow duration-300">
+<!-- Image with Tag Placement -->
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Overhead angled close-up view of textile mill shade card swatches and fabric color ring bindings on a raw craft paper background, with natural card tags showing cotton weights and lab test dye lots in indigo, terracotta, and olive hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJq5OFjnvedsUfXBTwUY2pflqyfVwObWkJ03WezMSjz7X09HI9GEU50lzx4dM8HGlf9aBKmY7XV8RFlWwoL9MZwpyw9uo7w0of8RdKys8FH7p5DrlTcBOsO_l1_nXWsiwbno4XrueYJdMNzHFNCFEKeJ_vSCj1Pcbisev4bRh3KsGuEGaz-DxEVZA5No92f3dPTDTzUX09TfhgSWaugjkgfWzwYW6aplnEFbmJHouz"/>
+<div class="absolute top-4 left-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded bg-surface/90 backdrop-blur font-label-tag text-label-tag uppercase tracking-wider text-tertiary-container shadow-sm font-semibold">
+            SAMPLE KIT · LOT #SW-01
+          </span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-highest/90 px-2 py-0.5 rounded text-[10px] font-code-num text-on-surface">
+          EXPRESS DISPATCH
+        </div>
+</div>
+<!-- Card Body Content -->
+<div class="flex flex-col flex-1 p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
+          B2B Swatch &amp; Finish Master Swatch Book
+        </h2>
+<p class="font-label-spec text-label-spec text-secondary font-medium tracking-wide mb-4">
+          FULL SHADE CARD (32 DYES) · 4 FABRIC GRADES
+        </p>
+<!-- Color Swatches Matrix -->
+<div class="flex items-center gap-2 mb-5">
+<span class="font-label-tag text-[10px] uppercase text-outline tracking-wider mr-1">Included:</span>
+<span class="font-code-num text-code-num text-on-surface-variant font-medium">32 Reactive Colors + 6 Heather Melanges</span>
+</div>
+<!-- Pricing and MOQ Ledger Slot -->
+<div class="mt-auto bg-surface-container-low rounded p-3 mb-5">
+<div class="flex items-center justify-between">
+<span class="font-label-tag text-label-tag text-on-surface-variant">MOQ: 1 KIT</span>
+<span class="font-code-num text-code-num font-semibold text-secondary">READY TO DISPATCH (FREE FOR B2B)</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-2">
+<a class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm transition-colors text-center" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20would%20like%20to%20order%20the%20Master%20Swatch%20Book" target="_blank">
+<span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+<span class="font-semibold text-[12px] tracking-tight">WHATSAPP</span>
+</a>
+<button class="flex items-center justify-center gap-1 py-2.5 px-3 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm transition-colors shadow-sm text-center" onclick="addToQuote('B2B Swatch &amp; Finish Master Swatch Book', 'LOT #SW-01', 1, 'Full Mill Deck', '₹0 (Sample)')">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-semibold text-[12px] tracking-tight">ADD TO QUOTE</span>
+</button>
+</div>
+</div>
+</article>
+<!-- PRODUCT 6: Heavy French Terry Relaxed Hoodie -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-shadow duration-300">
+<!-- Image with Tag Placement -->
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Moody architectural fashion photograph of a folded heavyweight French terry cotton hoodie and ribbed crewneck sweatshirts resting on a stone studio slab with deep rich dark navy, carbon black, and washed charcoal texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxL9HqvEnqSVWlGjy28BUmqeEhqEwDkBd1E8lxnRvZ3MnVD-FBvskACdkyO1EQR2P-_rGArK5UpXgPgusChfRDvm_Hi1nH0tu-_ft_wM0kkBpN8dBblAlT8XxsINrRJsnGpqQHWWIaC5Pf6VHTltMB9J6MTMzzv46yiWuUX1ShNQ-RGucV242qn4fzttvnftzxRMH0GizrxQXy_XSHFLThd9Lb6QtOQOKEdhh1J2zl"/>
+<div class="absolute top-4 left-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded bg-surface/90 backdrop-blur font-label-tag text-label-tag uppercase tracking-wider text-on-surface shadow-sm">
+            WINTERWEAR / FLEECE · LOT #HD-360
+          </span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-highest/90 px-2 py-0.5 rounded text-[10px] font-code-num text-on-surface">
+          UNBRUSHED LOOPBACK
+        </div>
+</div>
+<!-- Card Body Content -->
+<div class="flex flex-col flex-1 p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
+          360 GSM Loopback French Terry Hoodie
+        </h2>
+<p class="font-label-spec text-label-spec text-secondary font-medium tracking-wide mb-4">
+          100% COTTON LOOPBACK · 360 GSM · S TO 3XL
+        </p>
+<!-- Color Swatches Matrix -->
+<div class="flex items-center gap-2 mb-5">
+<span class="font-label-tag text-[10px] uppercase text-outline tracking-wider mr-1">Shades:</span>
+<span class="w-4 h-4 rounded-full bg-[#EBE5DB] shadow-sm" title="Natural Unbleached"></span>
+<span class="w-4 h-4 rounded-full bg-[#343538] shadow-sm" title="Carbon Grey"></span>
+<span class="w-4 h-4 rounded-full bg-[#182033] shadow-sm" title="Deep Navy"></span>
+<span class="w-4 h-4 rounded-full bg-[#3D2C24] shadow-sm" title="Espresso"></span>
+<span class="font-code-num text-[11px] text-outline ml-1">+6 colors</span>
+</div>
+<!-- Pricing and MOQ Ledger Slot -->
+<div class="mt-auto bg-surface-container-low rounded p-3 mb-5">
+<div class="flex items-center justify-between">
+<span class="font-label-tag text-label-tag text-on-surface-variant">MOQ: 50 PCS</span>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹490 / PC</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-2">
+<a class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm transition-colors text-center" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20am%20interested%20in%20360%20GSM%20Loopback%20French%20Terry%20Hoodie" target="_blank">
+<span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+<span class="font-semibold text-[12px] tracking-tight">WHATSAPP</span>
+</a>
+<button class="flex items-center justify-center gap-1 py-2.5 px-3 rounded bg-primary-container hover:bg-primary text-on-primary font-body-sm text-body-sm transition-colors shadow-sm text-center" onclick="addToQuote('360 GSM French Terry Hoodie', 'LOT #HD-360', 50, 'Carbon Grey &amp; Deep Navy', '₹490')">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-semibold text-[12px] tracking-tight">ADD TO QUOTE</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- FACTORY SPECIFICATION DIRECTORY ACCORDION / INDUSTRIAL TICKER -->
+<section class="mb-14 p-8 bg-surface-container rounded-xl shadow-inner">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<span class="font-label-tag text-label-tag text-tertiary-container font-semibold tracking-widest block mb-1">
+          (02) MILL DIRECT CAPACITY &amp; SPECIFICATIONS
+        </span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">
+          Custom Knit &amp; Dye Runs (Private Label)
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+          Need pantone matching or custom loopback fleece knit in 400+ GSM? Our Tiruppur knitting plant provides lab-dip match cards within 96 hours with 300 kg minimum dye lot batches.
+        </p>
+</div>
+<div class="flex items-center gap-3">
+<a class="px-5 py-3 rounded bg-primary text-on-primary font-body-sm text-body-sm font-semibold tracking-wide shadow-md hover:bg-primary-container transition-colors inline-flex items-center gap-2 whitespace-nowrap" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20need%20custom%20Pantone%20dyeing%20specs" target="_blank">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+          REQUEST CUSTOM LAB-DIP RUN
+        </a>
+</div>
+</div>
+</section>
+<!-- 4. FLOATING BOTTOM-RIGHT "QUOTE LIST (3)" PILL -->
+<aside aria-label="Quote cart trigger" class="fixed bottom-8 right-8 z-40">
+<button class="bg-primary-container text-on-primary px-6 py-3.5 rounded-full shadow-2xl flex items-center space-x-3 hover:bg-primary transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95" id="openDrawerBtn" onclick="toggleDrawer(true)">
+<span class="material-symbols-outlined text-[20px]">content_paste</span>
+<span class="font-label-tag text-label-tag font-bold tracking-widest" id="cartButtonText">QUOTE LIST (3)</span>
+<span class="bg-primary px-2.5 py-0.5 rounded-full font-code-num text-[11px] text-primary-fixed">EST. 450 PCS</span>
+</button>
+</aside>
+<!-- 5. SLIDE-OVER QUOTE DRAWER (MODAL OVERLAY + RIGHT DRAWER PANEL) -->
+<div class="fixed inset-0 bg-ink/40 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="quoteDrawerBackdrop" onclick="toggleDrawer(false)"></div>
+<div class="fixed top-0 right-0 h-full w-[440px] max-w-full bg-surface shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col" id="quoteDrawerPanel">
+<!-- Drawer Header -->
+<div class="p-6 bg-surface-container-low flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-tag text-label-tag text-on-surface-variant uppercase tracking-wider font-semibold">
+            (01) FACTORY QUOTE INVENTORY
+          </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1" id="drawerTitle">
+          3 Items in Spec Sheet
+        </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Direct factory wholesale pricing request to Tiruppur mill.
+        </p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container transition-colors" onclick="toggleDrawer(false)">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<!-- Scrollable Items List -->
+<div class="flex-1 overflow-y-auto p-6 space-y-4">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-tag text-[10px] text-secondary font-semibold uppercase">LOT #TS-240</span>
+<h3 class="font-headline-sm text-[18px] text-on-surface leading-tight mt-0.5">240 GSM Heavy Oversized Tee</h3>
+<p class="font-code-num text-[12px] text-on-surface-variant mt-1">Sizes: M–XL Mixed · Colors: Natural Ecru &amp; Deep Indigo</p>
+</div>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹185/pc</span>
+</div>
+<div class="flex items-center justify-between mt-4 pt-3 bg-surface-container-low rounded px-3 py-2">
+<span class="font-label-spec text-label-spec text-on-surface-variant">ORDER VOLUME:</span>
+<div class="flex items-center gap-2">
+<input class="w-20 bg-surface-container-lowest font-code-num text-code-num font-semibold text-right px-2 py-1 rounded focus:outline-none" type="number" value="200"/>
+<span class="font-code-num text-[11px] text-on-surface-variant">PCS</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-tag text-[10px] text-secondary font-semibold uppercase">LOT #PL-220</span>
+<h3 class="font-headline-sm text-[18px] text-on-surface leading-tight mt-0.5">220 GSM Pique Knit Classic Polo</h3>
+<p class="font-code-num text-[12px] text-on-surface-variant mt-1">Sizes: L (Solid) · Colors: Navy Indigo</p>
+</div>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹245/pc</span>
+</div>
+<div class="flex items-center justify-between mt-4 pt-3 bg-surface-container-low rounded px-3 py-2">
+<span class="font-label-spec text-label-spec text-on-surface-variant">ORDER VOLUME:</span>
+<div class="flex items-center gap-2">
+<input class="w-20 bg-surface-container-lowest font-code-num text-code-num font-semibold text-right px-2 py-1 rounded focus:outline-none" type="number" value="150"/>
+<span class="font-code-num text-[11px] text-on-surface-variant">PCS</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-tag text-[10px] text-secondary font-semibold uppercase">LOT #TS-180</span>
+<h3 class="font-headline-sm text-[18px] text-on-surface leading-tight mt-0.5">180 GSM Bio-Washed Crewneck Tee</h3>
+<p class="font-code-num text-[12px] text-on-surface-variant mt-1">Sizes: Assorted Run (S-XXL) · Colors: Jet Black</p>
+</div>
+<span class="font-code-num text-code-num font-semibold text-tertiary-container">₹135/pc</span>
+</div>
+<div class="flex items-center justify-between mt-4 pt-3 bg-surface-container-low rounded px-3 py-2">
+<span class="font-label-spec text-label-spec text-on-surface-variant">ORDER VOLUME:</span>
+<div class="flex items-center gap-2">
+<input class="w-20 bg-surface-container-lowest font-code-num text-code-num font-semibold text-right px-2 py-1 rounded focus:outline-none" type="number" value="100"/>
+<span class="font-code-num text-[11px] text-on-surface-variant">PCS</span>
+</div>
+</div>
+</div>
+<!-- Aggregated Summary Block -->
+<div class="bg-surface-container rounded-lg p-4">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-tag text-label-tag text-on-surface-variant uppercase">TOTAL ESTIMATED RUN</span>
+<span class="font-code-num text-code-num font-bold text-on-surface">450 PIECES</span>
+</div>
+<div class="flex justify-between items-center text-[12px] font-code-num text-outline">
+<span>FABRIC COMPOSITION SLABS</span>
+<span>3 BLENDS</span>
+</div>
+</div>
+<!-- Client Contact Info Fields -->
+<div class="space-y-3 pt-2">
+<span class="font-label-tag text-label-tag text-on-surface uppercase tracking-wider block font-semibold">
+          Commercial Procurement Details
+        </span>
+<input class="w-full bg-surface-container-lowest font-body-sm text-body-sm px-3.5 py-2.5 rounded shadow-sm text-on-surface placeholder-outline focus:outline-none" placeholder="Business / Brand Name" type="text"/>
+<input class="w-full bg-surface-container-lowest font-body-sm text-body-sm px-3.5 py-2.5 rounded shadow-sm text-on-surface placeholder-outline focus:outline-none" placeholder="WhatsApp Number (e.g. +91 98765 43210)" type="tel"/>
+<select class="w-full bg-surface-container-lowest font-body-sm text-body-sm px-3.5 py-2.5 rounded shadow-sm text-on-surface focus:outline-none">
+<option>Private Label Apparel Brand</option>
+<option>Corporate Merchandiser / Agency</option>
+<option>Screen Printing / Embroidery Studio</option>
+<option>Retail Wholesaler / Distributor</option>
+</select>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-6 bg-surface-container-low flex flex-col gap-3">
+<button class="w-full py-3.5 rounded bg-primary-container hover:bg-primary text-on-primary font-body-md text-body-md font-semibold tracking-wide transition-colors shadow-md flex items-center justify-center gap-2" onclick="submitQuoteRequest()">
+<span>TRANSMIT RFQ TO MILL DESK</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<a class="w-full py-2.5 rounded bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#126b33] font-label-tag text-label-tag font-semibold transition-colors flex items-center justify-center gap-2" href="https://wa.me/919442218920?text=Hi%20Abinaya%20Garments,%20I%20am%20ready%20with%20my%20wholesale%20RFQ%20(450%20pieces%20total)" target="_blank">
+<span class="w-2.5 h-2.5 rounded-full bg-[#25D366]"></span>
+<span>FORWARD TO WHATSAPP DESK (+91 94422 18920)</span>
+</a>
+</div>
+</div>
+<!-- INLINE CLIENT LOGIC FOR DRAWER INTERACTION -->
+<script>
+    let quoteItemsCount = 3;
+
+    function toggleDrawer(isOpen) {
+      const backdrop = document.getElementById('quoteDrawerBackdrop');
+      const panel = document.getElementById('quoteDrawerPanel');
+      if (isOpen) {
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        panel.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        panel.classList.add('translate-x-full');
+      }
+    }
+
+    function addToQuote(name, lot, defaultQty, shades, estPrice) {
+      quoteItemsCount++;
+      const cartText = document.getElementById('cartButtonText');
+      const drawerTitle = document.getElementById('drawerTitle');
+      if (cartText) cartText.innerText = 'QUOTE LIST (' + quoteItemsCount + ')';
+      if (drawerTitle) drawerTitle.innerText = quoteItemsCount + ' Items in Spec Sheet';
+      
+      // Auto open drawer to provide clear tactile feedback
+      toggleDrawer(true);
+    }
+
+    function submitQuoteRequest() {
+      alert("Mill RFQ dispatched. Our Tiruppur merchandising desk will send the formal GST proforma invoice within 4 factory hours.");
+      toggleDrawer(false);
+    }
+  </script>
+</div></main>
+</body></html>
