@@ -6,6 +6,9 @@
   "build": {
     "command": "npm run build"
   },
+  // Cloudflare runs `wrangler preview` (instead of `wrangler deploy`) for any branch that
+  // isn't the production branch, and that command requires this block. It can stay empty.
+  "previews": {},
   "assets": {
     "directory": "./dist",
     // unknown URLs show the site's own 404 page (dist/404.html) with a real 404 status
