@@ -369,6 +369,8 @@ const approach = [
   .qual {
     background: var(--ink);
     color: rgba(245, 241, 234, 0.78);
+    /* the tilted ticket and its enlarged entrance stamp must never widen the page on phones */
+    overflow-x: clip;
   }
   .qual__grid {
     display: grid;
