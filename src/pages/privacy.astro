@@ -8,7 +8,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import PageIntro from '../components/page/PageIntro.astro';
 import { site } from '../data/site';
 
-const updated = '18 November 2026';
+const updated = '26 November 2026';
 const sections = [
   { id: 'who', title: 'Who we are' },
   { id: 'collect', title: 'What this website collects' },
@@ -90,6 +90,14 @@ const sections = [
             privacy policy. Links to WhatsApp and Google Maps take you to those services, whose own policies apply.
           </p>
           <p>The fonts and images on this website are served from our own site, not from third-party font services.</p>
+          <p>
+            The chat assistant answers questions using the information published on this website. What you type in
+            the chat is sent to our assistant service and processed by Google Gemini to write the reply, under
+            Google's own terms. The chat has no accounts, and we don't save your messages on this website. Please
+            don't share personal or payment details in the chat. When you open the chat, Cloudflare Turnstile checks
+            that you are a person; it may process technical information about your browser under Cloudflare's
+            privacy policy.
+          </p>
         </section>
 
         <section id="storage" data-sec>
@@ -97,7 +105,8 @@ const sections = [
           <p>
             This website doesn't set its own cookies. If you use the quote list on the products page, the products you
             add are saved in your browser's local storage so the list is still there when you come back. It stays on
-            your device; you can empty it with “Clear list” or by clearing your browser data.
+            your device; you can empty it with “Clear list” or by clearing your browser data. The chat assistant keeps a
+            short-lived session token in your browser's session storage, which is removed when you close the tab.
           </p>
         </section>
 
