@@ -59,6 +59,8 @@ const fullTitle = home ? `${site.name} · ${title}` : `${title} · ${site.name}`
     <script>
       import '../scripts/motion/core';
     </script>
+    <!-- AI chat assistant (separately hosted widget; renders in its own Shadow DOM) -->
+    <script is:inline src="https://abinaya-chatbot.dentcare-demo.workers.dev/widget.js" defer></script>
   </body>
 </html>
 
